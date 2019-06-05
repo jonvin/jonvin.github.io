@@ -79,5 +79,5 @@ theme: Jontheme
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git 
-  repo:　https://github.com/jonvin/Jonwen-.git
+  repo:　https://github.com/jonvin/Jonwen.git
   branch: master
