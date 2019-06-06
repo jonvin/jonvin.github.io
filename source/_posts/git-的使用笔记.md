@@ -1,6 +1,7 @@
 ---
 title: git 的使用笔记
 date: 2019-06-05 17:19:42
+
 tags:
 ---
 前言：现在发现周围的朋友都有写博客的习惯。在朋友和同事的感染下，为了能更好的记录学习中的点点滴滴，今天也搭了一个。第一篇笔记就写常用的git 命令吧！
@@ -61,3 +62,7 @@ git push origin master
 git stash 
 git pull
 git stash pop 
+
+###新建分支 
+17.git checkout -b '分支名'
+18.git push origin dev 提价到新建的分支中
