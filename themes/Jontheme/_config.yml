@@ -8,7 +8,7 @@ menu:
     categories: /categories
     tags: /tags
     about: /about
-    gallery: /gallery
+    gallery: /gallery/
 
 # favicon & logo
 # if the value of logo is false, the 'title' is optional.
@@ -42,7 +42,7 @@ timejs:
 # animation: spinner | transition | cyclic
 preloader:
     enable: true
-    animation: spinner
+    animation: transition
 
 #########################################################################################################
 # 003-INDEX
