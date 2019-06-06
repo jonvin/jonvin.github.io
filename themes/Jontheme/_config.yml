@@ -22,7 +22,7 @@ title: Welcome
 # https://sariay.github.io/Random-img/
 # May be cause CROS bug!
 background_image:
-    mode: normal #normal or random
+    mode: random #normal or random
     normal_url: /img/1.jpg
     random_max: 110 
     random_url: https://sariay.github.io/Random-img/
