@@ -9,7 +9,7 @@ tags:
 
 ### 什么是postcss 
 
-![图](/jonvin/jonvin.github.io/blob/master/img/writeImg/postcss.png?raw=true)
+![图](https://raw.githubusercontent.com/jonvin/jonvin.github.io/master/img/writeImg/postcss.png)
 postcss 一种对css编译的工具，类似babel对js的处理，postcss 只是一个工具，本身不会对css 内容进行操作，它通过插件实现功能，autoprefixer 就是其一。常见的功能如：
 
 1.使用下一代css语法 (css4 语法)
