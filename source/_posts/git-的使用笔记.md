@@ -42,7 +42,7 @@ git push origin master
 
 恭喜你 到这里就上传成功啦！
 
-###开发过程
+### 开发过程
 11.先后运行git add和git commit命令将更改提交到本地仓库；
 
 12.关联本地仓库和远程仓库：git remote add origin  https://git.oschi[自己代码版本控制的公钥地址]
@@ -63,6 +63,6 @@ git stash
 git pull
 git stash pop 
 
-###新建分支 
+### 新建分支 
 17.git checkout -b '分支名'
 18.git push origin dev 提价到新建的分支中
