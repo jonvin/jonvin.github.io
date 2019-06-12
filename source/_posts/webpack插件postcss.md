@@ -6,6 +6,8 @@ tags:
 前言：前一阵子对公司的h5页面进行了改版重构，在使用webpack的过程中了解了很多非常好用的工具，postcss 就是 其中之一.通过翻阅大量的书籍，浏览了很多大神的博客，我觉得我也有必要写点什么了。因为站在巨人的肩膀上，所以才能看得更远！
 
 ### 什么是postcss 
+
+![图](https://github.com/jonvin/jonvin.github.io/blob/master/img/writeImg/postcss.png)
 postcss 一种对css编译的工具，类似babel对js的处理，postcss 只是一个工具，本身不会对css 内容进行操作，它通过插件实现功能，autoprefixer 就是其一。常见的功能如：
 
 1.使用下一代css语法 (css4 语法)
