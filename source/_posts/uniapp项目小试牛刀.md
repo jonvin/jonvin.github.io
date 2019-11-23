@@ -83,7 +83,7 @@ tags: uniapp
 定义： Apa.vue
 
 ``` bash 
-  <script>  
+<script>  
 	export default {
 		onLaunch: function() {
 
@@ -135,11 +135,11 @@ tags: uniapp
 			},
 		},
 	} 
-    </script>  
+</script>  
 
-    <style>  
-        /*每个页面公共css */  
-    </style>  
+<style>  
+/*每个页面公共css */  
+</style>  
 
 
 ```
