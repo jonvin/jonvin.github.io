@@ -4,40 +4,38 @@ date: 2019-08-09 09:15:24
 tags:
 ---
 
-前言：之前在做flutter实战操作的时候做了一大堆笔记，今天就把这些笔记来整理一下吧！
+前言：之前在做 flutter 实战操作的时候做了一大堆笔记，今天就把这些笔记来整理一下吧！
 
 ### 基础组件
-
 
 ● Text 组件
 用于装文字的组件
 
-``` bash
+```bash
 Text(
     'Dolore ut aute quis amet.Aliqua eiusmod nulla amet quis et.Et elit eu dolore aliqua.Do amet id aute sit.',
-    maxLines: 2,                             //文字不超过·2行                                
+    maxLines: 2,                             //文字不超过·2行
     overflow:TextOverflow.ellipsis,         // 超过2行部分 隐藏 并显示 "...."
     style: TextStyle(
-        color: Colors.black, 
+        color: Colors.black,
         fontSize:18.0
     ),
-),  
+),
 ```
 
-
 ● Container 组件
-Container 组件类似于Html 中的div.
+Container 组件类似于 Html 中的 div.
 
-``` bash
-    Contianer(
+```bash
+    Container(
         color:Color.(0xff0094ff),   //Container的背景颜色
         margin: EdgeInsets.all(10.0),
         padding: EdgeInsets.all(10.0);
-        width:300,    //宽100% ，可以设置为   double.infinity       
+        width:300,    //宽100% ，可以设置为   double.infinity
         height:300,    //高100% ， 可以设置属性值为 double.infinity
         child: Text(
             '这是Container组件',
-            style:TextStyle( color:Colors.white );                            
+            style:TextStyle( color:Colors.white );
         ),
         decoration: BoxDecoration(    //设置边宽 border
               color: Color.fromRGBO(255, 255, 255, .3),        //设置背景的颜色
@@ -48,11 +46,10 @@ Container 组件类似于Html 中的div.
 
 ```
 
-
 ● Column 组件
-垂直布局组件,类似于flex 布局的 垂直布局
+垂直布局组件,类似于 flex 布局的 垂直布局
 
-``` bash
+```bash
     return Container(
         width: double.infinity,
         child:Column(
@@ -69,14 +66,13 @@ Container 组件类似于Html 中的div.
         )
 
     )
-    
+
 ```
 
-
 ● row 组件
-横排布局组件, 类似于flex 布局的左右展开布局
+横排布局组件, 类似于 flex 布局的左右展开布局
 
-``` bash 
+```bash
     return Container(
       width: double.infinity,
       child:Row(
@@ -96,15 +92,14 @@ Container 组件类似于Html 中的div.
 
 ```
 
-
 ● Flexible 和 Expanded 组件
-Flexible是一个控制Row、Column、Flex等子组件如何布局的组件。
-Flexible组件可以使Row、Column、Flex等子组件在主轴方向有填充可用空间的能力(例如，Row在水平方向，Column在垂直方向)，但是它与Expanded组件不同，它不强制子组件填充可用空间。
-Row、Column、Flex会被Expanded撑开，充满主轴可用空间，用发基本相同。
+Flexible 是一个控制 Row、Column、Flex 等子组件如何布局的组件。
+Flexible 组件可以使 Row、Column、Flex 等子组件在主轴方向有填充可用空间的能力(例如，Row 在水平方向，Column 在垂直方向)，但是它与 Expanded 组件不同，它不强制子组件填充可用空间。
+Row、Column、Flex 会被 Expanded 撑开，充满主轴可用空间，用发基本相同。
 
 Expanded
 
-``` bash 
+```bash
         Row(
             children:<Widget>[
                 new Expanded(
@@ -119,7 +114,7 @@ Expanded
                 ),
                 Container(
                     width:100.0;
-                ),                
+                ),
             ]
 
         )
@@ -128,9 +123,9 @@ Expanded
 
 ```
 
-
 Flexible
-``` bash 
+
+```bash
         Row(
             children:<Widget>[
                 new Flexible(
@@ -145,19 +140,17 @@ Flexible
                 ),
                 Container(
                     width:100.0;
-                ),                
+                ),
             ]
 
         )
 
 ```
 
-
 ● RichText 组件
-实现在一个段落中Text应用不同的样式的需求。
+实现在一个段落中 Text 应用不同的样式的需求。
 
-
-``` bash 
+```bash
     return RichText(
       text: TextSpan(
         text: 'This is ',
@@ -197,13 +190,12 @@ Flexible
     );
 ```
 
+● TabBar 组件 和 DefaultTabController
+DefaultTabController 要简单很多，由于应用在无状态控件中，使用 DefaultTabController 包裹需要用到 Tab 的页面即可：
 
-● TabBar 组件  和 DefaultTabController
-DefaultTabController要简单很多，由于应用在无状态控件中，使用DefaultTabController包裹需要用到Tab的页面即可：
-
-```  bash 
+```bash
         return DefaultTabController(
-            length: 3,      //必填项  一共有几块内容供 tab栏切换  
+            length: 3,      //必填项  一共有几块内容供 tab栏切换
             child: Scaffold(
                     appBar: AppBar(
                         title:Text('tab 栏切换'),
@@ -225,7 +217,7 @@ DefaultTabController要简单很多，由于应用在无状态控件中，使用
                             ),
                             indicatorColor: Colors.white,     //被选中下划线的 颜色
                             indicatorWeight: 2,                 // 被选中下划线的粗细
-                            indicatorSize: TabBarIndicatorSize.label,  //被选中下划线的长短 ( label：是跟文字一样长  tab: 是整个tab 盒子的长度  )        
+                            indicatorSize: TabBarIndicatorSize.label,  //被选中下划线的长短 ( label：是跟文字一样长  tab: 是整个tab 盒子的长度  )
                             tabs: <Widget>[
                             Tab(
                                 text:'首页',
@@ -235,7 +227,7 @@ DefaultTabController要简单很多，由于应用在无状态控件中，使用
                             ),
                             Tab(
                                 text:'文章',   //模板语法  '${article.name}'
-                            ),                                                                              
+                            ),
                             ],
                         ),
                     ),
@@ -252,11 +244,10 @@ DefaultTabController要简单很多，由于应用在无状态控件中，使用
         )
 ```
 
-
 ● Stack 组件  
-层叠堆放组件  Stack  类似于  position:absolute;
+层叠堆放组件 Stack 类似于 position:absolute;
 
-``` bash
+```bash
     Stack(
     children: <Widget>[
         Container(
@@ -273,11 +264,10 @@ DefaultTabController要简单很多，由于应用在无状态控件中，使用
     ),
 ```
 
+● AspectRatio 组件
+AspectRatio 的作用是调整 child 到设置的宽高比，这种控件在其他移动端平台上一般都不会提供，Flutter 之所以提供，我想最大的原因，可能就是自定义起来特别麻烦吧。
 
-● AspectRatio 组件 
-AspectRatio的作用是调整child到设置的宽高比，这种控件在其他移动端平台上一般都不会提供，Flutter之所以提供，我想最大的原因，可能就是自定义起来特别麻烦吧。
-
-``` bash
+```bash
   AspectRatio(
     aspectRatio: 16/9,            //必须设置的 属性  宽高比
     child: Container(
@@ -288,11 +278,10 @@ AspectRatio的作用是调整child到设置的宽高比，这种控件在其他�
 
 ```
 
+● 列表分割线 ListTitle 组件 和 Divider 组件
+如同 html 中的 li 标签 和 1 像素的线
 
-● 列表分割线 ListTitle 组件 和 Divider组件
-如同html 中的 li标签 和1像素的线
-
-``` bash 
+```bash
     children: <Widget>[
             ListTitle(    //列表的内容
             title:Text('我的收藏'),
@@ -329,14 +318,13 @@ AspectRatio的作用是调整child到设置的宽高比，这种控件在其他�
                     print('你已经点到我了')
             }
             )
-            Divider( color: Color(0xfffcccccc))              
+            Divider( color: Color(0xfffcccccc))
     ]
 ```
 
+● 按钮 FlatButton (文字按钮) , FlatButton.icon(带图标的文字按钮) ,RaisedButton(带背景颜色的按钮), FloatingActionButton(带浮动的 按钮)
 
-●按钮 FlatButton (文字按钮) , FlatButton.icon(带图标的文字按钮) ,RaisedButton(带背景颜色的按钮), FloatingActionButton(带浮动的 按钮)
-
-``` bash 
+```bash
     FlatButton(
           child: Text('文字按钮'),
           textColor: Colors.red,
@@ -344,7 +332,7 @@ AspectRatio的作用是调整child到设置的宽高比，这种控件在其他�
               print('点击');
           }
     ),
-            
+
     FlatButton.icon(
               icon: Icon(Icons.arrow_back),
               label: Text('图标文字'),
@@ -365,6 +353,5 @@ AspectRatio的作用是调整child到设置的宽高比，这种控件在其他�
           onPressed: (){
             print('按下了浮动按钮');
           },
-    ),   
+    ),
 ```
-
