@@ -66,3 +66,4 @@ git stash pop
 ### 新建分支 
 17.git checkout -b '分支名'
 18.git push origin dev 提价到新建的分支中
+19.git  merge dev 把dev分支的代码合并到master上
