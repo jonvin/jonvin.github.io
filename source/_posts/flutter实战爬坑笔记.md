@@ -39,7 +39,7 @@ Container 组件类似于 Html 中的 div.
         ),
         decoration: BoxDecoration(    //设置边宽 border
               color: Color.fromRGBO(255, 255, 255, .3),        //设置背景的颜色
-              borderRadius: BorderRadius.all(new Radius.circular(4.0)),    //设置圆角
+              borderRadius: BorderRadius.all(new Radius.circular(4.0)),    //设置圆角             
               border: Border.all(width: 1.0, color: Color(0xffcccccc))          // 设置边框的颜色和宽度
         ),
     ),
@@ -354,4 +354,66 @@ AspectRatio 的作用是调整 child 到设置的宽高比，这种控件在其�
             print('按下了浮动按钮');
           },
     ),
+```
+
+● 点击 改变text 的状态
+
+``` dart
+
+void main(){
+    runApp(SampleApp() );     
+}
+
+class SampleApp extends StatelessWidget {
+
+    @override 
+    Widget build( BuildContext context ){
+        return MaterialApp(
+            title: 'Sample App',
+            theme: ThemeData(
+                primarySwatch:　Colors.blue, 
+            ),
+            home: SampleAppPage(), 
+        )
+    }
+}
+
+
+class SampleAppPage extends StatefulWidget{
+    SampleAppPage({key key}) : super(key:key); 
+
+    @override 
+    _SampleAppPageState createState()=> _SampleAppPageState(); 
+
+}   
+
+class _SampleAppPageState extends State<SampleAppPage>{
+
+    String textToShow = 'I Like Flutter'
+
+
+    void _updataText(){
+        setState((){
+            textToShow = 'Flutter is Awesome!'
+        })
+    }
+
+    @override 
+    Widget build (BuildContext context ){
+        return Scaffold (
+            appBar: AppBar(
+                title: Text('Sample App'),  
+            )
+            body: Center(child: Text(textToShow)), 
+            floatingActionButton: FloatingActionButton(
+                onPressed: _updateText, 
+                tooltip: 'Updata Text',
+                child:Icon(Icon.update), 
+            ) 
+        )
+    }
+}
+
+
+
 ```
