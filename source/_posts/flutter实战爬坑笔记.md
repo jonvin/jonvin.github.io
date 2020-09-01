@@ -20,13 +20,12 @@ Text(
         color: Colors.black,
         fontSize:18.0
     ),
-),
-```
+), 
 
 ● Container 组件
 Container 组件类似于 Html 中的 div.
 
-```bash
+```bash  
     Container(
         color:Color.(0xff0094ff),   //Container的背景颜色
         margin: EdgeInsets.all(10.0),
