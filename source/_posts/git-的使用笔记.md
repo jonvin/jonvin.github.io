@@ -67,3 +67,6 @@ git stash pop
 17.git checkout -b '分支名'
 18.git push origin dev 提价到新建的分支中
 19.git  merge dev 把dev分支的代码合并到master上
+20.git branch -a 查看已有的本地及远程分支
+21.git push origin --delete dev 删除远程分支
+22.git branch -d dev  删除本地分支
