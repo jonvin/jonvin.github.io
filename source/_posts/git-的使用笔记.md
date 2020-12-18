@@ -70,3 +70,7 @@ git stash pop
 20.git branch -a 查看已有的本地及远程分支
 21.git push origin --delete dev 删除远程分支
 22.git branch -d dev  删除本地分支
+
+
+### 在多人配合开发时 越过别人的eslint 报错 提交代码
+23.git commit -m '' --no-verify
