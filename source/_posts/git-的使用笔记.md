@@ -61,7 +61,12 @@ git push origin master
 16.如果遇到了 代码冲突等问题可以执行以下3行命令
 git stash 
 git pull
-git stash pop 
+git stash pop ：只会恢复 存储最新的stash
+
+
+git stash list  ：查看stash了哪些存储
+git stash show ：显示做了哪些改动，默认show第一个存储,如果要显示其他存贮，后面加stash@{$num}，比如第二个 git stash show stash@{1}
+git stash apply :应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即stash@{0}，如果要使用其他个，git stash apply stash@{$num} ， 比如第二个：git stash apply stash@{1} 
 
 ### 新建分支删除分支等操作
 17.git checkout -b '分支名'
