@@ -333,3 +333,38 @@ www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，�
 
 
 19. 跨域的后端解决方案
+
+20. redux 是什么？
+
+    Redux 是一个 javaScript 应用设计的可预测的状态容器。  
+    
+    它解决了以下问题： 
+
+      1.跨层级的组件之间的数据传递变得很容易
+
+      2.所有对状态的改变都需要 Dispach , 使得整个数据的改变可追踪，方便排查问题。
+
+    但是它也有缺点
+
+      概念偏多，理解起来不容易
+
+      样板代码太多
+
+
+
+21.调用setState 之后发生了什么？
+
+  1. 在setState的时候，React会为当前节点创建一个 updateQueue 的更新队列。
+
+  2. 然后会触发 reconciliation(和谐) 过程,在这个过程中，会使用名为 Fiber 的调度算法，开始生成新的 Fiber 树，
+  Fiber 算法的最大特点是可以做到异步可中断的执行。
+
+  3.然后React Scheduler(调度器) 会根据优先级高低，先执行优先级高的节点，具体是执行 doWork 方法。
+
+  4.在 dowork 方法中, React会执行一遍 updataQueue 中的方法获得新节点，然后对比新旧节点，为老节点打上 更新、插入、替换等标签。
+
+  5. 当前节点 doWork 完成后，会执行 performUnitOfWork 方法获得新节点，然后再重复上面的过程。
+
+  6. 当所有节点都 dowork 完成后，会触发 commitRoot 方法， react进入 commit阶段。
+
+  7.在commit 阶段中， React会根据前面为各个节点打的Tag， 一次性更新整个dom 元素
