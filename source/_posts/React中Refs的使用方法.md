@@ -92,7 +92,7 @@ class CustomTextInput extends React.Component {
  }
 
  render() {
-   // 告诉 React 我们想把 <input> ref 关联到
+   // 告诉 React 我们想把 <input> ref 关联到  
    // 构造器里创建的 `textInput` 上
    return (
      <div>
@@ -196,7 +196,7 @@ function Parent(){
   // 所以父组件（类组件）创建一个 ref 对象，然后传递给子组件（类组件），子组件内部有元素使用了
   // 那么父组件就可以操作子组件中的某个元素
   // 但是函数组件无法接收 ref 属性 <Child ref={xxx} /> 这样是不行的
-  // 所以就需要用到 forwardRef 进行转发
+  // 所以就需要用到 forwardRef 进行转发 
   const inputRef = useRef();//{current:''}
   function getFocus(){
     inputRef.current.value = 'focus';

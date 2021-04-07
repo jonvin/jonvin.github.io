@@ -131,6 +131,7 @@ for-of可以简单、正确地遍历数组
 
  beforeunload事件可计算出用户停留在页面的时间具体代码如下：
   ``` javascript 
+  
       var start;
 
       var end;
@@ -157,54 +158,71 @@ for-of可以简单、正确地遍历数组
 
   防抖：在滚动事件中需要做个复杂计算或者实现一个按钮的防二次点击操作。
 
-  ```javascript
+  手写一防抖：
 
-    function debounce(fn, wait){
+     ```javascript
 
-      var timer = null;
+        function debounce(fn , wait){
+            var timer = null; 
 
-      return function(){
+            return function(){
 
-        var context = this
+               var context = this
 
-        var args = arguments
+               var args = arguments 
 
-        if( timer ){
+               if( timer ) {
 
-          clearTimeout( timer ); 
+                  clearTimeout(timer); 
 
-          timer = null; 
+                  timer = null;
+
+               }
+               timer = setTimeout (function(){
+                  fn.apply( context, args )
+               }, wait)
+            }
         }
-        timer = setTimerout(function(){
-          fn.apply( context, args )
-        },wait)
-      }
-    }
-  ```
 
-  ```JS
-    // func是用户传入需要防抖的函数
-    // wait是等待时间
-    const debounce = (func, wait = 50) => {
-      // 缓存一个定时器id
-      let timer = 0
-      // 这里返回的函数是每次用户实际调用的防抖函数
-      // 如果已经设定过定时器了就清空上一次的定时器
-      // 开始一个新的定时器，延迟执行用户传入的方法
-      return function(...args) {
-        if (timer) clearTimeout(timer)
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, wait)
-      }
-    }
-    // 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数
+     ```
 
 
-  ```
 
   
   节流：防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。
+
+  手写一个节流：
+
+    ```javascript
+       
+       function throttle(fn , gapTime){           
+          let lastTime = null; 
+
+          return function(){
+
+            let nowTime = + new Date()
+
+            if( nowTime - lastTime  > gapTime || !lastTime ){    // 如果 现在的时间 减去 上一次触发的时间 大于 规定节流的时间间隔，或者是第一次 触发则调用一次函数。
+
+                fn();
+
+                lastTime = nowTime 
+            }
+          } 
+
+       }
+
+      // 被节流的目标函数
+
+      let fn = () =>{
+        console.log('触发了该函数')
+      }
+
+      // 用setInterval 模拟实际工作中触发节流
+
+      setInterval( throttle(fn, 1000), 10) 
+
+    ```
 
 
   ```javascript
@@ -740,3 +758,64 @@ console.log(scater instanceof Person)// true
 
   ```
   ==优点：==每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。
+19. 跨域的后端解决方案
+
+
+20.从输入url到浏览器显示页面发生了什么
+
+
+  1、输入网址
+
+  当你开始输入网址比如www.cnblogs.com时浏览器就可以在书签或者历史记录里面去搜索相关的网址推荐给你
+
+
+  2、浏览器查找域名的IP地址
+
+
+
+  3、建立TCP链接
+
+
+
+  4、浏览器向WEB服务器发起Http请求
+
+
+
+  5、服务器端处理
+
+
+
+  6、关闭TCP链接
+  
+   为了避免服务器与客户端双方的资源占用和损耗，当双方没有请求或响应传递时，任意一方都可以发起关闭请求。
+   与创建TCP连接的3次握手类似，关闭TCP连接，需要4次握手。
+
+
+   console.log('1');
+    setTimeout(function () {
+      console.log('2');
+      new Promise(function (resolve) {
+        console.log('3');
+        resolve();
+      }).then(function () {
+        console.log('4')
+      })
+    },0)
+    new Promise(function (resolve) {
+      console.log('5');
+      resolve();
+    }).then(function () {
+      console.log('6')
+    })
+
+    setTimeout(function () {
+      console.log('7');
+      new Promise(function (resolve) {
+        console.log('8');
+        resolve();
+      }).then(function () {
+        console.log('9')
+      })
+      console.log('10')
+    },0)
+    console.log('11')
