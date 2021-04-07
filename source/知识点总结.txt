@@ -18,7 +18,7 @@
 
 区别：
 
-　　函数组件和类组件当然是有区别的，而且函数组件的性能比类组件的性能要高，
+　　函数组件的性能比类组件的性能要高，
 
     因为类组件使用的时候要实例化，而函数组件直接执行函数取返回结果即可。
 
@@ -156,9 +156,100 @@ for-of可以简单、正确地遍历数组
 
 
   防抖：在滚动事件中需要做个复杂计算或者实现一个按钮的防二次点击操作。
+
+  ```javascript
+
+    function debounce(fn, wait){
+
+      var timer = null;
+
+      return function(){
+
+        var context = this
+
+        var args = arguments
+
+        if( timer ){
+
+          clearTimeout( timer ); 
+
+          timer = null; 
+        }
+        timer = setTimerout(function(){
+          fn.apply( context, args )
+        },wait)
+      }
+    }
+  ```
+
+  ```JS
+    // func是用户传入需要防抖的函数
+    // wait是等待时间
+    const debounce = (func, wait = 50) => {
+      // 缓存一个定时器id
+      let timer = 0
+      // 这里返回的函数是每次用户实际调用的防抖函数
+      // 如果已经设定过定时器了就清空上一次的定时器
+      // 开始一个新的定时器，延迟执行用户传入的方法
+      return function(...args) {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(this, args)
+        }, wait)
+      }
+    }
+    // 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数
+
+
+  ```
+
   
   节流：防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。
 
+
+  ```javascript
+
+    /**
+    * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait
+    *
+    * @param  {function}   func      回调函数
+    * @param  {number}     wait      表示时间窗口的间隔
+    * @param  {object}     options   如果想忽略开始函数的的调用，传入{leading: false}。
+    *                                如果想忽略结尾函数的调用，传入{trailing: false}
+    *                                两者不能共存，否则函数不能执行
+    * @return {function}             返回客户调用函数
+
+    */
+
+    function throttle(fn, gapTime){
+
+        let lastTime = null; 
+
+        return function(){
+
+            let nowTime = +new Date()
+
+            if( nowTime - lastTime > gapTime || !lastTime ){ // 如果现在的时间 减去上一次触发的时间大于 规定节流的时间间隔，或者是第一次触发则调用一次函数
+                fn();
+
+                lastTime = nowTime
+            } 
+        }
+    }
+
+
+
+// 被节流的目标函数
+
+    let fn = () =>{
+      console.log('触发了该函数')
+    }
+
+// 用setInterval 模拟实际工作中触发节流
+
+
+  setInterval( throttle(fn, 1000),10 )
+  ```
 
 12.vue 子组件与子组件之前的传值
 
@@ -332,7 +423,40 @@ www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，�
 
 
 
-19. 跨域的后端解决方案
+19. 跨域
+
+跨域前端解决方案及原理
+
+1.JSONP 
+
+  JSONP 的原理很简单，就是利用<script> 标签没有跨域限制的漏洞。 通过<script>标签指向一个需要访问的地址并提供一个回调函数来接收数据。
+  
+  JSONP 使用简单且兼容性不错，但是只限于 get 请求。
+
+
+
+2.CORS
+
+  CORS 需要浏览器和后端同时支持。IE 8 和 9 需要通过 XDomainRequest 来实现。
+
+  浏览器会自动进行 CORS 通信，实现 CORS 通信的关键是后端。只要后端实现了 CORS，就实现了跨域。
+
+  服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。
+
+
+
+3.document.domain
+
+  该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式。
+
+  只需要给页面添加 document.domain = 'test.com' 表示二级域名都相同就可以实现跨域
+
+
+4.postMessage
+
+  这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息
+
+
 
 20. redux 是什么？
 
@@ -368,3 +492,251 @@ www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，�
   6. 当所有节点都 dowork 完成后，会触发 commitRoot 方法， react进入 commit阶段。
 
   7.在commit 阶段中， React会根据前面为各个节点打的Tag， 一次性更新整个dom 元素
+
+
+22. xss 攻击
+
+  如何攻击
+
+  XSS 通过修改 HTML 节点或者执行 JS 代码来攻击网站。
+
+
+
+  如何防御
+
+  最普遍的做法是转义输入输出的内容，对于引号，尖括号，斜杠进行转义
+
+
+23. CSRF攻击  
+
+  简单点说，CSRF 就是利用用户的登录态发起恶意请求。
+
+  跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，
+  
+  通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
+  
+  [1] 跟跨網站指令碼（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
+
+
+  如何攻击
+
+  假设网站中有一个通过 Get 请求提交用户评论的接口，那么攻击者就可以在钓鱼网站中加入一个图片，图片的地址就是评论接口
+
+
+  如何防御
+
+  防范 CSRF 可以遵循以下几种规则：
+
+  Get 请求不对数据进行修改
+  不让第三方网站访问到用户 Cookie
+  阻止第三方网站请求接口
+  请求时附带验证信息，比如验证码或者 token
+
+ 24. http 状态
+
+    200：请求已经成功，请求所希望的相应或数据体将随此相应返回
+
+    201 (已创建)请求成功并且服务器创建了新的资源
+
+    302：请求的资源面临从不同的URI响应请求，由于3这样的重定向时临时的，
+    客户端应当继续向原有的地址发送以后的请求只有在Cache-control或Exception中进行了指定的情况下，这个响应才是可缓存的。
+
+    304：如果客户端发送了一个带有条件的GET请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，
+    则服务器应当返回这个状态码，304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。
+
+    400：(错误请求)  服务器不理解请求的语法。
+
+    401：(未授权)  请求要求身份验证。对于登录后请求的网页，服务器可能返回此响应。
+
+    403：服务器已经理解请求，但是拒绝了执行它
+
+    404： （未找到） 服务器找不到请求的网页。
+
+    406: '请求的格式不可得。',   
+
+    410: '请求的资源被永久删除，且不会再得到的。',   
+
+    500：（服务器内部错误） 服务器遇到错误，无法完成请求。
+
+    502: '网关错误。',
+
+    503: '服务不可用，服务器暂时过载或维护。',
+
+    504: '网关超时。',
+
+  25.Effect Hook
+    之前可能已经在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。
+    我们统一把这些操作称为“副作用”，或者简称为“作用”。useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。
+    它跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API。
+    （我们会在使用 Effect Hook 里展示对比 useEffect 和这些方法的例子。）
+
+  26.call 和 apply 的区别 ？ 那个性能更好？
+
+    call 可以接收一个参数列表，apply 只接受一个参数数组。
+
+    1.call 和 apply 都是 function 类原型上的方法； 每一个函数作为function 的实例都能调用这两方法；
+    
+     这两个方法执行的目的都是用来改变函数中的this指向的，让函数执行并且能改变this指向。
+
+    2.区别：
+
+      1、call 传参的时候要求我们给函数传参是一个个地传，而apply 的要传的参数是以一个数组保存起来；
+
+      2、一样改变 this 的还有 bind , bind并没有立即执行函数，只是预先把处理改变函数中的 this 
+
+      3、call 的性能要比 apply 好一些（尤其是传递给函数的参数超过三个的时候 ） 
+       
+        let arr =[10, 20, 30], 
+
+        obj={}
+
+        function fn(x, y, z){
+
+        }
+
+        fn.apply(obj, arr)
+
+        fn.call(obj, ...arr )  // 基于ES6 的展开 运算符号也可以
+
+      4、使用方法
+
+        call(thisObj, arg1, arg2, arg3, arg4);
+
+        apply(thisObj, [args]);
+
+        thisObj：call和apply第一个参数是一样的，该参数将替代Function类里面的this对象。
+        
+        arg1,arg2....：是一个个的参数，
+        args：一个数组或类数组，是一个参数列表。
+
+
+  27、前端开发的设计模式有哪些
+
+  1、模块模式；2、构造函数模式；3、工厂模式；4、混合模；5、单例模式；6、订阅发布模式等等。
+
+  前端常见的设计模式有以下几种：单例模式、工厂模式、构造函数模式、原型模式、混合模式、动态原型模式这几种，接下来我们一起了解一下这些模式具体的情况。
+
+
+1.单例模式
+
+    又称为单体模式。保证一个类只有一个实例，并提供一个访问它的全局访问点。
+
+    第二次使用同一个类创建新对象的时候，应该得到第一次创建的对象完全相同的对象。
+
+
+    通过静态属性创建单例
+
+    ```javascript 
+
+    class Person{
+        static instance = null; //静态属性，不会被实例继承，由类直接调用
+        constructor(name){
+            if(Person.instance){
+                return Person.instance;
+            }
+            Person.instance = this;
+            this.name = name;
+        }
+    }
+    ```
+
+    通过函数创建单例
+
+
+    ```javascript
+
+    let instance;
+    function createInstance(...arg){
+        if(!instance){
+            instance = new Game(...arg);
+        }
+        return instance;
+    }
+
+    ```
+
+    ==优点：==实现代码复用性，封装良好，抽象逻辑
+
+    ==缺点：==单例模式扩展性不强
+
+2.工厂模式
+
+```javascript 
+
+    function createPerson(name, age) {
+        var obj = {};
+        obj.name = name;
+        obj.age = age;
+        obj.writeJs = function () {
+            console.log(this.name + 'write js');
+        }
+        return obj;
+    }
+
+    var p1 = createPerson('mengzhe' , 26);
+    p1.writeJs();
+
+    var p2 = createPerson('iceman' , 25);
+    p2.writeJs();
+
+```
+==优点：==实现代码复用性，封装良好，抽象逻辑
+
+==缺点：==不能识别对象的类型，全部是Object
+
+
+3.构造函数模式
+
+```javascript 
+
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+       alert(this.name);
+    };
+}
+const scater = new Person("scater", 29, "web前端");
+console.log(scater instanceof Person)// true
+
+```
+
+首字母大写
+使用new创建对象
+
+==优点：==能够识别对象
+
+==缺点：==每次创建实例的时候都要重新创建一次方法
+
+
+4.混合模式（原型模式 + 构造函数模式
+
+  创建自定义类型的最常见方式。
+
+  构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。
+
+  ```javascript 
+
+  function Person(name, age, job){
+      this.name = name;
+      this.age = age;
+      this.job = job;
+      this.friends = ["Shelby", "Court"];
+  }
+  Person.prototype = {
+      constructor : Person,
+      sayName : function(){
+          alert(this.name);
+      }
+  }
+  var person1 = new Person("Nicholas", 29, "Software Engineer");
+  var person2 = new Person("Greg", 27, "Doctor");
+  person1.friends.push("Van");
+  alert(person1.friends); //"Shelby,Count,Van"
+  alert(person2.friends); //"Shelby,Count"
+  alert(person1.friends === person2.friends); //false
+  alert(person1.sayName === person2.sayName); //true
+
+  ```
+  ==优点：==每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。
