@@ -42,7 +42,7 @@ in ConnectFunction (at adminEdit.tsx:237)
   }, [currentPopular]);
 ```
 
-报错原因：因为我在useEffect里面使用usestart来接收异步请求的值导致
+报错原因：因为我在useEffect里面使用useState来接收异步请求的值导致
 解决方法：
 
 ```jsx 
