@@ -63,6 +63,10 @@ git stash
 git pull
 git stash pop ：只会恢复 存储最新的stash
 
+退回到指定版本
+
+git reset --hard HEAD^
+
 查看 git ssh key公钥
 
 cd ~/.ssh
@@ -86,5 +90,5 @@ git config --global http.postBuffer 157286400 上传文件内容过大，配置�
 22.git branch -d dev  删除本地分支
 
 
-### 在多人配合开发时 越过别人的eslint 报错 提交代码
+### 在多人配合开发时 越过别人的eslint 报错 提交代码  
 23.git commit -m '' --no-verify

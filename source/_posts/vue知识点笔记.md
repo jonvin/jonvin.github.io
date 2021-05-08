@@ -53,7 +53,7 @@ tags:
 
 Vuex 篇
 
-### 5. Vuex 是什么？
+### 5. Vuex 是什么？ 
 
 * Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。
 * 运用到了js设计模式中的单例模式，单例模式想要做到的是，不管我们尝试去创建多少次，它都只给你返回第一次所创建的那唯一的一个实例。
@@ -262,7 +262,7 @@ Vuex 篇
 
 
 
-### 27.vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？
+### 27.vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？ 
 
 * hash 模式：
     1.后面 hash 值的变化，不会导致浏览器向服务器发出请求，浏览器不发出请求，就不会刷新页面
@@ -285,7 +285,7 @@ Vuex 篇
 
 
 
-### 29.Vue-router 导航守卫有哪些
+### 29.Vue-router 导航守卫有哪些 
 
 * 全局前置/钩子：beforeEach、beforeResolve、afterEach
 * 路由独享的守卫：beforeEnter
@@ -351,6 +351,45 @@ Vuex 篇
     1.一般结合路由和动态组件一起使用，用于缓存组件；
     2.提供 include 和 exclude 属性，两者都支持字符串或正则表达式， include 表示只有名称匹配的组件会被缓存，exclude 表示任何名称匹配的组件都不会被缓存 ，其中 exclude 的优先级比 include 高；
     3.对应两个钩子函数 activated 和 deactivated ，当组件被激活时，触发钩子函数 activated，当组件被移除时，触发钩子函数 deactivated。
+
+```js
+<keep-alive>
+  <component>
+    <!-- 该组件将被缓存！ -->
+  </component>
+</keep-alive>
+如果只想 router-view 里面某个组件被缓存
+
+
+export default [
+  {
+    path: '/',
+    name: 'home',
+    component: Home,
+    meta: {
+      keepAlive: true // 需要被缓存   
+    }
+  }, {
+    path: '/:id',
+    name: 'edit',
+    component: Edit,
+    meta: {
+      keepAlive: false // 不需要被缓存
+    }
+  }
+]
+<keep-alive>
+    <router-view v-if="$route.meta.keepAlive">
+        <!-- 这里是会被缓存的视图组件，比如 Home！ -->
+    </router-view>
+</keep-alive>
+ 
+<router-view v-if="!$route.meta.keepAlive">
+    <!-- 这里是不被缓存的视图组件，比如 Edit！ -->
+</router-view>
+```
+
+
 
 
 
@@ -435,7 +474,6 @@ Vuex 篇
     1.支持自定义渲染器，从而使得 weex 可以通过自定义渲染器的方式来扩展，而不是直接 fork 源码来改的方式。
     2.支持 Fragment（多个根节点）和 Protal（在 dom 其他部分渲染组建内容）组件，针对一些特殊的场景做了处理。
     3.基于 tree shaking 优化，提供了更多的内置功能。
-
 
 
 

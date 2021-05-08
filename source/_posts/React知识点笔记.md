@@ -305,6 +305,19 @@ class Child extends Component {
 
 2、使用 useCallBack。
 
+useMemo 和 useCallback 接收的参数都是一样,第一个参数为回调 第二个参数为要依赖的数据
+
+useMemo和useCallback的区别 及使用场景
+
+共同作用：
+  1.仅仅依赖数据发生数据发生变化，才会从新计算结果，也就是起到缓存作用
+
+两者区别：
+  1.useMemo 计算结果是return 回来的值，主要用于缓存计算结果的值
+
+  2.useCallback 计算结果是函数，主要用于缓存函数，应用场景如：需要缓存函数，
+  
+  因为函数式组件每次任何一个state的变化整个组件都会被重新刷新，一些函数是没有必要被重新刷新的，此时就应该缓存起来，提高性能和减少资源的浪费。
 
 
 ### 14、为什么 React 元素有一个 $$typeof 属性？ 
@@ -528,7 +541,34 @@ function App() {
 ```jsx
 
 function fetchData(message: string) {
-  return (dispatch) => {
+   console.log('1');
+    setTimeout(function () {
+      console.log('2');
+      new Promise(function (resolve) {
+        console.log('3');
+        resolve();
+      }).then(function () {
+        console.log('4')
+      })
+    },0)
+    new Promise(function (resolve) {
+      console.log('5');
+      resolve();
+    }).then(function () {
+      console.log('6')
+    })
+
+    setTimeout(function () {
+      console.log('7');
+      new Promise(function (resolve) {
+        console.log('8');
+        resolve();
+      }).then(function () {
+        console.log('9')
+      })
+      console.log('10')
+    },0)
+    console.log('11')
     dispatch({ type: 'LOADING', message })
     setTimeout(() => {
       dispatch({ type: 'LOADED' })
@@ -594,3 +634,30 @@ function App() {
 3、redux-observable
 
 借助了 RxJS 流的思想以及其各种强大的操作符，来处理异步问题
+
+
+### 24、react 中的 constructor 和 super的作用
+
+在react中可以不写 constructor , 一旦写了constructor ,就必须在此函数中写super()。
+
+此时组件才有自己的 this 在组件的全局中都可以使用 this 关键字，否则如果只是constructor 而不执行super().
+
+那么以后的 this 都是错的!!!
+
+```jsx
+
+  class Dividend extends React.Component{
+    
+    constructor(props){
+
+      super(props);  // 子类继承父类的属性和方法
+      this.state ={
+          visible: false,
+          selectArr:[]  
+      }
+
+    } 
+  }
+
+  export default Dividend;
+```

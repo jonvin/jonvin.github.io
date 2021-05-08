@@ -125,6 +125,19 @@ for-of可以简单、正确地遍历数组
 
   rem也表示相对尺寸，其参考对象为根元素<html>的font-size，因此只需要确定这一个font-size。
 
+
+  vw/vh 
+  
+  css3 引入了一个新的单位vw/vh ,与视图窗口有关
+
+  vw 表示相对于视图窗口的宽度，视图宽度为100vw
+
+  vh 表示相对于视图窗口的高度,视图高度为100vh 
+
+  vw 单位换算：确定视图的窗口大小比如iphone6的375*667 分辨率
+
+  1px = (1/375) * 100vw 
+
 9. catchstorage 
 
 10.计算用户的有效停留时间
@@ -151,7 +164,7 @@ for-of可以简单、正确地遍历数组
     });
   ```  
 
-11.节流和防抖
+11.节流和防抖   
 
   PS：防抖和节流的作用都是防止函数多次调用。区别在于，假设一个用户一直触发这个函数，且每次触发函数的间隔小于wait，防抖的情况下只会调用一次，而节流的 情况会每隔一定时间（参数wait）调用函数。
 
@@ -160,9 +173,30 @@ for-of可以简单、正确地遍历数组
 
   手写一防抖：
 
+        function debounce (fn, wait){
+          var timer = null;
+
+          return function(){
+            var context = this 
+
+            var args = arguments
+
+            if(timer ){
+              
+              clearTimeout(timer)
+             
+              timer = null;
+            }
+            timer = setTimeout(function (){
+              fn.apply( context, args)
+            },wait)
+          }
+        }
+
      ```javascript
 
         function debounce(fn , wait){
+
             var timer = null; 
 
             return function(){
@@ -186,16 +220,22 @@ for-of可以简单、正确地遍历数组
 
      ```
 
-
-
   
   节流：防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。
 
   手写一个节流：
 
     ```javascript
-       
-       function throttle(fn , gapTime){           
+
+      function debounce(fn, wait){
+        let timer = null;
+
+
+      }
+
+
+       function throttle(fn , gapTime){        
+
           let lastTime = null; 
 
           return function(){
@@ -210,7 +250,7 @@ for-of可以简单、正确地遍历数组
             }
           } 
 
-       }
+        }
 
       // 被节流的目标函数
 
@@ -416,6 +456,8 @@ MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和�
 
 答：3次握手完成两个重要的功能，既要双方做好发送数据的准备工作(双方都知道彼此已准备好)，也要允许双方就初始序列号进行协商，这个序列号在握手过程中被发送和确认。
 
+为什么需要三次握手呢？为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。
+
 现在把三次握手改成仅需要两次握手，死锁是可能发生的。作为例子，考虑计算机S和C之间的通信，假定C给S发送一个连接请求分组，
 S收到了这个分组，并发 送了确认应答分组。按照两次握手的协定，S认为连接已经成功地建立了，可以开始发送数据分组。
 可是，C在S的应答分组在传输中被丢失的情况下，将不知道S 是否已准备好，不知道S建立什么样的序列号，C甚至怀疑S是否收到自己的连接请求分组。
@@ -461,7 +503,7 @@ www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，�
 
   服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。
 
-
+  
 
 3.document.domain
 
@@ -469,11 +511,10 @@ www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，�
 
   只需要给页面添加 document.domain = 'test.com' 表示二级域名都相同就可以实现跨域
 
-
+  
 4.postMessage
 
   这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息
-
 
 
 20. redux 是什么？
@@ -627,6 +668,7 @@ www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，�
         arg1,arg2....：是一个个的参数，
         args：一个数组或类数组，是一个参数列表。
 
+      5、bind 该方法会返回一个函数。并且我们可以通过 bind 实现柯里化
 
   27、前端开发的设计模式有哪些
 
@@ -819,3 +861,271 @@ console.log(scater instanceof Person)// true
       console.log('10')
     },0)
     console.log('11')
+
+21.判断类型的几种方式
+
+typeof、 instanceof、constructor、prototype、$.type()或者jquery.type()
+
+1.常见的判断方法： typeof 返回的类型都是字符串的形式,需注意。
+
+2.判断已知对象类型的方法；instanceof
+
+console.log(A instanceof Array) ------------ true 
+console.log(B instanceof Date)
+console.log(C instanceof Function) --------- true 
+console.log(D instanceof function) --------- false  // 所以开头一定要大些 
+
+该方法适合一些条件选择
+
+3.根据对象的constructor判断： constructor 
+
+console.log(c.constructor === Array) --------> true 
+
+console.log(d.constructor === Data)  --------> true
+
+console.log(e.constructor === Function) -----> true
+
+
+
+constructor 在继承时会出错
+
+function A(){}
+function B(){}
+
+A.prototype = new B();  // A 继承 B
+
+var aobj = new A(); 
+
+console.log(aobj.constructor === B ) ------true 
+console.log(aobj.constructor === A ) ------false 
+
+
+而instanceof 方法不会出现该问题，对象直接继承和间接继承的都会报true 
+
+console.log(aobj instanceof B)  -----true
+console.log(aobj instanceof B)  -----true 
+
+
+4.通用但是很繁琐的方法： prototype
+var a ='12321323'
+var b = 123
+console.log(object.prototype.toString.call(a) === '[object String]') ---- true;
+console.log(object.prototype.toString.call(b) === '[object Number]') ---- true; 
+
+5.无敌万能的方法： jquery.type()
+
+如果对象是undefined 或者 null，则返回相应的”undefined“ 或者 “null”。
+
+jquery.type( undefined ) === 'undefined'
+
+jquery.type() === 'undefined'
+
+jquery.type(null) === 'null'
+
+22.css盒子模型以及BFC详解
+
+盒模型由外而内包括：边距（margin）、边框（border）、填充（padding）、内容（content）。
+
+它在页面中所占的实际宽度是margin + border + paddint + content 的宽度相加。
+
+4：什么是bfc
+  BFC（Block Formatting Context）格式化上下文，是Web页面中盒模型布局的CSS渲染模式，指一个独立的渲染区域或者说是一个隔离的独立容器。
+  （自己理解就是触发bfc的元素会脱离文档流，也就是说别的元素看不到它了））
+
+   脱离文档流：元素脱离文档流之后
+
+
+23.使用 Webpack 优化项目
+
+webpack 是一个模块打包机，将根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源
+
+主要承担如下功能：
+
+打包：将多个文件 打包成 一个文件，减少服务器压力和下载带宽
+
+转换：将预编译语言 转换成 浏览器识别的语言
+
+优化：性能优化
+
+核心概念
+
+入口 entry、
+
+作用：告诉 webpack 从哪个文件开始构建，这个文件将作为 webpack 依赖关系图的起点
+
+出口 output、
+
+作用：告诉 webpack 在哪里输出 构建后的包、包的名称 等
+
+loader、
+
+作用：loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）
+
+loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块
+
+plugin、
+
+作用：可以处理各种任务，从打包优化和压缩，一直到重新定义环境中的变量
+
+
+对于 Webpack4，打包项目使用 production 模式，这样会自动开启代码压缩
+使用 ES6 模块来开启 tree shaking，这个技术可以移除没有使用的代码
+优化图片，对于小图可以使用 base64 的方式写入文件中
+按照路由拆分代码，实现按需加载
+给打包出来的文件名添加哈希，实现浏览器缓存文件
+
+23.项目中的权限控制
+
+authority
+
+24.修改密码的时候怎么加密
+
+1. 购买并配置浏览器ssl证书，传输时使用https
+
+2. 提交到后台时，使用各种适用的加密方式，比如典型的hash
+
+
+25.HTTP 与 HTTPS 
+
+HTTP特点：
+
+1.无状态：协议对客户端没有状态存储，对事物处理没有“记忆”能力，比如访问一个网站需要反复进行登录操作
+
+2.无连接：HTTP/1.1之前，由于无状态特点，每次请求需要通过TCP三次握手四次挥手，和服务器重新建立连接。
+
+比如某个客户机在短时间多次请求同一个资源，服务器并不能区别是否已经响应过用户的请求，所以每次需要重新响应请求，需要耗费不必要的时间和流量。
+
+3.基于请求和响应：基本的特性，由客户端发起请求，服务端响应
+
+4.简单快速、灵活
+
+5.通信使用明文、请求和响应不会对通信方进行确认、无法保护数据的完整性
+
+
+什么是http ？
+
+超文本传输协议，是一个基于请求与响应，无状态的，应用层的协议，常常基于TCP/IP协议传输数据，互联网上最为广泛的一种网络协议，
+
+HTTP2.0 与HTTP1.0（前端进阶之道）的主要区别多路复用
+
+多路复用：通过单一的HTTP/2连接请求发起多重的请求-响应消息，多个请求stream共享一个TCP连接，实现多留并行而不是依赖建立多个TCP连接。
+
+
+
+
+
+
+HTTPS特点:
+
+1.内容加密：采用混合加密技术，中间者无法直接查看明文内容
+
+2.验证身份：通过证书认证客户端访问的是自己的服务器
+
+3.保护数据完整性：防止传输的内容被中间人冒充或者篡改
+
+
+
+基于HTTP协议，通过SSL或TLS提供加密处理数据、验证对方身份以及数据完整性保护
+
+SSL证书需要购买申请，功能越强大的证书费用越高
+
+HTTPS连接缓存不如HTTP高效，流量成本高。
+
+
+
+26.怎样保证客户端和服务端数据的一致性（数据同步）
+
+可以把客户端的数据当作一个整体，然后用MD5 对他进行加密，服务器端也一样，这样，
+
+当他们的MD5值不一样时就能判断出他们的数据不同步了。然后再通过其他的方法把不同的部分上传或下载下来。
+
+27.Grpc 的优缺点。
+
+1.语言中立，支持多种语言；
+
+2.基于 IDL 文件定义服务，通过 proto3 工具生成指定语言的数据结构、服务端接口以及客户端 Stub；
+
+3.通信协议基于标准的 HTTP/2 设计，支持双向流、消息头压缩、单 TCP 的多路复用、服务端推送等特性，
+这些特性使得 gRPC 在移动端设备上更加省电和节省网络流量；
+
+4.序列化支持 PB（Protocol Buffer）和 JSON，PB 是一种语言无关的高性能序列化框架，基于 HTTP/2 + PB, 保障了 RPC 调用的高性能。
+
+
+
+27.原型链的总结
+
+1.Object 是所有对象的爸爸，所有对象都可以通过 __proto__ 找到它
+
+2.Function 是所有函数的爸爸，所有函数都可以通过 __proto__ 找到它
+
+3.Function.prototype 和 Object.prototype 是两个特殊的对象，他们由引擎来创建
+
+4.除了以上两个特殊对象，其他对象都是通过构造器 new 出来的
+
+5.函数的 prototype 是一个对象，也就是原型
+
+6.对象的 __proto__ 指向原型， __proto__ 将对象和原型连接起来组成了原型链
+
+
+instanceof 可以正确的判断对象的类型，因为内部机制是通过判断对象的原型链中是不是能找到类型的 prototype。
+
+手写一个  instanceof 
+
+function myInstanceof (left, right){
+  // 获得类型的原型
+  let prototype = right.prototype 
+
+  //获取对象的原型
+  left = left.__proto__
+
+  //判断对象的类型是否等于类型的原型
+
+  while(true){
+
+      if(left === null) return false;
+
+      if(prototype === left) return true; 
+
+
+      //如果这一层没有找到则向上一层原型去找
+      left = left.__proto__
+
+  } 
+
+}
+
+
+28.什么是webpack热更新
+
+模块热替换（ HMR - Hot Module Replacement ）允许在运行时 替换， 添加， 删除各种模块，而无需进行完全刷新重新加载整个页面。
+
+一个带有 热替换的功能的webpack.config.js 文件的配置如下，做了这么几件事
+
+1.引入了 webpack 库
+
+2.使用了new webpack.HotModuleReplacementPlugin()
+
+3.设置dev Server选项中的 hot 字段为true
+
+
+
+
+29.Webpack性能优化
+
+可以重两个方面考虑： 一个方面是优化体验， 一个是优化输出质量。
+
+
+优化开发体验：
+
+1.缩小文件搜索范围
+
+resolve 字段告诉webpack怎么去搜索文件，所以首先要重视resolve 字段的配置：
+
+由于loader 对文件转换操作很耗时，应该尽量减少loader处理的文件，可以使用 include 命中需要处理的文件，缩小命中范围。
+
+2.DllPlugin可以将特定的类库提前打包然后引入
+
+  DllPlugin 是webpack 的内置插件，这种方式可以极大的减少打包类库的次数，
+
+  只有当类库更行版本才有需要重新打包,并且也实现了将公共代码抽离成单独文件的优化方案。
+3.
