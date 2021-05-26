@@ -416,3 +416,96 @@ class _SampleAppPageState extends State<SampleAppPage>{
 
 
 ```
+
+● Map与JSON的转换
+
+``` dart 
+
+    import 'dart:convert';
+    Map user = json.decode(jsonStr);
+    String jsonStr = json.encode(user)
+
+```
+
+● 两个List拼接
+
+``` dart
+
+List.from(lista)..addAll(listb);
+
+```
+
+
+● List的增删改查
+
+
+
+1.增加list.add();
+2.删除指定元素list.remove(item);
+3.删除指定下标元素list.removeAt(index);
+4.修改list[N] = newValue;
+5.查找list.indexOf(target);
+
+
+
+
+● 类型转换
+
+
+
+1.int/double to String target.toString();
+2.String to int int.parse(target);
+3.String to double double.parse(target);
+
+
+
+
+● 按照列表中字典或者实例的某个元素排序
+
+```dart 
+
+1.类实例: list.sort((a, b) => b.target.compareTo(a.target));
+2.字典: list.sort((a, b) => b[target].compareTo(a[target]));
+
+```
+
+
+● 定时器
+
+```dart 
+
+import 'dart:async';
+//  启动定时器
+Timer _timer = Timer.periodic(const Duration(seconds: 1), callback);
+// 关闭定时器
+_timer.cancel();
+
+```
+
+
+● 去除字符串中所有空格
+
+```dart 
+
+value.replaceAll(new RegExp(r"\\s+\\b|\\b\\s|\\s|\\b"), "").split('');
+
+```
+
+
+● 其他
+• 删除字符串最后一个字符 String a = 'abcd'; print(a.substring(0, a.length - 1));
+• 保留两位小数点 3.14159.toStringAsFixed(2);
+• null 判断符 isNull ?? '';
+• 判断List是否为空 List.isEmpty();
+• 判断字符串是否包含字符 String.contains(Str);
+• 判断Map是否包含某个key Map.containsKey();
+• 判断Map是否包含某个value Map.containsValue();
+• 判断Map是否为空 Map.isEmpty();
+• 遍历Map Map.forEach((key, value) {...});
+• Map删除操作
+a. 删除某一项remove(key);
+b. 删除满足条件的项removeWhere((key, value) => [bool]);
+c. 删除全部Map.clear();
+• Map浅克隆 Map.from();
+• Map深克隆 import 'dart:convert'; // ... Map clonedUser = json.decode(json.encode(user));
+• Map追加 Map.addAll(newMap);

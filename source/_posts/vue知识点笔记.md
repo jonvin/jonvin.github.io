@@ -84,7 +84,7 @@ Vuex 篇
 
 
 
-### 8. 为什么 Vuex 的 mutation 中不能做异步操作？
+### 8. 为什么 Vuex 的 mutation 中不能做异步操作？ 
 
 * Vuex中所有的状态更新的唯一途径都是mutation，异步操作通过 Action 来提交 mutation实现，这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。
 * 每个mutation执行完成后都会对应到一个新的状态变更，这样devtools就可以打个快照存下来，然后就可以实现 time-travel 了。如果mutation支持异步操作，就没有办法知道状态是何时更新的，无法很好的进行状态的追踪，给调试带来困难。
@@ -367,7 +367,7 @@ export default [
     name: 'home',
     component: Home,
     meta: {
-      keepAlive: true // 需要被缓存   
+      keepAlive: true // 需要被缓存
     }
   }, {
     path: '/:id',

@@ -37,6 +37,8 @@ git commit -a -m “初始提交”
 git remote add origin  https://git.oschi[自己代码版本控制的地址]
 如果出现 origin exitss，我们可以输入 git remote rm origin，再进行关联语句的执行
 
+git remote -v 查看代码是属于哪个仓库地址
+
 10.输入以下命令进行将代码仓库上传到代码库：
 git push origin master
 
