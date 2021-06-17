@@ -75,6 +75,12 @@ cd ~/.ssh
 
 ls 
 
+如果没有则需要生成公钥
+
+ssh-keygen
+
+再次查看是否生成
+
 cat id_rsa.pub
 
 git stash list  ：查看stash了哪些存储

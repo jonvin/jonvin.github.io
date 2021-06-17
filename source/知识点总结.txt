@@ -173,26 +173,6 @@ for-of可以简单、正确地遍历数组
 
   手写一防抖：
 
-        function debounce (fn, wait){
-          var timer = null;
-
-          return function(){
-            var context = this 
-
-            var args = arguments
-
-            if(timer ){
-              
-              clearTimeout(timer)
-             
-              timer = null;
-            }
-            timer = setTimeout(function (){
-              fn.apply( context, args)
-            },wait)
-          }
-        }
-
      ```javascript
 
         function debounce(fn , wait){
@@ -316,6 +296,10 @@ for-of可以简单、正确地遍历数组
     Vue 没有直接子对子传参的方法，建议将需要传递数据的子组件，都合并为一个组件。如果一定需要子对子传参，可以先从传到父组件，再传到子组件。
 
     为了便于开发，Vue 推出了一个状态管理工具 Vuex，可以很方便实现组件之间的参数传递
+
+   （2).非父组件间的数据传递，兄弟组件传值
+
+      eventBus ,就是创建一个事件中心，相当于中转站，可以用它来传递事件和接收事件
 
 13. vue父组建向子组件传值
 
@@ -1009,7 +993,7 @@ HTTP特点：
 HTTP2.0 与HTTP1.0（前端进阶之道）的主要区别多路复用
 
 多路复用：通过单一的HTTP/2连接请求发起多重的请求-响应消息，多个请求stream共享一个TCP连接，实现多留并行而不是依赖建立多个TCP连接。
-
+ 
 
 
 
@@ -1223,3 +1207,142 @@ console.log(a);
   首先由object.create 创建一个对象，这个对象的原型基础array对象的原型再从写那几个数组的方法，
 
   通过vue源码可以看出，vue重写了数组的push、splice、pop等方法
+
+35. svg和 canvas
+
+SVG 
+
+SVG 是一种使用XML 描述2D 图形的语言
+
+SVG 基于XML，这就意味着 SVG DOM中的 每个元素都是可用的。您可以为某个元素附加 javascript 事件处理器。
+
+在SVG 中， 每个被绘制的图形均被视为对象。 如果SVG 对象的属性发生变化，那么浏览器能够自动重现图形。
+
+Canvas
+
+Canvas 通过JavsScript 来绘制 2D图形。
+
+Canvas 是逐像素进行渲染的。
+
+在canvas 中，一旦图形被绘制完成， 它就不会继续得到浏览器的关注
+
+45.某选面试
+
+一面
+
+1.自我介绍
+
+2.你看过VUE源码吗？能说一下vue 的源码吗？ （开放式自我发挥题 ）
+
+3.vue 的生命周期包括详细的每个步骤能干什么？（开放式自我发挥题）
+
+4.ES 规范有一定的了解是吧
+  面试题
+
+  [] + {} = ?
+
+  {} + [] = ?
+
+  [1] == [1]  // false
+
+  [] == [] //fasle 
+
+  [] == ![]  //true 
+
+5.说说你对原型链的理解
+
+说完然后出一道题  1 in 1..constructor
+
+6. 小程序中 <wxs> 标签 和 .wxs  语法的了解 
+
+7.闭包返回的值是存储到堆上还是栈上面。
+
+8.强缓存 和 协商缓存
+
+9.浏览器的控制台用过那些功能，如何用浏览器功能监听浏览器的内存泄漏
+
+10.你们前端是如何监控异常报错的？ sentry 库的原理知道吗？
+
+我们使用sentry 库
+
+sentry 的原理： 首先，sentry是一个C/S 架构，我们需要在自己的应用中集成Sentry 的SDK 才能在应用发生错误时候将错误信息发送给Sentry 服务端。
+
+根据语言和框架的不同，我们可以选择自动或自定义设置特殊的错误类型报给Sentry 服务端。
+
+11.如何避免接口的重复请求
+
+可以考虑再vuex 中使用一个正在获取数据的标记。当actions 触发的时候，首先检查是否已有数据，如果有则不获取；没有则检查标记，有标记则不获取；
+没有数据，没有标记则获取数据， 并打标记。
+
+然后在每个组件created 的时候都调用dispatch 即可。
+
+二面
+
+1.自我介绍
+
+2.react@16.4 + 的生命周期 废弃哪三个旧的生命周期函数？为什么？
+
+3.小程序中组件间传参通讯的方式
+
+4.如何编写一个自己的插件plugin
+
+  (1).首先plugin其实就是一个构造函数
+
+    function TestPluigin(){}
+
+
+ （2).在插件函数的prototype 上需要定义一个apply方法
+
+    TestPluigin.prototype.apply = function(){
+
+    } 
+
+    
+ （3).指定一个绑定到webpack 自身的事件勾子
+
+      TestPluigin.prototype.apply 
+
+
+
+46. map 方法到底会不会改变原是数组 
+
+  当数组中元素是值类型的时候，map 不会改变原数组；当是引用类型的时候，则可以改变原数组。
+
+
+``` js 
+
+const arr = [1,2,3,4,5]  //值类型
+
+const result = arr.map(item =>{
+  item = item * 3;
+
+  return item;  
+})
+
+console.log('arr', arr);    //[1,2,3,4,5]
+
+console.log('result', result);  //[3,6,9,12,15]
+
+```
+
+
+``` js 
+
+const arr = [
+  {name: "Tom", age: 16},
+  {name: "Aaron", age: 18}, 
+  {name: "Denny", age: 20}
+]
+
+const result = arr.map(item =>{
+  item.age = item.age +  2
+
+  return item 
+})
+
+console.log('arr', arr)   //将他们的年龄都加了2 
+console.log('result', result)
+
+```
+
+
