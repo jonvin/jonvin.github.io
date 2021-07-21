@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      React中Refs的使用方法 | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《React中Refs的使用方法》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2020/11/26/React中Refs的使用方法/" itemprop="url">
+		React中Refs的使用方法
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2020/11/26/React中Refs的使用方法/" itemprop="url">
+		<time datetime="2020-11-26T10:00:03.000Z" itemprop="datePublished">
+	  		2020-11-26
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2020/11/26/React中Refs的使用方法/" itemprop="url">
+		<time datetime="2020-11-26T10:00:03.000Z" itemprop="dateUpdated">
+	  		2021-04-07
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>欢迎访问主页，有更多文章内容<br>转载请注明原出处<br>原文链接地址:<a href="https://www.wekic.com/article/10" target="_blank" rel="noopener">React中Refs的使用方法</a></p>
+<h3 id="什么是Refs"><a href="#什么是Refs" class="headerlink" title="什么是Refs"></a>什么是Refs</h3><p>Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。<br>Ref转发是一项将ref自动通过组件传递到子组件的技巧。 通常用来获取DOM节点或者React元素实例的工具。在React中Refs提供了一种方式，允许用户访问dom节点或者在render方法中创建的React元素。</p>
+<h3 id="Refs转发"><a href="#Refs转发" class="headerlink" title="Refs转发"></a>Refs转发</h3><p>Ref 转发是一个可选特性，其允许某些组件接收 ref，并将其向下传递（换句话说，“转发”它）给子组件。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在React单向数据流中，props是父子组件交互的唯一方式。要修改一个子组件，需要通过新的props来重新渲染。在有些情况下，需要在数据流之外强行修改子组件(组件或者Dom元素),那么可以通过Refs来进行修改子组件。</p>
+<h3 id="组件类型"><a href="#组件类型" class="headerlink" title="组件类型"></a>组件类型</h3><h3 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h3><p>在 HTML 中，表单元素 如input、 textarea 和 select 之类的表单元素通常自己维护 state，并根据用户输入进行更新。而在 React 中，可变状态（mutable state）通常保存在组件的 state 属性中，并且只能通过使用 setState()来更新。我们可以把两者结合起来，使 React 的 state 成为“唯一数据源”。渲染表单的 React 组件还控制着用户输入过程中表单发生的操作。被 React 以这种方式控制取值的表单输入元素就叫做“受控组件”。</p>
+<h3 id="非受控组件"><a href="#非受控组件" class="headerlink" title="非受控组件"></a>非受控组件</h3><p>不被React组件控制的组件。在受控制组件中，表单数据由 React组件自行处理。其中表单数据由DOM本身处理。文件输入标签就是一个典型的不受控制组件，它的值只能由用户设置，通过DOM自身提供的一些特性来获取。</p>
+<h3 id="受控组件与非受控组件的区别"><a href="#受控组件与非受控组件的区别" class="headerlink" title="受控组件与非受控组件的区别"></a>受控组件与非受控组件的区别</h3><p>受控组件和不受控组件最大的区别就是前者自身维护的状态值变化，可以配合自身的change事件，很容易进行修改或者校验用户的输入。在React中 因为 Refs的出现使得 不受控制组件自身状态值的维护变得容易了许多。</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>对Dom元素的焦点控制、内容选择、控制<br>对Dom元素的内容设置及媒体播放<br>对Dom元素的操作和对组件实例的操作<br>集成第三方 DOM 库</p>
+<p>避免使用 refs 来做任何可以通过声明式实现来完成的事情。</p>
+<p>举个例子，避免在 Dialog 组件里暴露 open() 和 close() 方法，最好传递 isOpen 属性。</p>
+<h3 id="访问-Refs"><a href="#访问-Refs" class="headerlink" title="访问 Refs"></a>访问 Refs</h3><p>当 ref 被传递给 render 中的元素时，对该节点的引用可以在 ref 的 current 属性中被访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> node = <span class="keyword">this</span>.myRef.current;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ref-的值根据节点的类型而有所不同："><a href="#ref-的值根据节点的类型而有所不同：" class="headerlink" title="ref 的值根据节点的类型而有所不同："></a>ref 的值根据节点的类型而有所不同：</h3><p>当 ref 属性用于 HTML 元素时，构造函数中使用 React.createRef() 创建的 ref 接收底层 DOM 元素作为其 current 属性。<br>当 ref 属性用于自定义 class 组件时，ref 对象接收组件的挂载实例作为其 current 属性。<br>不能再函数组件上使用Ref属性，因为函数组件没有实例。</p>
+<h3 id="DOM为元素添加ref"><a href="#DOM为元素添加ref" class="headerlink" title="DOM为元素添加ref"></a>DOM为元素添加ref</h3><p>用 ref 去存储 DOM 节点的引用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class CustomTextInput extends React.Component &#123;</span><br><span class="line"> constructor(props) &#123;</span><br><span class="line">   super(props);</span><br><span class="line">   // 创建一个 ref 来存储 textInput 的 DOM 元素</span><br><span class="line">   this.textInput = React.createRef();</span><br><span class="line">   this.focusTextInput = this.focusTextInput.bind(this);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> focusTextInput() &#123;</span><br><span class="line">   // 直接使用原生 API 使 text 输入框获得焦点</span><br><span class="line">   // 注意：我们通过 &quot;current&quot; 来访问 DOM 节点</span><br><span class="line">   this.textInput.current.focus();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> render() &#123;</span><br><span class="line">   // 告诉 React 我们想把 &lt;input&gt; ref 关联到  </span><br><span class="line">   // 构造器里创建的 `textInput` 上</span><br><span class="line">   return (</span><br><span class="line">     &lt;div&gt;</span><br><span class="line">       &lt;input</span><br><span class="line">         type=&quot;text&quot;</span><br><span class="line">         ref=&#123;this.textInput&#125; /&gt;</span><br><span class="line">       &lt;input</span><br><span class="line">         type=&quot;button&quot;</span><br><span class="line">         value=&quot;Focus the text input&quot;</span><br><span class="line">         onClick=&#123;this.focusTextInput&#125;</span><br><span class="line">       /&gt;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">   );</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>组件会在挂在是给current属性传入DOM元素，并在组件卸载时传入null。ref会在componentDidMount或者componentDidUpdate生命周期触发前更新。</p>
+<h3 id="class组件添加ref"><a href="#class组件添加ref" class="headerlink" title="class组件添加ref"></a>class组件添加ref</h3><p>包装上面的 CustomTextInput，来模拟它挂载之后立即被点击的操作，我们可以使用 ref 来获取这个自定义的 input 组件并手动调用它的 focusTextInput 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class AutoFocusTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.textInput = React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.textInput.current.focusTextInput();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;CustomTextInput ref=&#123;this.textInput&#125; /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数组件添加refs"><a href="#函数组件添加refs" class="headerlink" title="函数组件添加refs"></a>函数组件添加refs</h3><p>默认情况下，不能再函数组件上使用ref属性，因为函数组件没有实例。如果要在函数组件上使用ref，需要使用useRef和useImperativeHandle结合使用。</p>
+<p>useRef 返回一个可变的 ref 对象，其 current 属性被初始化为传入的参数（initialValue）</p>
+<p>useRef 返回的 ref 对象在组件的整个生命周期内保持不变，也就是说每次重新渲染函数组件时，返回的ref 对象都是同一个（使用 React.createRef ，每次重新渲染组件都会重新创建 ref）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &apos;react&apos;;</span><br><span class="line">import ReactDOM from &apos;react-dom&apos;;</span><br><span class="line">function Parent() &#123;</span><br><span class="line">    let [number, setNumber] = useState(0);</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;Child /&gt;</span><br><span class="line">            &lt;button onClick=&#123;() =&gt; setNumber(&#123; number: number + 1 &#125;)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">let input;</span><br><span class="line">function Child() &#123;</span><br><span class="line">    const inputRef = useRef();</span><br><span class="line">    console.log(&apos;input===inputRef&apos;, input === inputRef);</span><br><span class="line">    input = inputRef;</span><br><span class="line">    function getFocus() &#123;</span><br><span class="line">        inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; ref=&#123;inputRef&#125; /&gt;</span><br><span class="line">            &lt;button onClick=&#123;getFocus&#125;&gt;获得焦点&lt;/button&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>forwardRef.</p>
+<p>因为函数组件没有实例，所以函数组件无法像类组件一样可以接收 ref 属性<br>forwardRef 可以在父组件中操作子组件的 ref 对象<br>forwardRef 可以将父组件中的 ref 对象转发到子组件中的 dom 元素上<br>子组件接受 props 和 ref 作为参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function Child(props,ref)&#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;input type=&quot;text&quot; ref=&#123;ref&#125;/&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">Child = React.forwardRef(Child);</span><br><span class="line">function Parent()&#123;</span><br><span class="line">  let [number,setNumber] = useState(0); </span><br><span class="line">  // 在使用类组件的时候，创建 ref 返回一个对象，该对象的 current 属性值为空</span><br><span class="line">  // 只有当它被赋给某个元素的 ref 属性时，才会有值</span><br><span class="line">  // 所以父组件（类组件）创建一个 ref 对象，然后传递给子组件（类组件），子组件内部有元素使用了</span><br><span class="line">  // 那么父组件就可以操作子组件中的某个元素</span><br><span class="line">  // 但是函数组件无法接收 ref 属性 &lt;Child ref=&#123;xxx&#125; /&gt; 这样是不行的</span><br><span class="line">  // 所以就需要用到 forwardRef 进行转发 </span><br><span class="line">  const inputRef = useRef();//&#123;current:&apos;&apos;&#125;</span><br><span class="line">  function getFocus()&#123;</span><br><span class="line">    inputRef.current.value = &apos;focus&apos;;</span><br><span class="line">    inputRef.current.focus();</span><br><span class="line">  &#125;</span><br><span class="line">  return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;Child ref=&#123;inputRef&#125;/&gt;</span><br><span class="line">        &lt;button onClick=&#123;()=&gt;setNumber(&#123;number:number+1&#125;)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">        &lt;button onClick=&#123;getFocus&#125;&gt;获得焦点&lt;/button&gt;</span><br><span class="line">      &lt;/&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>useImperativeHandle</p>
+<p>useImperativeHandle可以让你在使用 ref 时，自定义暴露给父组件的实例值<br>在大多数情况下，应当避免使用 ref 这样的命令式代码。useImperativeHandle 应当与 forwardRef 一起使用<br>父组件可以使用操作子组件中的多个 ref</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import React,&#123;useState,useEffect,createRef,useRef,forwardRef,useImperativeHandle&#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">function Child(props,parentRef)&#123;</span><br><span class="line">    // 子组件内部自己创建 ref </span><br><span class="line">    let focusRef = useRef();</span><br><span class="line">    let inputRef = useRef();</span><br><span class="line">    useImperativeHandle(parentRef,()=&gt;(</span><br><span class="line">      // 这个函数会返回一个对象</span><br><span class="line">      // 该对象会作为父组件 current 属性的值</span><br><span class="line">      // 通过这种方式，父组件可以使用操作子组件中的多个 ref</span><br><span class="line">        return &#123;</span><br><span class="line">            focusRef,</span><br><span class="line">            inputRef,</span><br><span class="line">            name:&apos;计数器&apos;,</span><br><span class="line">            focus()&#123;</span><br><span class="line">                focusRef.current.focus();</span><br><span class="line">            &#125;,</span><br><span class="line">            changeText(text)&#123;</span><br><span class="line">                inputRef.current.value = text;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;input ref=&#123;focusRef&#125;/&gt;</span><br><span class="line">            &lt;input ref=&#123;inputRef&#125;/&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Child = forwardRef(Child);</span><br><span class="line">function Parent()&#123;</span><br><span class="line">  const parentRef = useRef();//&#123;current:&apos;&apos;&#125;</span><br><span class="line">  function getFocus()&#123;</span><br><span class="line">    parentRef.current.focus();</span><br><span class="line">    // 因为子组件中没有定义这个属性，实现了保护，所以这里的代码无效</span><br><span class="line">    parentRef.current.addNumber(666);</span><br><span class="line">    parentRef.current.changeText(&apos;&lt;script&gt;alert(1)&lt;/script&gt;&apos;);</span><br><span class="line">    console.log(parentRef.current.name);</span><br><span class="line">  &#125;</span><br><span class="line">  return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;ForwardChild ref=&#123;parentRef&#125;/&gt;</span><br><span class="line">        &lt;button onClick=&#123;getFocus&#125;&gt;获得焦点&lt;/button&gt;</span><br><span class="line">      &lt;/&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2021/01/14/react的diff算法/" title="react的diff算法" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对React知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout中是同...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在React开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state u...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">
+								vue-cli反向代理解决跨域以及axios的配置			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 最近忙于各种各样大大小小的项目，都没时间写博客了。现在习惯于大型项目用react, 小型项目用 vue，本期就写一篇在漫漫学习之路中 小型项目中之前使用vue-cli 所遇到的问题吧！
+vue跨域实现与原理（proxyTabl...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue-cli反向代理解决跨域以及axios的配置"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记">
+								vue知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对vue知识的整理，对自己有很大帮助才分享出来！覆盖了vue3.0的一些知识点。
+1. 说说你对MVVM的理解
+Model-View-ViewModel的缩写，Model代表数据模型，Vie...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/20/React新特性Hook/" title="React新特性Hook">
+								React新特性Hook			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 20日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：上一篇文章讲到了基于 React 的 Ant Design Pro, 在使用这个后台解决方案的过程中,尝试了使用 React 的一个强大的新增特性 Hook, Hook 是 React 16.8 的新增特性。Hook 是一些可以...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React新特性Hook"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">
+								AntDesignPro中Dva的数据处理与搬运分析			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 11日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：这段时间忙着做两个大型的中后台项目,分别用的 2 种不同的技术解决方案来进行。一个是 vue-element-admin , 另一个则是 Ant Design Pro, 前者操作起来比较简单,element 的 UI 设计给人感...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="AntDesignPro中Dva的数据处理与搬运分析"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/02/25/echarts绘制地图/" title="echarts绘制地图">
+								echarts绘制地图			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 25日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 前段时间因为疫情的影响在家里办公。公司要求做一个像腾讯那样的，疫情分布实时动态地图，我脑海中便想到了echart.js。趁着这个机会正好可以复习一下。
+echart.js 官方绘制地图demo地址: 点击这里查看官方demo
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/02/25/echarts绘制地图/" title="echarts绘制地图">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="echarts绘制地图"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2021, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>

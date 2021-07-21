@@ -1,0 +1,1203 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      node网络通信和node爬虫笔记 | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《node网络通信和node爬虫笔记》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/11/23/node网络通信和node爬虫笔记/" itemprop="url">
+		node网络通信和node爬虫笔记
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/11/23/node网络通信和node爬虫笔记/" itemprop="url">
+		<time datetime="2019-11-23T08:28:41.000Z" itemprop="datePublished">
+	  		2019-11-23
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/11/23/node网络通信和node爬虫笔记/" itemprop="url">
+		<time datetime="2019-11-23T08:28:41.000Z" itemprop="dateUpdated">
+	  		2021-02-23
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>前言：在这一章节里，我写了两大模块的笔记，因为这个两个模块又同属于属于node.js 的范畴，因此把它们写在了一起。</p>
+<h2 id="node-网络通信"><a href="#node-网络通信" class="headerlink" title="node 网络通信"></a>node 网络通信</h2><p>Node 是一个面向网络而生的平台，它具有事件驱动、无阻塞、单线程等特性，具备良好的可伸缩性，使得它十分轻量，适合在分布式网络中扮演各种各样的角色。同时 Node 提供的 API 十分贴合网络，适合用它基础的 API 构建灵活的网络服务。</p>
+<p>利用 Node 可以十分方便的搭建网络服务器。在 Web 领域，大多数的编程语言需要专门的 Web 服务器作为容器，如 ASP、ASP.NET 需要 IIS 作为服务器，PHP 需要打在 Apache 或 Nginx 环境等，JSP 需要 Tomcat 服务器等。但对于 Node 而言，只需要几行代码即可构建服务器，无需额外的容器。</p>
+<p>Node 提供了 net、dgram、http、https 这4个模块，分别用于处理 TCP、UDP、HTTP、HTTPS，适用于服务器端和客户端。</p>
+<h3 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h3><blockquote>
+<p><strong>TCP和UDP: 都是数据传输方式的协议.比如说我要给你钱, 我是以手把手的方式拿给你呢还是以快递的方式寄给你呢.</strong></p>
+</blockquote>
+<p>TCP（传输控制协议）</p>
+<ul>
+<li>需要建立连接（三次握手）,形成一条传输通道,才能传输数据</li>
+<li>传输数据的大小不受限制</li>
+<li>是安全可靠的协议,但是速度稍慢</li>
+</ul>
+<p>UDP（用户数据报协议）</p>
+<p>概念：英文全拼（User Datagram Protocol）简称用户数据报协议，它是无连接的、不可靠的网络传输协议</p>
+<p><strong>核心特点</strong>：无连接、资源开销小、传输速度快、UDP每个数据包最大是64K</p>
+<p><strong>优点</strong>：不需要连接，传输速度快，资源开销小</p>
+<p><strong>缺点</strong>：传输数据不可靠，容易丢失数据包，没有流量控制，当对方没有及时接收数据，发送方一直发送数据会导致缓冲区数据满了，电脑出现卡死情况，所以接收方需要及时接收数据</p>
+<ul>
+<li>不需要建立连接, 把数据封装成数据包扔给对面</li>
+<li>每个数据包大小限制在64K内</li>
+<li>因为不建立连接,所以对方可能收到也可能收不到数据(丢包),因此是不安全的协议, 但是速度比较快</li>
+</ul>
+<p>什么时候用 TCP，什么时候用 UDP？</p>
+<ul>
+<li>对速度要求比较高的时候使用UDP，例如视频聊天, QQ聊天</li>
+<li>对数据安全要求比较高的时候使用TCP，例如数据传输,文件下载</li>
+<li>假如对于视频聊天来说,如果画质优先那就选用TCP, 如果流畅度优先那就选用UDP</li>
+</ul>
+<h5 id="TCP基本示例"><a href="#TCP基本示例" class="headerlink" title="TCP基本示例"></a>TCP基本示例</h5><ul>
+<li>Node 中的核心模块 net</li>
+</ul>
+<p>服务端： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> server = net.createServer(<span class="function">(<span class="params">c</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 'connection' listener</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'client connected'</span>);</span><br><span class="line">  c.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'client disconnected'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  c.write(<span class="string">'hello\r\n'</span>);</span><br><span class="line">  c.pipe(c);</span><br><span class="line">&#125;);</span><br><span class="line">server.on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">  <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8124</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'server bound'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>客户端： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> client = net.createConnection(&#123; <span class="attr">port</span>: <span class="number">8124</span> &#125;, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 'connect' listener</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'connected to server!'</span>);</span><br><span class="line">  client.write(<span class="string">'world!\r\n'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'disconnected from server'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="服务端相关-API"><a href="#服务端相关-API" class="headerlink" title="服务端相关 API"></a>服务端相关 API</h5><blockquote>
+<p><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_class_net_server" target="_blank" rel="noopener">Class: net.Server</a></p>
+</blockquote>
+<ul>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_new_net_server_options_connectionlistener" target="_blank" rel="noopener">new net.Server([options][, connectionListener])</a> 创建服务器</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_close" target="_blank" rel="noopener">Event: ‘close’</a> 当服务器关闭时，触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_connection" target="_blank" rel="noopener">Event: ‘connection’</a> 当有新的客户端连接进来时，触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_error" target="_blank" rel="noopener">Event: ‘error’</a> 当服务器发生错误时，触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_listening" target="_blank" rel="noopener">Event: ‘listening’</a> 当调用 server.listen() 绑定端口后触发，简洁写法为 server.listen(port, listeningListener)，通过 listen() 方法的第二个参数传入</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_address" target="_blank" rel="noopener">server.address()</a> 服务器创建侦听成功后，可以用来获取服务器地址相关信息，包含 <code>{ port: 12346, family: &#39;IPv4&#39;, address: &#39;127.0.0.1&#39; }</code> 信息</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_close_callback" target="_blank" rel="noopener">server.close([callback])</a> 当服务器关闭时触发，在调用 server.close() 后，服务器将停止接受新的套接字连接，但保持当前存在的连接，等待所有连接都断开后，会触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_connections" target="_blank" rel="noopener">server.connections</a> 获取当前已建立连接的数量<ul>
+<li>注意：该 API 即将废弃，推荐使用 <code>server.getConnections()</code> 替换</li>
+</ul>
+</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_getconnections_callback" target="_blank" rel="noopener">server.getConnections(callback)</a> 获取当前已建立连接的数量</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listen" target="_blank" rel="noopener">server.listen()</a> 绑定端口号启动服务，开始等待侦听<ul>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listen_handle_backlog_callback" target="_blank" rel="noopener">server.listen(handle[, backlog][, callback])</a></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listen_options_callback" target="_blank" rel="noopener">server.listen(options[, callback])</a></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listen_path_backlog_callback" target="_blank" rel="noopener">server.listen(path[, backlog][, callback])</a></li>
+<li>[server.listen([port[, host[, backlog]]][, callback])](<a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listen_port_host_backlog_callback" target="_blank" rel="noopener">https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listen_port_host_backlog_callback</a>)</li>
+</ul>
+</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_listening" target="_blank" rel="noopener">server.listening</a> 获取服务器的侦听状态</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_maxconnections" target="_blank" rel="noopener">server.maxConnections</a> 在服务器连接数较高的时候，可以通过设置该属性用于拒绝超过最大数的连接</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_ref" target="_blank" rel="noopener">server.ref()</a> 恢复服务器侦听</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_server_unref" target="_blank" rel="noopener">server.unref()</a> 暂停服务器侦听，可以使用 <code>server.ref()</code> 恢复服务器侦听</li>
+</ul>
+<h3 id="套接字-Socket-相关-API"><a href="#套接字-Socket-相关-API" class="headerlink" title="套接字 Socket 相关 API"></a>套接字 Socket 相关 API</h3><blockquote>
+<p><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_class_net_socket" target="_blank" rel="noopener">Class: net.Socket</a></p>
+</blockquote>
+<ul>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_new_net_socket_options" target="_blank" rel="noopener">new net.Socket([options])</a> 创建 Socket 连接</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_close_1" target="_blank" rel="noopener">Event: ‘close’</a> 当套接字完全关闭时，触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_connect" target="_blank" rel="noopener">Event: ‘connect’</a> 该事件用于客户端，当套接字与服务端连接成功时会被触发</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_data" target="_blank" rel="noopener">Event: ‘data’</a> 当一端调用 <code>write()</code> 发送数据时，另一端会触发 <code>data</code> 事件，事件传递的数据即是 <code>write()</code> 发送的数据</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_drain" target="_blank" rel="noopener">Event: ‘drain’</a> 当任意一端调用 write() 发送数据时，当前这端会触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_end" target="_blank" rel="noopener">Event: ‘end’</a> 当连接中的任意一端发送了 FIN 数据时，将会触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_error_1" target="_blank" rel="noopener">Event: ‘error’</a> 当异常发生时，触发该事件</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_event_timeout" target="_blank" rel="noopener">Event: ‘timeout’</a>  当一定时间后连接不再活跃时，该事件将会被触发，通知用户当前连接已经被闲置了</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_address" target="_blank" rel="noopener">socket.address()</a> 获取套接字的连接信息，例如 <code>{ port: 12346, family: &#39;IPv4&#39;, address: &#39;127.0.0.1&#39; }</code></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_localaddress" target="_blank" rel="noopener">socket.localAddress</a> 获取当前套接字地址</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_localport" target="_blank" rel="noopener">socket.localPort</a> 获取当前套接字端口号</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_remoteaddress" target="_blank" rel="noopener">socket.remoteAddress</a> 获取另一端套接字地址</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_remotefamily" target="_blank" rel="noopener">socket.remoteFamily</a> 获取另一端套接字IP协议版本</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_remoteport" target="_blank" rel="noopener">socket.remotePort</a> 获取另一端套接字连接端口号</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_setencoding_encoding" target="_blank" rel="noopener">socket.setEncoding([encoding])</a> 设置获取数据解析的编码格式，默认不处理</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_write_data_encoding_callback" target="_blank" rel="noopener">socket.write(data[, encoding][, callback])</a> 通过套接字发送数据</li>
+</ul>
+<h5 id="其它-API"><a href="#其它-API" class="headerlink" title="其它 API"></a>其它 API</h5><ul>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_connect" target="_blank" rel="noopener">net.connect()</a> 创建 Socket 客户端连接，和 <code>net.createConnection()</code> 作用相等<ul>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_connect_options_connectlistener" target="_blank" rel="noopener">net.connect(options[, connectListener])</a></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_connect_port_host_connectlistener" target="_blank" rel="noopener">net.connect(port[, host][, connectListener])</a></li>
+</ul>
+</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_createconnection" target="_blank" rel="noopener">net.createConnection()</a> 创建 Socket 客户端连接<ul>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_createconnection_options_connectlistener" target="_blank" rel="noopener">net.createConnection(options[, connectListener])</a></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_createconnection_path_connectlistener" target="_blank" rel="noopener">net.createConnection(path[, connectListener])</a></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_createconnection_port_host_connectlistener" target="_blank" rel="noopener">net.createConnection(port[, host][, connectListener])</a></li>
+</ul>
+</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_createserver_options_connectionlistener" target="_blank" rel="noopener">net.createServer([options][, connectionListener])</a> 创建Socket服务端，等价于 <code>new net.Server()</code></li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_isip_input" target="_blank" rel="noopener">net.isIP(input)</a> 判断是否是IP地址</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_isipv4_input" target="_blank" rel="noopener">net.isIPv4(input)</a> 判断是否是符合 IPv4协议的地址</li>
+<li><a href="https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_net_isipv6_input" target="_blank" rel="noopener">net.isIPv6(input)</a> 判断是否是符合 IPv6 协议的地址</li>
+</ul>
+<h5 id="UDP基本示例"><a href="#UDP基本示例" class="headerlink" title="UDP基本示例"></a>UDP基本示例</h5><ul>
+<li>Node 中的核心模块 dgram</li>
+<li>使用 Node 实现 UDP 单播</li>
+</ul>
+<p>服务端： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dgram = <span class="built_in">require</span>(<span class="string">'dgram'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = dgram.createSocket(<span class="string">'udp4'</span>)</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'listening'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> address = server.address()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`server running <span class="subst">$&#123;address.address&#125;</span>:<span class="subst">$&#123;address.port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'message'</span>, (msg, remoteInfo) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`server got <span class="subst">$&#123;msg&#125;</span> from <span class="subst">$&#123;remoteInfo.address&#125;</span>:<span class="subst">$&#123;remoteInfo.port&#125;</span>`</span>)</span><br><span class="line">  server.send(<span class="string">'world'</span>, remoteInfo.port, remoteInfo.address)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'error'</span>, err =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'server error'</span>, err)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.bind(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>客户端:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dgram = <span class="built_in">require</span>(<span class="string">'dgram'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = dgram.createSocket(<span class="string">'udp4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// client.send('hello', 3000, 'localhost')</span></span><br><span class="line"></span><br><span class="line">client.on(<span class="string">'listening'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> address = client.address()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`client running <span class="subst">$&#123;address.address&#125;</span>:<span class="subst">$&#123;address.port&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line">  client.send(<span class="string">'hello'</span>, <span class="number">3000</span>, <span class="string">'localhost'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">client.on(<span class="string">'message'</span>, (msg, remoteInfo) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`client got <span class="subst">$&#123;msg&#125;</span> from <span class="subst">$&#123;remoteInfo.address&#125;</span>:<span class="subst">$&#123;remoteInfo.port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">client.on(<span class="string">'error'</span>, err =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'client error'</span>, err)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">client.bind(<span class="number">8000</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="node-中的-http-模块"><a href="#node-中的-http-模块" class="headerlink" title="node 中的 http 模块"></a>node 中的 http 模块</h3><p>TCP 和 UDP 都属于网络传输层协议，如果要构建高效的网络应用，就应该从传输层进行着手。但是对于经典的浏览器网页和服务端通信场景，如果单纯的使用更底层的传输层协议则会变得麻烦。所以对于经典的B（Browser）S（Server）通信，基于传输层之上专门制定了更上一层的通信协议：HTTP，用于浏览器和服务端进行通信。由于 HTTP 协议本身并不考虑数据如何传输及其他细节问题，所以属于应用层协议。</p>
+<p>Node 提供了基本的 http 和 https 模块用于 HTTP 和 HTTPS 的封装。</p>
+<h5 id="Server-实例"><a href="#Server-实例" class="headerlink" title="Server 实例"></a>Server 实例</h5><table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Event：’close’</td>
+<td>服务关闭时触发</td>
+</tr>
+<tr>
+<td>Event：’request’</td>
+<td>收到请求消息时触发</td>
+</tr>
+<tr>
+<td>server.close()</td>
+<td>关闭服务</td>
+</tr>
+<tr>
+<td>server.listening</td>
+<td>获取服务状态</td>
+</tr>
+</tbody></table>
+<h5 id="请求对象"><a href="#请求对象" class="headerlink" title="请求对象"></a>请求对象</h5><table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>request.method</td>
+<td>请求方法</td>
+</tr>
+<tr>
+<td>request.url</td>
+<td>请求路径</td>
+</tr>
+<tr>
+<td>request.headers</td>
+<td>请求头</td>
+</tr>
+<tr>
+<td>request.httpVersion</td>
+<td>请求HTTP协议版本</td>
+</tr>
+</tbody></table>
+<h5 id="响应对象"><a href="#响应对象" class="headerlink" title="响应对象"></a>响应对象</h5><table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>response.end()</td>
+<td>结束响应</td>
+</tr>
+<tr>
+<td>response.setHeader(name, value)</td>
+<td>设置响应头</td>
+</tr>
+<tr>
+<td>response.removeHeader(name, value)</td>
+<td>删除响应头</td>
+</tr>
+<tr>
+<td>response.statusCode</td>
+<td>设置响应状态码</td>
+</tr>
+<tr>
+<td>response.statusMessage</td>
+<td>设置响应状态短语</td>
+</tr>
+<tr>
+<td>response.write()</td>
+<td>写入响应数据</td>
+</tr>
+<tr>
+<td>response.writeHead()</td>
+<td>写入响应头</td>
+</tr>
+</tbody></table>
+<h2 id="网络爬虫开发"><a href="#网络爬虫开发" class="headerlink" title="网络爬虫开发"></a>网络爬虫开发</h2><p>爬虫就是一个探测程序，它的基本功能就是模拟人的行为去各个网站转悠，点点按钮，找找数据，或者把看到的信息背回来。就像一只虫子在一幢楼里不知疲倦地爬来爬去。</p>
+<h3 id="将获取的HTML字符串使用cheerio-爬虫工具来解析"><a href="#将获取的HTML字符串使用cheerio-爬虫工具来解析" class="headerlink" title="将获取的HTML字符串使用cheerio 爬虫工具来解析"></a>将获取的HTML字符串使用cheerio 爬虫工具来解析</h3><h5 id="cheerio库简介"><a href="#cheerio库简介" class="headerlink" title="cheerio库简介"></a>cheerio库简介</h5><blockquote>
+<p>这是一个核心api按照jquery来设计，专门在服务器上使用，一个微小、快速和优雅的实现</p>
+</blockquote>
+<p>简而言之，就是可以再服务器上用这个库来解析HTML代码，并且可以直接使用和jQuery一样的api</p>
+<p>官方demo如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>)</span><br><span class="line"><span class="keyword">const</span> $ = cheerio.load(<span class="string">'&lt;h2 class="title"&gt;Hello world&lt;/h2&gt;'</span>)</span><br><span class="line"> </span><br><span class="line">$(<span class="string">'h2.title'</span>).text(<span class="string">'Hello there!'</span>)</span><br><span class="line">$(<span class="string">'h2'</span>).addClass(<span class="string">'welcome'</span>)</span><br><span class="line"> </span><br><span class="line">$.html()</span><br><span class="line"><span class="comment">//=&gt; &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 class="title welcome"&gt;Hello there!&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用jQuery API获取所有img的src属性</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>)</span><br><span class="line"><span class="keyword">let</span> req = http.request(<span class="string">'http://XXX.com/teacher.html'</span>, res =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> chunks = []</span><br><span class="line">  res.on(<span class="string">'data'</span>, chunk =&gt; &#123;</span><br><span class="line">    chunks.push(chunk)</span><br><span class="line">  &#125;)</span><br><span class="line">  res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// console.log(Buffer.concat(chunks).toString('utf-8'))</span></span><br><span class="line">    <span class="keyword">let</span> html = Buffer.concat(chunks).toString(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">let</span> $ = cheerio.load(html)</span><br><span class="line">    <span class="keyword">let</span> imgArr = <span class="built_in">Array</span>.prototype.map.call($(<span class="string">'.tea_main .tea_con .li_img &gt; img'</span>), (item) =&gt; <span class="string">'http://web.XXXX.com/'</span> + $(item).attr(<span class="string">'src'</span>))</span><br><span class="line">    <span class="built_in">console</span>.log(imgArr)</span><br><span class="line">    <span class="comment">// let imgArr = []</span></span><br><span class="line">    <span class="comment">// $('.tea_main .tea_con .li_img &gt; img').each((i, item) =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//   let imgPath = 'http://web.XXXX.com/' + $(item).attr('src')</span></span><br><span class="line">    <span class="comment">//   imgArr.push(imgPath)</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    <span class="comment">// console.log(imgArr)</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">req.end()</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用download库批量下载图片"><a href="#使用download库批量下载图片" class="headerlink" title="使用download库批量下载图片"></a>使用download库批量下载图片</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>)</span><br><span class="line"><span class="keyword">const</span> download = <span class="built_in">require</span>(<span class="string">'download'</span>)</span><br><span class="line"><span class="keyword">let</span> req = http.request(<span class="string">'http://web.XXX.com/teacher.html'</span>, res =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> chunks = []</span><br><span class="line">  res.on(<span class="string">'data'</span>, chunk =&gt; &#123;</span><br><span class="line">    chunks.push(chunk)</span><br><span class="line">  &#125;)</span><br><span class="line">  res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// console.log(Buffer.concat(chunks).toString('utf-8'))</span></span><br><span class="line">    <span class="keyword">let</span> html = Buffer.concat(chunks).toString(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">let</span> $ = cheerio.load(html)</span><br><span class="line">    <span class="keyword">let</span> imgArr = <span class="built_in">Array</span>.prototype.map.call($(<span class="string">'.tea_main .tea_con .li_img &gt; img'</span>), (item) =&gt; <span class="built_in">encodeURI</span>(<span class="string">'http://web.XXXX.com/'</span> + $(item).attr(<span class="string">'src'</span>)))</span><br><span class="line">    <span class="comment">// console.log(imgArr)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">Promise</span>.all(imgArr.map(<span class="function"><span class="params">x</span> =&gt;</span> download(x, <span class="string">'dist'</span>))).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'files downloaded!'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">req.end()</span><br></pre></td></tr></table></figure>
+
+<h5 id="爬取动态网站"><a href="#爬取动态网站" class="headerlink" title="爬取动态网站"></a>爬取动态网站</h5><p>大部分新闻网站，现在都采取前后端分离的方式，也就是前端页面先写好模板，等网页加载完毕后，发送Ajax再获取数据，将其渲染到模板中。所以如果使用相同方式来获取目标网站的HTML页面，请求到的只是模板，并不会有数据，此时，如果还希望使用当前方法爬取数据，就需要分析该网站的ajax请求是如何发送的，可以打开network面板来调试：</p>
+<p>分析得出对应的ajax请求后，找到其URL，向其发送请求即可</p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入http模块</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建请求对象 (此时未发送http请求)</span></span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'http://www.XXX.cn/news/json/f1f5ccee-1158-49a6-b7c4-f0bf40d5161a.json'</span></span><br><span class="line"><span class="keyword">let</span> req = http.request(url, res =&gt; &#123;</span><br><span class="line">  <span class="comment">// 异步的响应</span></span><br><span class="line">  <span class="comment">// console.log(res)</span></span><br><span class="line">  <span class="keyword">let</span> chunks = []</span><br><span class="line">  <span class="comment">// 监听data事件,获取传递过来的数据片段</span></span><br><span class="line">  <span class="comment">// 拼接数据片段</span></span><br><span class="line">  res.on(<span class="string">'data'</span>, c =&gt; chunks.push(c))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 监听end事件,获取数据完毕时触发</span></span><br><span class="line">  res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 拼接所有的chunk,并转换成字符串 ==&gt; html字符串</span></span><br><span class="line">    <span class="comment">// console.log(Buffer.concat(chunks).toString('utf-8'))</span></span><br><span class="line">    <span class="keyword">let</span> result = Buffer.concat(chunks).toString(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(result))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将请求发出去</span></span><br><span class="line">req.end()</span><br></pre></td></tr></table></figure>
+
+<p>如果遇到请求限制，还可以模拟真实浏览器的请求头：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入http模块</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>)</span><br><span class="line"><span class="keyword">const</span> download = <span class="built_in">require</span>(<span class="string">'download'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建请求对象 (此时未发送http请求)</span></span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'http://www.XXXX.cn/news/json/f1f5ccee.json'</span></span><br><span class="line"><span class="keyword">let</span> req = http.request(url, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">"Host"</span>: <span class="string">"www.XXXX.cn"</span>,</span><br><span class="line">    <span class="string">"Connection"</span>: <span class="string">"keep-alive"</span>,</span><br><span class="line">    <span class="string">"Content-Length"</span>: <span class="string">"0"</span>,</span><br><span class="line">    <span class="string">"Accept"</span>: <span class="string">"*/*"</span>,</span><br><span class="line">    <span class="string">"Origin"</span>: <span class="string">"http://www.XXXX.cn"</span>,</span><br><span class="line">    <span class="string">"X-Requested-With"</span>: <span class="string">"XMLHttpRequest"</span>,</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"</span>,</span><br><span class="line">    <span class="string">"DNT"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="string">"Referer"</span>: <span class="string">"http://www.XXXX.cn/newsvideo/newslist.html"</span>,</span><br><span class="line">    <span class="string">"Accept-Encoding"</span>: <span class="string">"gzip, deflate"</span>,</span><br><span class="line">    <span class="string">"Accept-Language"</span>: <span class="string">"zh-CN,zh;q=0.9,en;q=0.8"</span>,</span><br><span class="line">    <span class="string">"Cookie"</span>: <span class="string">"UM_distinctid=16b8a0c1ea534c-0c311b256ffee7-e343166-240000-16b8a0c1ea689c; bad_idb2f10070-624e-11e8-917f-9fb8db4dc43c=8e1dcca1-9692-11e9-97fb-e5908bcaecf8; parent_qimo_sid_b2f10070-624e-11e8-917f-9fb8db4dc43c=921b3900-9692-11e9-9a47-855e632e21e7; CNZZDATA1277769855=1043056636-1562825067-null%7C1562825067; XXXX.cn=TUd3emFUWjBNV2syWVRCdU5XTTRhREZs; PHPSESSID=j3ppafq1dgh2jfg6roc8eeljg2; CNZZDATA4617777=cnzz_eid%3D926291424-1561388898-http%253A%252F%252Fmail.XXXX.cn%252F%26ntime%3D1563262791; Hm_lvt_0cb375a2e834821b74efffa6c71ee607=1561389179,1563266246; qimo_seosource_22bdcd10-6250-11e8-917f-9fb8db4dc43c=%E7%AB%99%E5%86%85; qimo_seokeywords_22bdcd10-6250-11e8-917f-9fb8db4dc43c=; href=http%3A%2F%2Fwww.XXX.cn%2F; bad_id22bdcd10-6250-11e8-917f-9fb8db4dc43c=f2f41b71-a7a4-11e9-93cc-9b702389a8cb; nice_id22bdcd10-6250-11e8-917f-9fb8db4dc43c=f2f41b72-a7a4-11e9-93cc-9b702389a8cb; openChat22bdcd10-6250-11e8-917f-9fb8db4dc43c=true; parent_qimo_sid_22bdcd10-6250-11e8-917f-9fb8db4dc43c=fc61e520-a7a4-11e9-94a8-01dabdc2ed41; qimo_seosource_b2f10070-624e-11e8-917f-9fb8db4dc43c=%E7%AB%99%E5%86%85; qimo_seokeywords_b2f10070-624e-11e8-917f-9fb8db4dc43c=; accessId=b2f10070-624e-11e8-917f-9fb8db4dc43c; pageViewNum=2; nice_idb2f10070-624e-11e8-917f-9fb8db4dc43c=20d2a1d1-a7a8-11e9-bc20-e71d1b8e4bb6; openChatb2f10070-624e-11e8-917f-9fb8db4dc43c=true; Hm_lpvt_0cb375a2e834821b74efffa6c71ee607=1563267937"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, res =&gt; &#123;</span><br><span class="line">  <span class="comment">// 异步的响应</span></span><br><span class="line">  <span class="comment">// console.log(res)</span></span><br><span class="line">  <span class="keyword">let</span> chunks = []</span><br><span class="line">  <span class="comment">// 监听data事件,获取传递过来的数据片段</span></span><br><span class="line">  <span class="comment">// 拼接数据片段</span></span><br><span class="line">  res.on(<span class="string">'data'</span>, c =&gt; chunks.push(c))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 监听end事件,获取数据完毕时触发</span></span><br><span class="line">  res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 拼接所有的chunk,并转换成字符串 ==&gt; html字符串</span></span><br><span class="line">    <span class="comment">// console.log(Buffer.concat(chunks).toString('utf-8'))</span></span><br><span class="line">    <span class="keyword">let</span> result = Buffer.concat(chunks).toString(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(result))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将请求发出去</span></span><br><span class="line">req.end()</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用Selenium实现爬虫"><a href="#使用Selenium实现爬虫" class="headerlink" title="使用Selenium实现爬虫"></a>使用Selenium实现爬虫</h3><h5 id="Selenium-API学习"><a href="#Selenium-API学习" class="headerlink" title="Selenium API学习"></a>Selenium API学习</h5><p>核心对象：</p>
+<ul>
+<li>Builder</li>
+<li>WebDriver</li>
+<li>WebElement</li>
+</ul>
+<p>辅助对象：</p>
+<ul>
+<li>By</li>
+<li>Key</li>
+</ul>
+<h5 id="WebDriver"><a href="#WebDriver" class="headerlink" title="WebDriver"></a>WebDriver</h5><p>通过构造器创建好WebDriver后就可以使用API查找网页元素和获取信息了：</p>
+<ul>
+<li>findElement()   查找元素</li>
+</ul>
+<h5 id="WebElement"><a href="#WebElement" class="headerlink" title="WebElement"></a>WebElement</h5><ul>
+<li>getText()  获取文本内容</li>
+<li>sendKeys()  发送一些按键指令</li>
+<li>click()  点击该元素</li>
+</ul>
+<h5 id="自动打开拉勾网搜索”前端”"><a href="#自动打开拉勾网搜索”前端”" class="headerlink" title="自动打开拉勾网搜索”前端”"></a>自动打开拉勾网搜索”前端”</h5><ol>
+<li><p>使用driver打开拉勾网主页</p>
+</li>
+<li><p>找到全国站并点击一下</p>
+</li>
+<li><p>输入“前端”并回车</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Builder, By, Key &#125; = <span class="built_in">require</span>(<span class="string">'selenium-webdriver'</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> driver = <span class="keyword">await</span> <span class="keyword">new</span> Builder().forBrowser(<span class="string">'chrome'</span>).build();</span><br><span class="line">  <span class="keyword">await</span> driver.get(<span class="string">'https://www.lagou.com/'</span>);</span><br><span class="line">  <span class="keyword">await</span> driver.findElement(By.css(<span class="string">'#changeCityBox .checkTips .tab.focus'</span>)).click();</span><br><span class="line">  <span class="keyword">await</span> driver.findElement(By.id(<span class="string">'search_input'</span>)).sendKeys(<span class="string">'前端'</span>, Key.ENTER);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h5 id="获取需要的数据"><a href="#获取需要的数据" class="headerlink" title="获取需要的数据"></a>获取需要的数据</h5><p>使用driver.findElement()找到所有条目项，根据需求分析页面元素，获取其文本内容即可：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Builder, By, Key &#125; = <span class="built_in">require</span>(<span class="string">'selenium-webdriver'</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> driver = <span class="keyword">await</span> <span class="keyword">new</span> Builder().forBrowser(<span class="string">'chrome'</span>).build();</span><br><span class="line">  <span class="keyword">await</span> driver.get(<span class="string">'https://www.lagou.com/'</span>);</span><br><span class="line">  <span class="keyword">await</span> driver.findElement(By.css(<span class="string">'#changeCityBox .checkTips .tab.focus'</span>)).click();</span><br><span class="line">  <span class="keyword">await</span> driver.findElement(By.id(<span class="string">'search_input'</span>)).sendKeys(<span class="string">'前端'</span>, Key.ENTER);</span><br><span class="line">  <span class="keyword">let</span> items = <span class="keyword">await</span> driver.findElements(By.className(<span class="string">'con_list_item'</span>))</span><br><span class="line">  items.forEach(<span class="keyword">async</span> item =&gt; &#123;</span><br><span class="line">    <span class="comment">// 获取岗位名称</span></span><br><span class="line">    <span class="keyword">let</span> title = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_top h3'</span>)).getText()</span><br><span class="line">    <span class="comment">// 获取工作地点</span></span><br><span class="line">    <span class="keyword">let</span> position = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_top em'</span>)).getText()</span><br><span class="line">    <span class="comment">// 获取发布时间</span></span><br><span class="line">    <span class="keyword">let</span> time = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_top .format-time'</span>)).getText()</span><br><span class="line">    <span class="comment">// 获取公司名称</span></span><br><span class="line">    <span class="keyword">let</span> companyName = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.company .company_name'</span>)).getText()</span><br><span class="line">    <span class="comment">// 获取公司所在行业</span></span><br><span class="line">    <span class="keyword">let</span> industry = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.company .industry'</span>)).getText()</span><br><span class="line">    <span class="comment">// 获取薪资待遇</span></span><br><span class="line">    <span class="keyword">let</span> money = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_bot .money'</span>)).getText()</span><br><span class="line">    <span class="comment">// 获取需求背景</span></span><br><span class="line">    <span class="keyword">let</span> background = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_bot .li_b_l'</span>)).getText()</span><br><span class="line">    <span class="comment">// 处理需求背景</span></span><br><span class="line">    background = background.replace(money, <span class="string">''</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(title, position, time, companyName, industry, money, background)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h5 id="自动翻页"><a href="#自动翻页" class="headerlink" title="自动翻页"></a>自动翻页</h5><p>思路如下：</p>
+<ol>
+<li>定义初始页码</li>
+<li>获取数据后，获取页面上的总页码，定义最大页码</li>
+<li>开始获取数据时打印当前正在获取的页码数</li>
+<li>获取完一页数据后，当前页码自增，然后判断是否达到最大页码</li>
+<li>查找下一页按钮并调用点击api，进行自动翻页</li>
+<li>翻页后递归调用获取数据的函数</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Builder, By, Key &#125; = <span class="built_in">require</span>(<span class="string">'selenium-webdriver'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> currentPageNum = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> maxPageNum = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> driver = <span class="keyword">new</span> Builder().forBrowser(<span class="string">'chrome'</span>).build();</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> driver.get(<span class="string">'https://www.lagou.com/'</span>);</span><br><span class="line">  <span class="keyword">await</span> driver.findElement(By.css(<span class="string">'#changeCityBox .checkTips .tab.focus'</span>)).click();</span><br><span class="line">  <span class="keyword">await</span> driver.findElement(By.id(<span class="string">'search_input'</span>)).sendKeys(<span class="string">'前端'</span>, Key.ENTER);</span><br><span class="line">  maxPageNum = <span class="keyword">await</span> driver.findElement(By.className(<span class="string">'totalNum'</span>)).getText()</span><br><span class="line">  getData()</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`正在获取第<span class="subst">$&#123;currentPageNum&#125;</span>页的数据, 共<span class="subst">$&#123;maxPageNum&#125;</span>页`</span>)</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> flag = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> items = <span class="keyword">await</span> driver.findElements(By.className(<span class="string">'con_list_item'</span>))</span><br><span class="line">      <span class="keyword">let</span> results = []</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> item = items[i]</span><br><span class="line">        <span class="comment">// 获取岗位名称</span></span><br><span class="line">        <span class="keyword">let</span> title = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_top h3'</span>)).getText()</span><br><span class="line">        <span class="comment">// 获取工作地点</span></span><br><span class="line">        <span class="keyword">let</span> position = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_top em'</span>)).getText()</span><br><span class="line">        <span class="comment">// 获取发布时间</span></span><br><span class="line">        <span class="keyword">let</span> time = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_top .format-time'</span>)).getText()</span><br><span class="line">        <span class="comment">// 获取公司名称</span></span><br><span class="line">        <span class="keyword">let</span> companyName = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.company .company_name'</span>)).getText()</span><br><span class="line">        <span class="comment">// 获取公司所在行业</span></span><br><span class="line">        <span class="keyword">let</span> industry = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.company .industry'</span>)).getText()</span><br><span class="line">        <span class="comment">// 获取薪资待遇</span></span><br><span class="line">        <span class="keyword">let</span> money = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_bot .money'</span>)).getText()</span><br><span class="line">        <span class="comment">// 获取需求背景</span></span><br><span class="line">        <span class="keyword">let</span> background = <span class="keyword">await</span> item.findElement(By.css(<span class="string">'.p_bot .li_b_l'</span>)).getText()</span><br><span class="line">        <span class="comment">// 处理需求背景</span></span><br><span class="line">        background = background.replace(money, <span class="string">''</span>)</span><br><span class="line">        <span class="comment">// console.log(id, job, area, money, link, need, companyLink, industry, tags, welfare)</span></span><br><span class="line">        results.push(&#123;</span><br><span class="line">          title,</span><br><span class="line">          position,</span><br><span class="line">          time,</span><br><span class="line">          companyName,</span><br><span class="line">          industry,</span><br><span class="line">          money,</span><br><span class="line">          background</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(results)</span><br><span class="line"></span><br><span class="line">      currentPageNum++</span><br><span class="line">      <span class="keyword">if</span> (currentPageNum &lt;= maxPageNum) &#123;</span><br><span class="line">        <span class="keyword">await</span> driver.findElement(By.className(<span class="string">'pager_next'</span>)).click()</span><br><span class="line">        <span class="keyword">await</span> getData(driver)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="comment">// console.log(e.message)</span></span><br><span class="line">      <span class="keyword">if</span> (e) flag = <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (flag) <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2020/02/25/vue中使用画布生成图片/" title="[vue中使用画布生成图片]" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/10/24/uniapp项目小试牛刀/" title="[uniapp项目小试牛刀]" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对React知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout中是同...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在React开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state u...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+								React中Refs的使用方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React中Refs的使用方法
+什么是RefsRefs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。Ref转发是一项将ref自...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React中Refs的使用方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">
+								vue-cli反向代理解决跨域以及axios的配置			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 最近忙于各种各样大大小小的项目，都没时间写博客了。现在习惯于大型项目用react, 小型项目用 vue，本期就写一篇在漫漫学习之路中 小型项目中之前使用vue-cli 所遇到的问题吧！
+vue跨域实现与原理（proxyTabl...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue-cli反向代理解决跨域以及axios的配置"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记">
+								vue知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对vue知识的整理，对自己有很大帮助才分享出来！覆盖了vue3.0的一些知识点。
+1. 说说你对MVVM的理解
+Model-View-ViewModel的缩写，Model代表数据模型，Vie...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/20/React新特性Hook/" title="React新特性Hook">
+								React新特性Hook			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 20日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：上一篇文章讲到了基于 React 的 Ant Design Pro, 在使用这个后台解决方案的过程中,尝试了使用 React 的一个强大的新增特性 Hook, Hook 是 React 16.8 的新增特性。Hook 是一些可以...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React新特性Hook"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">
+								AntDesignPro中Dva的数据处理与搬运分析			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 11日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：这段时间忙着做两个大型的中后台项目,分别用的 2 种不同的技术解决方案来进行。一个是 vue-element-admin , 另一个则是 Ant Design Pro, 前者操作起来比较简单,element 的 UI 设计给人感...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="AntDesignPro中Dva的数据处理与搬运分析"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2021, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>

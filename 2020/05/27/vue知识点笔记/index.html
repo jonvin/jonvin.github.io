@@ -1,0 +1,1135 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      vue知识点笔记 | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《vue知识点笔记》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2020/05/27/vue知识点笔记/" itemprop="url">
+		vue知识点笔记
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2020/05/27/vue知识点笔记/" itemprop="url">
+		<time datetime="2020-05-27T06:20:33.000Z" itemprop="datePublished">
+	  		2020-05-27
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2020/05/27/vue知识点笔记/" itemprop="url">
+		<time datetime="2020-05-27T06:20:33.000Z" itemprop="dateUpdated">
+	  		2021-05-26
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>声明：本篇文章纯属笔记性文章，非整体原创，是对vue知识的整理，对自己有很大帮助才分享出来！覆盖了vue3.0的一些知识点。</p>
+<h3 id="1-说说你对MVVM的理解"><a href="#1-说说你对MVVM的理解" class="headerlink" title="1. 说说你对MVVM的理解"></a>1. 说说你对MVVM的理解</h3><ul>
+<li>Model-View-ViewModel的缩写，Model代表数据模型，View代表UI组件,ViewModel将Model和View关联起来</li>
+<li>数据会绑定到viewModel层并自动将数据渲染到页面中，视图变化的时候会通知viewModel层更新数据</li>
+</ul>
+<h3 id="2-Vue2-x响应式数据-双向绑定原理"><a href="#2-Vue2-x响应式数据-双向绑定原理" class="headerlink" title="2. Vue2.x响应式数据/双向绑定原理"></a>2. Vue2.x响应式数据/双向绑定原理</h3><ul>
+<li>Vue 数据双向绑定主要是指：数据变化更新视图，视图变化更新数据。其中，View变化更新Data，可以通过事件监听的方式来实现，所以 Vue数据双向绑定的工作主要是如何根据Data变化更新View。</li>
+<li>简述：<br>1.当你把一个普通的 JavaScript 对象传入 Vue 实例作为 data 选项，Vue 将遍历此对象所有的 property，并使用 Object.defineProperty 把这些 property 全部转为 getter/setter。<br>2.这些 getter/setter 对用户来说是不可见的，但是在内部它们让 Vue 能够追踪依赖，在 property 被访问和修改时通知变更。<br>3.每个组件实例都对应一个 watcher 实例，它会在组件渲染的过程中把“接触”过的数据 property 记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染。</li>
+<li>深入理解：<br>1.监听器 Observer：对数据对象进行遍历，包括子属性对象的属性，利用 Object.defineProperty() 对属性都加上 setter 和 getter。这样的话，给这个对象的某个值赋值，就会触发 setter，那么就能监听到了数据变化。<br>2.解析器 Compile：解析 Vue 模板指令，将模板中的变量都替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，调用更新函数进行数据更新。<br>3.订阅者 Watcher：Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁 ，主要的任务是订阅 Observer 中的属性值变化的消息，当收到属性值变化的消息时，触发解析器 Compile 中对应的更新函数。每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新——这是一个典型的观察者模式<br>4.订阅器 Dep：订阅器采用 发布-订阅 设计模式，用来收集订阅者 Watcher，对监听器 Observer 和 订阅者 Watcher 进行统一管理。</li>
+</ul>
+<h3 id="3-你知道Vue3-x响应式数据原理吗？"><a href="#3-你知道Vue3-x响应式数据原理吗？" class="headerlink" title="3. 你知道Vue3.x响应式数据原理吗？"></a>3. 你知道Vue3.x响应式数据原理吗？</h3><ul>
+<li>Vue3.x改用Proxy替代Object.defineProperty。</li>
+<li>因为Proxy可以直接监听对象和数组的变化，并且有多达13种拦截方法。并且作为新标准将受到浏览器厂商重点持续的性能优化。</li>
+<li>Proxy只会代理对象的第一层，Vue3是怎样处理这个问题的呢？<br>  1.判断当前Reflect.get的返回值是否为Object，如果是则再通过reactive方法做代理， 这样就实现了深度观测。<br>  2.监测数组的时候可能触发多次get/set，那么如何防止触发多次呢？我们可以判断key是否为当前被代理对象target自身属性，也可以判断旧值与新值是否相等，只有满足以上两个条件之一时，才有可能执行trigger。</li>
+</ul>
+<h3 id="4-Proxy-与-Object-defineProperty-优劣对比"><a href="#4-Proxy-与-Object-defineProperty-优劣对比" class="headerlink" title="4. Proxy 与 Object.defineProperty 优劣对比"></a>4. Proxy 与 Object.defineProperty 优劣对比</h3><ul>
+<li>Proxy 的优势如下:<br>  Proxy 可以直接监听对象而非属性；</li>
+<li>Proxy 可以直接监听数组的变化；<br>  1.Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的；<br>  2.Proxy 返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改；<br>  3.Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利；</li>
+<li>Object.defineProperty 的优势如下:<br>  1.兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平，因此 Vue 的作者才声明需要等到下个大版本( 3.0 )才能用 Proxy 重写。</li>
+</ul>
+<p>Vuex 篇</p>
+<h3 id="5-Vuex-是什么？"><a href="#5-Vuex-是什么？" class="headerlink" title="5. Vuex 是什么？"></a>5. Vuex 是什么？</h3><ul>
+<li>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。</li>
+<li>运用到了js设计模式中的单例模式，单例模式想要做到的是，不管我们尝试去创建多少次，它都只给你返回第一次所创建的那唯一的一个实例。<br>  1.Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。<br>  2.改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化。</li>
+<li>运用到了js设计模式中的单例模式，单例模式想要做到的是，不管我们尝试去创建多少次，它都只给你返回第一次所创建的那唯一的一个实例。</li>
+<li>Vuex 使用单一状态树，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSOT)”而存在。这也意味着，每个应用将仅仅包含一个 store 实例。单一状态树让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。——Vuex官方文档</li>
+<li>主要包括以下几个模块：<br>  1.State：定义了应用状态的数据结构，可以在这里设置默认的初始状态。<br>  2.Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。<br>  3.Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。<br>  4.Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。<br>  5.Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</li>
+</ul>
+<h3 id="6-什么情况下使用-Vuex？"><a href="#6-什么情况下使用-Vuex？" class="headerlink" title="6. 什么情况下使用 Vuex？"></a>6. 什么情况下使用 Vuex？</h3><ul>
+<li>如果应用够简单，最好不要使用 Vuex，一个简单的 store 模式即可</li>
+<li>需要构建一个中大型单页应用时，使用Vuex能更好地在组件外部管理状态</li>
+</ul>
+<h3 id="7-Vuex和单纯的全局对象有什么区别？"><a href="#7-Vuex和单纯的全局对象有什么区别？" class="headerlink" title="7. Vuex和单纯的全局对象有什么区别？"></a>7. Vuex和单纯的全局对象有什么区别？</h3><ul>
+<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+</ul>
+<h3 id="8-为什么-Vuex-的-mutation-中不能做异步操作？"><a href="#8-为什么-Vuex-的-mutation-中不能做异步操作？" class="headerlink" title="8. 为什么 Vuex 的 mutation 中不能做异步操作？"></a>8. 为什么 Vuex 的 mutation 中不能做异步操作？</h3><ul>
+<li>Vuex中所有的状态更新的唯一途径都是mutation，异步操作通过 Action 来提交 mutation实现，这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+<li>每个mutation执行完成后都会对应到一个新的状态变更，这样devtools就可以打个快照存下来，然后就可以实现 time-travel 了。如果mutation支持异步操作，就没有办法知道状态是何时更新的，无法很好的进行状态的追踪，给调试带来困难。</li>
+</ul>
+<h3 id="9-新增：vuex的action有返回值吗？返回的是什么？"><a href="#9-新增：vuex的action有返回值吗？返回的是什么？" class="headerlink" title="9. 新增：vuex的action有返回值吗？返回的是什么？"></a>9. 新增：vuex的action有返回值吗？返回的是什么？</h3><ul>
+<li>store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise</li>
+<li>Action 通常是异步的，要知道 action 什么时候结束或者组合多个 action以处理更加复杂的异步流程，可以通过定义action时返回一个promise对象，就可以在派发action的时候就可以通过处理返回的 Promise处理异步流程</li>
+<li>一个 store.dispatch 在不同模块中可以触发多个 action 函数。在这种情况下，只有当所有触发函数完成后，返回的 Promise 才会执行。</li>
+</ul>
+<h3 id="10-新增：为什么不直接分发mutation-而要通过分发action之后提交-mutation变更状态"><a href="#10-新增：为什么不直接分发mutation-而要通过分发action之后提交-mutation变更状态" class="headerlink" title="10. 新增：为什么不直接分发mutation,而要通过分发action之后提交 mutation变更状态"></a>10. 新增：为什么不直接分发mutation,而要通过分发action之后提交 mutation变更状态</h3><ul>
+<li>mutation 必须同步执行，我们可以在 action 内部执行异步操作</li>
+<li>可以进行一系列的异步操作，并且通过提交 mutation 来记录 action 产生的副作用（即状态变更）</li>
+</ul>
+<p>常规篇</p>
+<h3 id="11-computed-和-watch-的区别和运用的场景？"><a href="#11-computed-和-watch-的区别和运用的场景？" class="headerlink" title="11. computed 和 watch 的区别和运用的场景？"></a>11. computed 和 watch 的区别和运用的场景？</h3><ul>
+<li>computed：是计算属性，依赖其它属性值，并且 computed 的值有缓存，只有它依赖的属性值发生改变，下一次获取 computed 的值时才会重新计算 computed 的值；</li>
+<li>watch：没有缓存性，更多的是「观察」的作用，类似于某些数据的监听回调 ，每当监听的数据变化时都会执行回调进行后续操作；当我们需要深度监听对象中的属性时，可以打开deep：true选项，这样便会对对象中的每一项进行监听</li>
+<li>运用场景：<br>  1.当我们需要进行数值计算，并且依赖于其它数据时，应该使用 computed，因为可以利用 computed 的缓存特性，避免每次获取值时，都要重新计算；<br>  2.当我们需要在数据变化时执行异步或开销较大的操作时，应该使用 watch，使用watch选项允许我们执行异步操作 ( 访问一个 API )，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</li>
+</ul>
+<h3 id="12-Vue2-x组件通信有哪些方式？"><a href="#12-Vue2-x组件通信有哪些方式？" class="headerlink" title="12. Vue2.x组件通信有哪些方式？"></a>12. Vue2.x组件通信有哪些方式？</h3><ul>
+<li>父子组件通信<br>  1.事件机制(**父-&gt;子props,子-&gt;父 $on、$emit)<br>  2.获取父子组件实例 $parent、$children<br>  3.Ref 获取实例的方式调用组件的属性或者方法<br>  4.Provide、inject (不推荐使用，组件库时很常用)     </li>
+<li>兄弟组件通信<br>  1.Vuex<br>  2.eventBus 这种方法通过一个空的 Vue实例作为中央事件总线（事件中心），用它来触发事件和监听事件，从而实现任何组件间的通信，包括父子、隔代、兄弟组件</li>
+<li>跨级组件通信<br>  1.Vuex<br>  2.$attrs、$listeners<br>  3.Provide、inject</li>
+</ul>
+<h3 id="13-说一下v-if和v-show的区别"><a href="#13-说一下v-if和v-show的区别" class="headerlink" title="13. 说一下v-if和v-show的区别"></a>13. 说一下v-if和v-show的区别</h3><ul>
+<li>当条件不成立时，v-if不会渲染DOM元素，v-show操作的是样式(display)，切换当前DOM的显示和隐藏。</li>
+<li>v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；</li>
+<li>v-if 是真正的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</li>
+<li>v-show 则适用于需要非常频繁切换条件的场景</li>
+<li>v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。</li>
+</ul>
+<h3 id="14-为什么-v-for-和-v-if-不建议用在一起"><a href="#14-为什么-v-for-和-v-if-不建议用在一起" class="headerlink" title="14. 为什么 v-for 和 v-if 不建议用在一起"></a>14. 为什么 v-for 和 v-if 不建议用在一起</h3><ul>
+<li>当 v-for 和 v-if 处于同一个节点时，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。如果要遍历的数组很大，而真正要展示的数据很少时，这将造成很大的性能浪费 </li>
+<li>这种场景建议使用 computed，先对数据进行过滤</li>
+</ul>
+<h3 id="15-组件中的data为什么是一个函数？"><a href="#15-组件中的data为什么是一个函数？" class="headerlink" title="15. 组件中的data为什么是一个函数？"></a>15. 组件中的data为什么是一个函数？</h3><ul>
+<li>一个组件被复用多次的话，也就会创建多个实例。本质上，这些实例用的都是同一个构造函数。</li>
+<li>如果data是对象的话，对象属于引用类型，会影响到所有的实例。所以为了保证组件不同的实例之间data不冲突，data必须是一个函数。</li>
+</ul>
+<h3 id="16-子组件为什么不可以修改父组件传递的Prop？-怎么理解vue的单向数据流？"><a href="#16-子组件为什么不可以修改父组件传递的Prop？-怎么理解vue的单向数据流？" class="headerlink" title="16. 子组件为什么不可以修改父组件传递的Prop？/怎么理解vue的单向数据流？"></a>16. 子组件为什么不可以修改父组件传递的Prop？/怎么理解vue的单向数据流？</h3><ul>
+<li>Vue提倡单向数据流,即父级props的更新会流向子组件,但是反过来则不行。</li>
+<li>这是为了防止意外的改变父组件状态，使得应用的数据流变得难以理解。</li>
+<li>如果破坏了单向数据流，当应用复杂时，debug 的成本会非常高。</li>
+</ul>
+<h3 id="17-v-model是如何实现双向绑定的？"><a href="#17-v-model是如何实现双向绑定的？" class="headerlink" title="17. v-model是如何实现双向绑定的？"></a>17. v-model是如何实现双向绑定的？</h3><ul>
+<li>v-model是用来在表单控件或者组件上创建双向绑定的</li>
+<li>他的本质是v-bind和v-on的语法糖</li>
+<li>在一个组件上使用v-model，默认会为组件绑定名为value的prop和名为input的事件</li>
+</ul>
+<h3 id="18-nextTick的实现原理是什么？"><a href="#18-nextTick的实现原理是什么？" class="headerlink" title="18. nextTick的实现原理是什么？"></a>18. nextTick的实现原理是什么？</h3><ul>
+<li>在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后立即使用 nextTick 来获取更新后的 DOM。</li>
+<li>nextTick主要使用了宏任务和微任务。</li>
+<li>根据执行环境分别尝试采用Promise、MutationObserver、setImmediate，如果以上都不行则采用setTimeout定义了一个异步方法，多次调用nextTick会将方法存入队列中，通过这个异步方法清空当前队列。</li>
+</ul>
+<h3 id="19-Vue不能检测数组的哪些变动？Vue-怎么用-vm-set-解决对象新增属性不能响应的问题-？"><a href="#19-Vue不能检测数组的哪些变动？Vue-怎么用-vm-set-解决对象新增属性不能响应的问题-？" class="headerlink" title="19.Vue不能检测数组的哪些变动？Vue 怎么用 vm.$set() 解决对象新增属性不能响应的问题 ？"></a>19.Vue不能检测数组的哪些变动？Vue 怎么用 vm.$set() 解决对象新增属性不能响应的问题 ？</h3><ul>
+<li>Vue 不能检测以下数组的变动：<br>  1.第一类问题<br>  // 法一：Vue.set Vue.set(vm.items, indexOfItem, newValue)<br>  // 法二：Array.prototype.splice vm.items.splice(indexOfItem, 1, newValue)<br>  2.第二类问题，可使用 splice：<br>  vm.items.splice(newLength)<br>  3.当你利用索引直接接收一个数组项时，例如：vm.items[indexOfItem] = newValue<br>  4.当你修改数组的长度时，例如：vm.items.length = newLength</li>
+<li>vm.$set 的实现原理是：<br>  1.如果目标是数组，直接使用数组的 splice 方法触发响应式；<br>  2.如果目标是对象，会先判读属性是否存在、对象是否是响应式，最终如果要对属性进行响应式处理，则是通过调用 defineReactive 方法进行响应式处理（ defineReactive 方法就是 Vue 在初始化对象时，给对象属性采用 Object.defineProperty 动态添加 getter 和 setter 的功能所调用的方法）</li>
+</ul>
+<h3 id="20-Vue事件绑定原理是什么？"><a href="#20-Vue事件绑定原理是什么？" class="headerlink" title="20.Vue事件绑定原理是什么？"></a>20.Vue事件绑定原理是什么？</h3><ul>
+<li>原生事件绑定是通过addEventListener绑定给真实元素的，组件事件绑定是通过Vue自定义的$on实现的。</li>
+</ul>
+<h3 id="21-说一下虚拟Dom以及key属性的作用"><a href="#21-说一下虚拟Dom以及key属性的作用" class="headerlink" title="21.说一下虚拟Dom以及key属性的作用"></a>21.说一下虚拟Dom以及key属性的作用</h3><ul>
+<li>由于在浏览器中操作DOM是很昂贵的。频繁的操作DOM，会产生一定的性能问题。这就是虚拟Dom的产生原因。</li>
+<li>Virtual DOM本质就是用一个原生的JS对象去描述一个DOM节点。是对真实DOM的一层抽象。(也就是源码中的VNode类，它定义在src/core/vdom/vnode.js中。)</li>
+<li>虚拟 DOM 的实现原理主要包括以下 3 部分：<br>  1.用 JavaScript 对象模拟真实 DOM 树，对真实 DOM 进行抽象；<br>  2.diff 算法 — 比较两棵虚拟 DOM 树的差异；<br>  3.pach 算法 — 将两个虚拟 DOM 对象的差异应用到真正的 DOM 树。</li>
+<li>key 是为 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作可以更准确、更快速<br>  1.更准确：因为带 key 就不是就地复用了，在 sameNode 函数a.key === b.key对比中可以避免就地复用的情况。所以会更加准确。<br>  2.更快速：利用 key 的唯一性生成 map 对象来获取对应节点，比遍历方式更快    </li>
+</ul>
+<h3 id="22-为什么不建议用index作为key"><a href="#22-为什么不建议用index作为key" class="headerlink" title="22.为什么不建议用index作为key?"></a>22.为什么不建议用index作为key?</h3><ul>
+<li>不建议 用index 作为 key，和没写基本上没区别，因为不管你数组的顺序怎么颠倒，index 都是 0, 1, 2 这样排列，导致 Vue 会复用错误的旧子节点，做很多额外的工作</li>
+</ul>
+<p>生命周期篇</p>
+<h3 id="23-说一下你对Vue的生命周期的理解"><a href="#23-说一下你对Vue的生命周期的理解" class="headerlink" title="23.说一下你对Vue的生命周期的理解"></a>23.说一下你对Vue的生命周期的理解</h3><ul>
+<li>beforeCreate、created、beforeMount、mounted、beforeUpdate、updated、beforeDestroy、destroyed。</li>
+<li>keep-alive 有自己独立的钩子函数 activated 和 deactivated。</li>
+</ul>
+<h3 id="24-Vue中组件生命周期调用顺序是什么样的？"><a href="#24-Vue中组件生命周期调用顺序是什么样的？" class="headerlink" title="24.Vue中组件生命周期调用顺序是什么样的？"></a>24.Vue中组件生命周期调用顺序是什么样的？</h3><ul>
+<li>组件的调用顺序都是先父后子,渲染完成的顺序是先子后父。</li>
+<li>组件的销毁操作是先父后子，销毁完成的顺序是先子后父。</li>
+</ul>
+<h3 id="25-在什么阶段才能访问操作DOM？"><a href="#25-在什么阶段才能访问操作DOM？" class="headerlink" title="25.在什么阶段才能访问操作DOM？"></a>25.在什么阶段才能访问操作DOM？</h3><ul>
+<li>在钩子函数 mounted 被调用前，Vue 已经将编译好的模板挂载到页面上，所以在 mounted 中可以访问操作 DOM。</li>
+</ul>
+<h3 id="26-你的接口请求一般放在哪个生命周期中？"><a href="#26-你的接口请求一般放在哪个生命周期中？" class="headerlink" title="26.你的接口请求一般放在哪个生命周期中？"></a>26.你的接口请求一般放在哪个生命周期中？</h3><ul>
+<li>可以在钩子函数 created、beforeMount、mounted 中进行调用，因为在这三个钩子函数中，data 已经创建，可以将服务端端返回的数据进行赋值。</li>
+<li>但是推荐在 created 钩子函数中调用异步请求，因为在 created 钩子函数中调用异步请求有以下优点：<br>  1.能更快获取到服务端数据，减少页面loading 时间；<br>  2.ssr不支持 beforeMount 、mounted 钩子函数，所以放在 created 中有助于一致性；</li>
+</ul>
+<p>路由篇</p>
+<h3 id="27-vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？"><a href="#27-vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？" class="headerlink" title="27.vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？"></a>27.vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？</h3><ul>
+<li>hash 模式：<br>  1.后面 hash 值的变化，不会导致浏览器向服务器发出请求，浏览器不发出请求，就不会刷新页面<br>  2.通过监听 hashchange 事件可以知道 hash 发生了哪些变化，然后根据 hash 变化来实现更新页面部分内容的操作。</li>
+<li>history 模式：<br>  1.history 模式的实现，主要是 HTML5 标准发布的两个 API，pushState 和 replaceState，这两个 API 可以在改变 url，但是不会发送请求。这样就可以监听 url 变化来实现更新页面部分内容的操作</li>
+<li>区别：<br>  1.url 展示上，hash 模式有“#”，history 模式没有<br>  2.刷新页面时，hash 模式可以正常加载到 hash 值对应的页面，而 history 没有处理的话，会返回 404，一般需要后端将所有页面都配置重定向到首页路由<br>  3.兼容性，hash 可以支持低版本浏览器和 IE。</li>
+</ul>
+<h3 id="28-路由懒加载是什么意思？如何实现路由懒加载？"><a href="#28-路由懒加载是什么意思？如何实现路由懒加载？" class="headerlink" title="28.路由懒加载是什么意思？如何实现路由懒加载？"></a>28.路由懒加载是什么意思？如何实现路由懒加载？</h3><ul>
+<li>路由懒加载的含义：把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件</li>
+<li>实现：结合 Vue 的异步组件和 Webpack 的代码分割功能 (可以将异步组件定义为返回一个 Promise 的工厂函数 (该函数返回的 Promise)</li>
+<li>结合这两者，这就是如何定义一个能够被 Webpack 自动代码分割的异步组件  const Foo = () =&gt; import(‘./Foo.vue’) const router = new VueRouter({ routes: [ { path: ‘/foo’, component: Foo } ]})</li>
+<li>使用命名 chunk，和webpack中的魔法注释就可以把某个路由下的所有组件都打包在同个异步块 (chunk) 中 chunkconst Foo = () =&gt; import(/* webpackChunkName: “group-foo” */ ‘./Foo.vue’) </li>
+</ul>
+<h3 id="29-Vue-router-导航守卫有哪些"><a href="#29-Vue-router-导航守卫有哪些" class="headerlink" title="29.Vue-router 导航守卫有哪些"></a>29.Vue-router 导航守卫有哪些</h3><ul>
+<li>全局前置/钩子：beforeEach、beforeResolve、afterEach</li>
+<li>路由独享的守卫：beforeEnter</li>
+<li>组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave</li>
+</ul>
+<p>进阶篇</p>
+<h3 id="30-说说vue和react的异同"><a href="#30-说说vue和react的异同" class="headerlink" title="30.说说vue和react的异同"></a>30.说说vue和react的异同</h3><ul>
+<li>相同点<br>  1.使用 Virtual DOM<br>  2.提供了响应式 (Reactive) 和组件化 (Composable) 的视图组件。<br>  3.将注意力集中保持在核心库，而将其他功能如路由和全局状态管理交给相关的库。</li>
+<li>不同点<br>  1.在 React 应用中，当某个组件的状态发生变化时，它会以该组件为根，重新渲染整个组件子树（除非使用PureComponent/shouldComponentUpdate），在 Vue 应用中，组件的依赖是在渲染过程中自动追踪的，所以系统能精确知晓哪个组件确实需要被重渲染<br>  2.在 React 中，一切都是 JavaScript。不仅仅是 HTML 可以用 JSX 来表达，现在的潮流也越来越多地将 CSS 也纳入到 JavaScript 中来处理<br>  3.Vue 的路由库和状态管理库都是由官方维护支持且与核心库同步更新的。React 则是选择把这些问题交给社区维护，因此创建了一个更分散的生态系统，所以有更丰富的生态系统<br>  4.Vue 提供了CLI 脚手架，能让你通过交互式的脚手架引导非常容易地构建项目。你甚至可以使用它快速开发组件的原型。React 在这方面也提供了create-react-app，但是现在还存在一些局限性<br>  5.React Native 能使你用相同的组件模型编写有本地渲染能力的 APP，Vue 和Weex会进行官方合作，Weex 是阿里巴巴发起的跨平台用户界面开发框架，同时也正在 Apache 基金会进行项目孵化，另一个选择是NativeScript-Vue，一个用 Vue.js 构建完全原生应用的NativeScript插件</li>
+</ul>
+<h3 id="31-什么是-mixin-？"><a href="#31-什么是-mixin-？" class="headerlink" title="31.什么是 mixin ？"></a>31.什么是 mixin ？</h3><ul>
+<li>Mixin 使我们能够为 Vue 组件编写可插拔和可重用的功能。    </li>
+<li>如果你希望再多个组件之间重用一组组件选项，例如生命周期 hook、 方法等，则可以将其编写为 mixin，并在组件中简单的引用它。</li>
+<li>然后将 mixin 的内容合并到组件中。如果你要在 mixin 中定义生命周期 hook，那么它在执行时将优化于组件自已的 hook。</li>
+</ul>
+<h3 id="32-在-Vue-实例中编写生命周期-hook-或其他-option-properties-时，为什么不使用箭头函数-？"><a href="#32-在-Vue-实例中编写生命周期-hook-或其他-option-properties-时，为什么不使用箭头函数-？" class="headerlink" title="32.在 Vue 实例中编写生命周期 hook 或其他 option/properties 时，为什么不使用箭头函数 ？"></a>32.在 Vue 实例中编写生命周期 hook 或其他 option/properties 时，为什么不使用箭头函数 ？</h3><ul>
+<li>箭头函数自已没有定义 this 上下文中。</li>
+<li>当你在 Vue 程序中使用箭头函数 ( =&gt; ) 时，this 关键字病不会绑定到 Vue 实例，因此会引发错误。所以强烈建议改用标准函数声明。</li>
+</ul>
+<h3 id="33-Vue模版编译原理知道吗，能简单说一下吗？"><a href="#33-Vue模版编译原理知道吗，能简单说一下吗？" class="headerlink" title="33.Vue模版编译原理知道吗，能简单说一下吗？"></a>33.Vue模版编译原理知道吗，能简单说一下吗？</h3><p>简单说，Vue的编译过程就是将template转化为render函数的过程。会经历以下阶段（生成AST树/优化/codegen）：</p>
+<ul>
+<li>首先解析模版，生成AST语法树(一种用JavaScript对象的形式来描述整个模板)。使用大量的正则表达式对模板进行解析，遇到标签、文本的时候都会执行对应的钩子进行相关处理。</li>
+<li>Vue的数据是响应式的，但其实模板中并不是所有的数据都是响应式的。有一些数据首次渲染后就不会再变化，对应的DOM也不会变化。那么优化过程就是深度遍历AST树，按照相关条件对树节点进行标记。这些被标记的节点(静态节点)我们就可以跳过对它们的比对，对运行时的模板起到很大的优化作用。</li>
+<li>编译的最后一步是将优化后的AST树转换为可执行的代码。</li>
+</ul>
+<h3 id="34-diff算法说一下"><a href="#34-diff算法说一下" class="headerlink" title="34.diff算法说一下"></a>34.diff算法说一下</h3><ul>
+<li>同级比较，再比较子节点</li>
+<li>先判断一方有子节点一方没有子节点的情况(如果新的children没有子节点，将旧的子节点移除)</li>
+<li>比较都有子节点的情况(核心diff)</li>
+<li>递归比较子节点</li>
+</ul>
+<h3 id="35-说说你对keep-alive组件的了解"><a href="#35-说说你对keep-alive组件的了解" class="headerlink" title="35.说说你对keep-alive组件的了解"></a>35.说说你对keep-alive组件的了解</h3><ul>
+<li>keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，避免重新渲染 ，其有以下特性：<br>  1.一般结合路由和动态组件一起使用，用于缓存组件；<br>  2.提供 include 和 exclude 属性，两者都支持字符串或正则表达式， include 表示只有名称匹配的组件会被缓存，exclude 表示任何名称匹配的组件都不会被缓存 ，其中 exclude 的优先级比 include 高；<br>  3.对应两个钩子函数 activated 和 deactivated ，当组件被激活时，触发钩子函数 activated，当组件被移除时，触发钩子函数 deactivated。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">  &lt;component&gt;</span><br><span class="line">    &lt;!-- 该组件将被缓存！ --&gt;</span><br><span class="line">  &lt;<span class="regexp">/component&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>keep-alive&gt;</span><br><span class="line">如果只想 router-view 里面某个组件被缓存</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    name: <span class="string">'home'</span>,</span><br><span class="line">    component: Home,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      keepAlive: <span class="literal">true</span> <span class="comment">// 需要被缓存</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    path: <span class="string">'/:id'</span>,</span><br><span class="line">    name: <span class="string">'edit'</span>,</span><br><span class="line">    component: Edit,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      keepAlive: <span class="literal">false</span> <span class="comment">// 不需要被缓存</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line">&lt;keep-alive&gt;</span><br><span class="line">    &lt;router-view v-<span class="keyword">if</span>=<span class="string">"$route.meta.keepAlive"</span>&gt;</span><br><span class="line">        &lt;!-- 这里是会被缓存的视图组件，比如 Home！ --&gt;</span><br><span class="line">    &lt;<span class="regexp">/router-view&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>keep-alive&gt;</span><br><span class="line"> </span><br><span class="line">&lt;router-view v-<span class="keyword">if</span>=<span class="string">"!$route.meta.keepAlive"</span>&gt;</span><br><span class="line">    &lt;!-- 这里是不被缓存的视图组件，比如 Edit！ --&gt;</span><br><span class="line">&lt;<span class="regexp">/router-view&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="36-说说你对SSR的了解"><a href="#36-说说你对SSR的了解" class="headerlink" title="36.说说你对SSR的了解"></a>36.说说你对SSR的了解</h3><ul>
+<li>SSR也就是服务端渲染，也就是将Vue在客户端把标签渲染成HTML的工作放在服务端完成，然后再把html直接返回给客户端</li>
+<li>SSR的优势<br>  1.更好的SEO<br>  2.首屏加载速度更快</li>
+<li>SSR的缺点<br>  1.开发条件会受到限制，服务器端渲染只支持beforeCreate和created两个钩子<br>  2.当我们需要一些外部扩展库时需要特殊处理，服务端渲染应用程序也需要处于Node.js的运行环境<br>  3.更多的服务端负载    </li>
+</ul>
+<h3 id="37-你都做过哪些Vue的性能优化？"><a href="#37-你都做过哪些Vue的性能优化？" class="headerlink" title="37.你都做过哪些Vue的性能优化？"></a>37.你都做过哪些Vue的性能优化？</h3><ul>
+<li>编码阶段<br>  1.尽量减少data中的数据，data中的数据都会增加getter和setter，会收集对应的watcher<br>  2.v-if和v-for不能连用<br>  3.如果需要使用v-for给每项元素绑定事件时使用事件代理<br>  4.SPA 页面采用keep-alive缓存组件<br>  5.在更多的情况下，使用v-if替代v-show<br>  6.key保证唯一<br>  7.使用路由懒加载、异步组件<br>  8.防抖、节流<br>  9.第三方模块按需导入<br>  10.长列表滚动到可视区域动态加载<br>  11.图片懒加载</li>
+<li>SEO优化<br>  1.预渲染<br>  2.服务端渲染SSR    </li>
+<li>打包优化<br>  1.压缩代码<br>  2.Tree Shaking/Scope Hoisting<br>  3.使用cdn加载第三方模块<br>  4.多线程打包happypack<br>  5.splitChunks抽离公共文件<br>  6.sourceMap优化</li>
+<li>用户体验<br>  8.骨架屏<br>  9.PWA<br>  10.还可以使用缓存(客户端缓存、服务端缓存)优化、服务端开启gzip压缩等。</li>
+</ul>
+<h3 id="38-vue2-x中如何监测数组变化？"><a href="#38-vue2-x中如何监测数组变化？" class="headerlink" title="38.vue2.x中如何监测数组变化？"></a>38.vue2.x中如何监测数组变化？</h3><ul>
+<li>使用了函数劫持的方式，重写了数组的方法，Vue将data中的数组进行了原型链重写，指向了自己定义的数组原型方法，当调用数组api时，可以通知依赖更新。</li>
+<li>如果数组中包含着引用类型，会对数组中的引用类型再次递归遍历进行监控。这样就实现了监测数组变化。</li>
+</ul>
+<h3 id="39-说说你对-SPA-单页面的理解，它的优缺点分别是什么？"><a href="#39-说说你对-SPA-单页面的理解，它的优缺点分别是什么？" class="headerlink" title="39.说说你对 SPA 单页面的理解，它的优缺点分别是什么？"></a>39.说说你对 SPA 单页面的理解，它的优缺点分别是什么？</h3><ul>
+<li>SPA（ single-page application ）仅在 Web 页面初始化时加载相应的 HTML、JavaScript 和 CSS。一旦页面加载完成，SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内容的变换，UI 与用户的交互，避免页面的重新加载。</li>
+<li>优点：<br>  1.用户体验好、快，内容的改变不需要重新加载整个页面，避免了不必要的跳转和重复渲染；<br>  2.基于上面一点，SPA 相对对服务器压力小；<br>  3.前后端职责分离，架构清晰，前端进行交互逻辑，后端负责数据处理；</li>
+<li>缺点：<br>  1.初次加载耗时多：为实现单页 Web 应用功能及显示效果，需要在加载页面的时候将 JavaScript、CSS 统一加载，部分页面按需加载；<br>  2.前进后退路由管理：由于单页应用在一个页面中显示所有的内容，所以不能使用浏览器的前进后退功能，所有的页面切换需要自己建立堆栈管理；<br>  3.SEO 难度较大：由于所有的内容都在一个页面中动态替换显示，所以在 SEO 上其有着天然的弱势。</li>
+</ul>
+<h3 id="40-对于即将到来的-vue3-0-特性你有什么了解的吗？"><a href="#40-对于即将到来的-vue3-0-特性你有什么了解的吗？" class="headerlink" title="40.对于即将到来的 vue3.0 特性你有什么了解的吗？"></a>40.对于即将到来的 vue3.0 特性你有什么了解的吗？</h3><ul>
+<li>监测机制的改变<br>  1.vue3.0将带来基于代理 Proxy的 observer 实现，提供全语言覆盖的反应性跟踪。<br>  2.消除了 Vue 2 当中基于 Object.defineProperty 的实现所存在的很多限制：</li>
+<li>只能监测属性，不能监测对象<br>  1.检测属性的添加和删除；<br>  2.检测数组索引和长度的变更；<br>  3.支持 Map、Set、WeakMap 和 WeakSet。</li>
+<li>模板<br>  1.模板方面没有大的变更，只改了作用域插槽，2.x 的机制导致作用域插槽变了，父组件会重新渲染，而 3.0 把作用域插槽改成了函数的方式，这样只会影响子组件的重新渲染，提升了渲染的性能。<br>  2.同时，对于 render 函数的方面，vue3.0 也会进行一系列更改来方便习惯直接使用 api 来生成 vdom 。</li>
+<li>对象式的组件声明方式<br>  1.vue2.x 中的组件是通过声明的方式传入一系列 option，和 TypeScript 的结合需要通过一些装饰器的方式来做，虽然能实现功能，但是比较麻烦。<br>  2.vue3.0 修改了组件的声明方式，改成了类式的写法，这样使得和 TypeScript 的结合变得很容易</li>
+<li>其它方面的更改<br>  1.支持自定义渲染器，从而使得 weex 可以通过自定义渲染器的方式来扩展，而不是直接 fork 源码来改的方式。<br>  2.支持 Fragment（多个根节点）和 Protal（在 dom 其他部分渲染组建内容）组件，针对一些特殊的场景做了处理。<br>  3.基于 tree shaking 优化，提供了更多的内置功能。</li>
+</ul>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对React知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout中是同...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在React开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state u...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+								React中Refs的使用方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React中Refs的使用方法
+什么是RefsRefs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。Ref转发是一项将ref自...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React中Refs的使用方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">
+								vue-cli反向代理解决跨域以及axios的配置			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 最近忙于各种各样大大小小的项目，都没时间写博客了。现在习惯于大型项目用react, 小型项目用 vue，本期就写一篇在漫漫学习之路中 小型项目中之前使用vue-cli 所遇到的问题吧！
+vue跨域实现与原理（proxyTabl...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue-cli反向代理解决跨域以及axios的配置"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/20/React新特性Hook/" title="React新特性Hook">
+								React新特性Hook			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 20日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：上一篇文章讲到了基于 React 的 Ant Design Pro, 在使用这个后台解决方案的过程中,尝试了使用 React 的一个强大的新增特性 Hook, Hook 是 React 16.8 的新增特性。Hook 是一些可以...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React新特性Hook"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">
+								AntDesignPro中Dva的数据处理与搬运分析			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 11日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：这段时间忙着做两个大型的中后台项目,分别用的 2 种不同的技术解决方案来进行。一个是 vue-element-admin , 另一个则是 Ant Design Pro, 前者操作起来比较简单,element 的 UI 设计给人感...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="AntDesignPro中Dva的数据处理与搬运分析"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/02/25/echarts绘制地图/" title="echarts绘制地图">
+								echarts绘制地图			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 25日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 前段时间因为疫情的影响在家里办公。公司要求做一个像腾讯那样的，疫情分布实时动态地图，我脑海中便想到了echart.js。趁着这个机会正好可以复习一下。
+echart.js 官方绘制地图demo地址: 点击这里查看官方demo
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/02/25/echarts绘制地图/" title="echarts绘制地图">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="echarts绘制地图"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2021, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
