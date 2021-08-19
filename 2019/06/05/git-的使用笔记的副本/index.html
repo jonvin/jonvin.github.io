@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      React新特性Hook | city of sky
+      git 的使用笔记 | city of sky
     
   </title>
   <meta name="author" content="Jonwen">
@@ -157,7 +157,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《React新特性Hook》
+			当前文章&nbsp;:&nbsp;《git 的使用笔记》
 		
 	</p>
 
@@ -274,8 +274,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2020/04/20/React新特性Hook/" itemprop="url">
-		React新特性Hook
+	<a href="/2019/06/05/git-的使用笔记的副本/" itemprop="url">
+		git 的使用笔记
 	</a>
 
 	</div>
@@ -288,9 +288,9 @@
 
 	发布于
 
-	<a href="/2020/04/20/React新特性Hook/" itemprop="url">
-		<time datetime="2020-04-20T09:06:38.000Z" itemprop="datePublished">
-	  		2020-04-20
+	<a href="/2019/06/05/git-的使用笔记的副本/" itemprop="url">
+		<time datetime="2019-06-05T09:19:42.000Z" itemprop="datePublished">
+	  		2019-06-05
 	  </time>
 	</a>
 	&nbsp;
@@ -306,9 +306,9 @@
 
 	更新于
 
-	<a href="/2020/04/20/React新特性Hook/" itemprop="url">
-		<time datetime="2020-04-20T09:06:38.000Z" itemprop="dateUpdated">
-	  		2021-02-23
+	<a href="/2019/06/05/git-的使用笔记的副本/" itemprop="url">
+		<time datetime="2019-06-05T09:19:42.000Z" itemprop="dateUpdated">
+	  		2021-08-12
 	  </time>
 	</a> 
 
@@ -327,30 +327,44 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>前言：上一篇文章讲到了基于 React 的 Ant Design Pro, 在使用这个后台解决方案的过程中,尝试了使用 React 的一个强大的新增特性 Hook, Hook 是 React 16.8 的新增特性。Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。Hook 不能在 class 组件中使用 —— 这使得你不使用 class 也能使用 React。（我们不推荐把你已有的组件全部重写，但是你可以在新组件里开始使用 Hook。）</p>
-<p>举一个简单的例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &quot;react&quot;;</span><br><span class="line"></span><br><span class="line">const TableList: React.FC&lt;&#123;&#125;&gt; = () =&gt; &#123;</span><br><span class="line">  const [Count, setCount] = useState&lt;Number&gt;(0);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;/p&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在上面例子中 useState 就是我们要学习的第一个“Hook”，那为什么要使用 Hook 呢? Hook 解决了我们五年来编写和维护成千上万的组件时遇到的各种各样看起来不相关的问题。无论你正在学习 React，或每天使用，或者更愿尝试另一个和 React 有相似组件模型的框架，你都可能对这些问题似曾相识。</p>
-<p>在组件之间复用状态逻辑很难</p>
-<p>React 没有提供将可复用性行为“附加”到组件的途径（例如，把组件连接到 store）。如果你使用过 React 一段时间，你也许会熟悉一些解决此类问题的方案，比如 render props 和 高阶组件。但是这类方案需要重新组织你的组件结构，这可能会很麻烦，使你的代码难以理解。如果你在 React DevTools 中观察过 React 应用，你会发现由 providers，consumers，高阶组件，render props 等其他抽象层组成的组件会形成“嵌套地狱”。尽管我们可以在 DevTools 过滤掉它们，但这说明了一个更深层次的问题：React 需要为共享状态逻辑提供更好的原生途径。</p>
-<p>你可以使用 Hook 从组件中提取状态逻辑，使得这些逻辑可以单独测试并复用。Hook 使你在无需修改组件结构的情况下复用状态逻辑。 这使得在组件间或社区内共享 Hook 变得更便捷。</p>
-<p>—-以上文字来自于 React 官网</p>
-<h3 id="使用-State-Hook"><a href="#使用-State-Hook" class="headerlink" title="使用 State Hook"></a>使用 State Hook</h3><pre><code>如果熟悉 React  那么一定对class 的写法特别熟悉, 接下来我们将Hook 与Class 的写法进行对比</code></pre><p>Hook 写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &quot;react&quot;;</span><br><span class="line"></span><br><span class="line">const Example: React.FC&lt;&#123;&#125;&gt; = () =&gt; &#123;</span><br><span class="line">  const [Count, setCount] = useState&lt;Number&gt;(0);</span><br><span class="line">  //你可以在这里使用 state Hook</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;/p&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>等价的 class 示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Example extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      count: 0,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;p&gt;You clicked &#123;this.state.count&#125; times&lt;/p&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; this.setState(&#123; count: this.state.count + 1 &#125;)&#125;&gt;</span><br><span class="line">          Click me</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>声明 State 变量</p>
-<pre><code>Hook写法：</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const TableList: React.FC&lt;&#123;&#125;&gt; = () =&gt; &#123;</span><br><span class="line">  const [previewstate, setValues] = useState(&#123;</span><br><span class="line">    previewVisible: false,</span><br><span class="line">    previewImage: &quot;&quot;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>class 的写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class TableList extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">        previewVisible: false,</span><br><span class="line">        previewImage: &apos;&apos;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>Effect Hook<br>之前可能已经在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为“副作用”，或者简称为“作用”。useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API。（我们会在使用 Effect Hook 里展示对比 useEffect 和这些方法的例子。）</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 相当于 componentDidMount 和 componentDidUpdate:</span></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 使用浏览器的 API 更新页面标题</span></span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
+		<p>前言：现在发现周围的朋友都有写博客的习惯。在朋友和同事的感染下，为了能更好的记录学习中的点点滴滴，今天自己也搭了一个。第一篇笔记就写常用的git 命令吧！</p>
+<h3 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h3><p>1.官网上下载git <a href="https://git-scm.com/" target="_blank" rel="noopener">点我</a></p>
+<p>2.本机安装对应版本的git。</p>
+<p>3.在码云或者github 之类的代码管理工具书上创建项目<br>注意，新建项目时去掉readme的选项</p>
+<p>4.跳转到教程页面</p>
+<p>5.打开安装完成的git，windows系统建议键入<br>git config –global core.autocrlf false<br>来设置一下crlf，如果不设置容易出现：LF will be replaced by CRLF错误；</p>
+<h3 id="初始化和创建项目"><a href="#初始化和创建项目" class="headerlink" title="初始化和创建项目"></a>初始化和创建项目</h3><p>6.然后依次输入以下命令进行初始化：<br>git init<br>git add .<br>touch README.md</p>
+<p>7.输入以下命令进行添加所有文件：<br>git add -A</p>
+<p>8.输入以下命令进行提交注释：<br>git commit -a -m “初始提交”</p>
+<p>9.输入以下命令进行初次建库，需要与远程仓库关联，输入如下命令关联：<br>git remote add origin  <a href="https://git.oschi[自己代码版本控制的地址]" target="_blank" rel="noopener">https://git.oschi[自己代码版本控制的地址]</a><br>如果出现 origin exitss，我们可以输入 git remote rm origin，再进行关联语句的执行</p>
+<p>git remote -v 查看代码是属于哪个仓库地址</p>
+<p>10.输入以下命令进行将代码仓库上传到代码库：<br>git push origin master</p>
+<p>恭喜你 到这里就上传成功啦！</p>
+<h3 id="开发过程"><a href="#开发过程" class="headerlink" title="开发过程"></a>开发过程</h3><p>11.先后运行git add和git commit命令将更改提交到本地仓库；</p>
+<p>12.关联本地仓库和远程仓库：git remote add origin  <a href="https://git.oschi[自己代码版本控制的公钥地址]" target="_blank" rel="noopener">https://git.oschi[自己代码版本控制的公钥地址]</a></p>
+<p>13.运行 git push -u origin master将更改提交到远程仓库。</p>
+<p>14.仓库建好，并与码云关联后，如果有新增文件只需重复如下命令：<br>git add -A<br>git commit -a -m “初始提交”<br>git push origin master</p>
+<p>15.在使用 git push origin master 提交时，如果出现failed to push some refs to git ：<br>输入 git pull –rebase origin master；<br>再输入 git push origin master 提交。</p>
+<p>16.如果遇到了 代码冲突等问题可以执行以下3行命令<br>git stash<br>git pull<br>git stash pop ：只会恢复 存储最新的stash</p>
+<p>退回到指定版本</p>
+<p>git reset –hard HEAD^</p>
+<p>查看git ssh key公钥</p>
+<p>cd ~/.ssh</p>
+<p>ls </p>
+<p>如果没有则需要生成公钥</p>
+<p>ssh-keygen</p>
+<p>再次查看是否生成</p>
+<p>cat id_rsa.pub</p>
+<p>git stash list  ：查看stash了哪些存储<br>git stash show ：显示做了哪些改动，默认show第一个存储,如果要显示其他存贮，后面加stash@{$num}，比如第二个 git stash show stash@{1}<br>git stash apply :应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即stash@{0}，如果要使用其他个，git stash apply stash@{$num} ， 比如第二个：git stash apply stash@{1} </p>
+<p>git config –global http.postBuffer 157286400 上传文件内容过大，配置上传限制</p>
+<p>查看用户名和邮箱</p>
+<p>git config user.name </p>
+<p>git config user.email</p>
+<p>修改用户名和邮箱</p>
+<p>git config –global user.name “XXX”</p>
+<p>git config –global user.email “xxxx”</p>
+<h3 id="新建分支删除分支等操作"><a href="#新建分支删除分支等操作" class="headerlink" title="新建分支删除分支等操作"></a>新建分支删除分支等操作</h3><p>17.git checkout -b ‘分支名’<br>18.git push origin dev 提价到新建的分支中<br>19.git  merge dev 把dev分支的代码合并到当前分之上<br>20.git branch -a 查看已有的本地及远程分支<br>21.git push origin –delete dev 删除远程分支<br>22.git branch -d dev  删除本地分支</p>
+<h3 id="在多人配合开发时-越过别人的eslint-报错-提交代码"><a href="#在多人配合开发时-越过别人的eslint-报错-提交代码" class="headerlink" title="在多人配合开发时 越过别人的eslint 报错 提交代码"></a>在多人配合开发时 越过别人的eslint 报错 提交代码</h3><p>23.git commit -m ‘’ –no-verify</p>
 	
 	</div>
 	
@@ -369,12 +383,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记" rel="prev">
+			<a href="/2019/06/12/webpack插件postcss/" title="webpack的编译工具之一postcss" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析" rel="next">
+			<a href="/2019/06/05/git-的使用笔记/" title="git 的使用笔记" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -615,22 +629,22 @@ Model-View-ViewModel的缩写，Model代表数据模型，Vie...
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">
-								AntDesignPro中Dva的数据处理与搬运分析			
+							<a class="relate-post-title" href="/2020/04/20/React新特性Hook/" title="React新特性Hook">
+								React新特性Hook			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								四月 11日, 2020				
+								四月 20日, 2020				
 							</p>
 							<p class="relate-post-content">
-								前言：这段时间忙着做两个大型的中后台项目,分别用的 2 种不同的技术解决方案来进行。一个是 vue-element-admin , 另一个则是 Ant Design Pro, 前者操作起来比较简单,element 的 UI 设计给人感...
+								前言：上一篇文章讲到了基于 React 的 Ant Design Pro, 在使用这个后台解决方案的过程中,尝试了使用 React 的一个强大的新增特性 Hook, Hook 是 React 16.8 的新增特性。Hook 是一些可以...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">				
+							<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="AntDesignPro中Dva的数据处理与搬运分析"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React新特性Hook"/>
 							</a>
 						</div>
 					</li>											

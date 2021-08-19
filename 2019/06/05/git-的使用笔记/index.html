@@ -308,7 +308,7 @@
 
 	<a href="/2019/06/05/git-的使用笔记/" itemprop="url">
 		<time datetime="2019-06-05T09:19:42.000Z" itemprop="dateUpdated">
-	  		2021-06-17
+	  		2021-08-12
 	  </time>
 	</a> 
 
@@ -348,7 +348,7 @@
 <p>16.如果遇到了 代码冲突等问题可以执行以下3行命令<br>git stash<br>git pull<br>git stash pop ：只会恢复 存储最新的stash</p>
 <p>退回到指定版本</p>
 <p>git reset –hard HEAD^</p>
-<p>查看 git ssh key公钥</p>
+<p>查看git ssh key公钥</p>
 <p>cd ~/.ssh</p>
 <p>ls </p>
 <p>如果没有则需要生成公钥</p>
@@ -357,7 +357,13 @@
 <p>cat id_rsa.pub</p>
 <p>git stash list  ：查看stash了哪些存储<br>git stash show ：显示做了哪些改动，默认show第一个存储,如果要显示其他存贮，后面加stash@{$num}，比如第二个 git stash show stash@{1}<br>git stash apply :应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即stash@{0}，如果要使用其他个，git stash apply stash@{$num} ， 比如第二个：git stash apply stash@{1} </p>
 <p>git config –global http.postBuffer 157286400 上传文件内容过大，配置上传限制</p>
-<h3 id="新建分支删除分支等操作"><a href="#新建分支删除分支等操作" class="headerlink" title="新建分支删除分支等操作"></a>新建分支删除分支等操作</h3><p>17.git checkout -b ‘分支名’<br>18.git push origin dev 提价到新建的分支中<br>19.git  merge dev 把dev分支的代码合并到master上<br>20.git branch -a 查看已有的本地及远程分支<br>21.git push origin –delete dev 删除远程分支<br>22.git branch -d dev  删除本地分支</p>
+<p>查看用户名和邮箱</p>
+<p>git config user.name </p>
+<p>git config user.email</p>
+<p>修改用户名和邮箱</p>
+<p>git config –global user.name “XXX”</p>
+<p>git config –global user.email “xxxx”</p>
+<h3 id="新建分支删除分支等操作"><a href="#新建分支删除分支等操作" class="headerlink" title="新建分支删除分支等操作"></a>新建分支删除分支等操作</h3><p>17.git checkout -b ‘分支名’<br>18.git push origin dev 提价到新建的分支中<br>19.git  merge dev 把dev分支的代码合并到当前分之上<br>20.git branch -a 查看已有的本地及远程分支<br>21.git push origin –delete dev 删除远程分支<br>22.git branch -d dev  删除本地分支</p>
 <h3 id="在多人配合开发时-越过别人的eslint-报错-提交代码"><a href="#在多人配合开发时-越过别人的eslint-报错-提交代码" class="headerlink" title="在多人配合开发时 越过别人的eslint 报错 提交代码"></a>在多人配合开发时 越过别人的eslint 报错 提交代码</h3><p>23.git commit -m ‘’ –no-verify</p>
 	
 	</div>
@@ -377,7 +383,7 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/12/webpack插件postcss/" title="webpack的编译工具之一postcss" rel="prev">
+			<a href="/2019/06/05/git-的使用笔记的副本/" title="git 的使用笔记" rel="prev">
 				&laquo;上一篇
 			</a>
 		
@@ -396,6 +402,29 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">
+								Angular的动态表单			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 18日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言：到新的公司写angular 也有2个月了，众所周知 Angular 的学习曲线是非常陡峭的，而且在网上找学习的博客也是比 vue 和 react 要少很多，在写Angular 的过程中，生命周期和父子组件传值，这些基本的操作跟v...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Angular的动态表单"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -612,29 +641,6 @@ Model-View-ViewModel的缩写，Model代表数据模型，Vie...
 							<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React新特性Hook"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">
-								AntDesignPro中Dva的数据处理与搬运分析			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								四月 11日, 2020				
-							</p>
-							<p class="relate-post-content">
-								前言：这段时间忙着做两个大型的中后台项目,分别用的 2 种不同的技术解决方案来进行。一个是 vue-element-admin , 另一个则是 Ant Design Pro, 前者操作起来比较简单,element 的 UI 设计给人感...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="AntDesignPro中Dva的数据处理与搬运分析"/>
 							</a>
 						</div>
 					</li>											

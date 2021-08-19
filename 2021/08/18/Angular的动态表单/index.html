@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      Angular的动态表单 | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《Angular的动态表单》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2021/08/18/Angular的动态表单/" itemprop="url">
+		Angular的动态表单
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2021/08/18/Angular的动态表单/" itemprop="url">
+		<time datetime="2021-08-18T01:10:06.000Z" itemprop="datePublished">
+	  		2021-08-18
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2021/08/18/Angular的动态表单/" itemprop="url">
+		<time datetime="2021-08-18T01:10:06.000Z" itemprop="dateUpdated">
+	  		2021-08-19
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>前言：到新的公司写angular 也有2个月了，众所周知 Angular 的学习曲线是非常陡峭的，而且在网上找学习的博客也是比 vue 和 react 要少很多，在写Angular 的过程中，生命周期和父子组件传值，这些基本的操作跟vue 也是大同小异。值得眼前一亮的便是它的动态表单。</p>
+<p>FormGroup 和 FormArray 的区别</p>
+<h3 id="FormGroup"><a href="#FormGroup" class="headerlink" title="FormGroup"></a>FormGroup</h3><p>跟踪一组FormControl 实例的值和有效状态。有对应的 key 值； 添加删除对应的方法分别为 addControl / removeControl ;</p>
+<h3 id="FormArray"><a href="#FormArray" class="headerlink" title="FormArray"></a>FormArray</h3><p>跟踪一个控件数组和有效状态，控件可以是 FormControl 、FormGroup 或者是 FormArray 的实例。<br>无对应的key 值；添加删除的方法分别为 push/removeAt </p>
+<h3 id="FormGroup-的基本使用例子"><a href="#FormGroup-的基本使用例子" class="headerlink" title="FormGroup 的基本使用例子"></a>FormGroup 的基本使用例子</h3><p>demo.componemt.html  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">nz-spin</span> [<span class="attr">nzSpinning</span>]=<span class="string">'loading'</span> <span class="attr">nzTip</span>=<span class="string">'加载中 。。。'</span>&gt;</span>    </span><br><span class="line">    <span class="comment">&lt;!--这一组formGroup 的名称为name --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">nz-form</span> [<span class="attr">formGroup</span>]=<span class="string">'form'</span>&gt;</span>      </span><br><span class="line">        <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-label</span> [<span class="attr">nzSpan</span>]=<span class="string">'4'</span> <span class="attr">nzRequired</span>&gt;</span>模版名称<span class="tag">&lt;/<span class="name">nz-form-label</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-control</span> [<span class="attr">nzSpan</span>]=<span class="string">'16'</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 通过 formControlName 来绑定监听input值发生变化--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">formControlName</span>=<span class="string">'templateName'</span> <span class="attr">nz-input</span> <span class="attr">placeholder</span>=<span class="string">'请输入'</span> /&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">nz-form-explain</span> *<span class="attr">ngIf</span>=<span class="string">"form.get('templateName')?.dirty &amp;&amp; form.get('templateName')?.hasError('require')"</span>&gt;</span></span><br><span class="line">                    模版名称必填</span><br><span class="line">                <span class="tag">&lt;<span class="name">nz-form-explain</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-control</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span>  </span><br><span class="line">            </span><br><span class="line">        <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-label</span> [<span class="attr">nzSpan</span>]=<span class="string">'4'</span> <span class="attr">nzRequired</span>&gt;</span>模版内容<span class="tag">&lt;/<span class="name">nz-form-label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-control</span> [<span class="attr">nzSpan</span>]=<span class="string">'16'</span>&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">formControlName</span>=<span class="string">'templateContent'</span> <span class="attr">placeholder</span>=<span class="string">'请输入'</span>&gt;</span> <span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">nz-form-explain</span> *<span class="attr">ngIf</span>=<span class="string">"form.get('templateContent')?.dirty &amp;&amp; form.get('templateContent')?.hasError('required')"</span>&gt;</span></span><br><span class="line">                    模版内容必填</span><br><span class="line">                <span class="tag">&lt;/<span class="name">nz-form-explain</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">nz-form-control</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">nz-form-item</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">nz-form-label</span> [<span class="attr">nzSpan</span>]=<span class="string">'4'</span> <span class="attr">nzRequired</span>&gt;</span>选择国家<span class="tag">&lt;/<span class="name">nz-form-label</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">nz-form-control</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">nz-checkbox-group</span> <span class="attr">formControlName</span>=<span class="string">'country'</span>&gt;</span> <span class="tag">&lt;/<span class="name">nz-checkbox-group</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">nz-form-control</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">nz-form-explain</span> *<span class="attr">ngIf</span>=<span class="string">"form.get('country')?.dirty &amp;&amp; form.get('country')?.hasError('required')"</span>&gt;</span></span><br><span class="line">                国家至少选择一个</span><br><span class="line">           <span class="tag">&lt;/<span class="name">nz-form-explain</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">nz-form-item</span>&gt;</span>   </span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-label</span> [<span class="attr">nzSpan</span>]=<span class="string">'4'</span> <span class="attr">nzRequired</span>&gt;</span>是否启用<span class="tag">&lt;/<span class="name">nz-form-label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">nz-form-control</span> [<span class="attr">nzSpan</span>]=<span class="string">'16'</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">nz-switch</span> <span class="attr">formControlName</span>=<span class="string">'status'</span>&gt;</span><span class="tag">&lt;/<span class="name">nz-switch</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;/<span class="name">nz-form-control</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">nz-form-item</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nz-spin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>demo.componemt.ts</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; FormBuilder &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">    form: FormGroup;</span><br><span class="line">    requestFinanceTypesOption = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">        <span class="keyword">private</span> fb: FormBuilder</span></span><br><span class="line"><span class="params">    </span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line">    ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.createForm(); </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    createForm() &#123;</span><br><span class="line">        <span class="keyword">this</span>.form = <span class="keyword">this</span>.fb.group(&#123;</span><br><span class="line">            templateName:[ <span class="literal">null</span>, [Validators.required]],</span><br><span class="line">            templateContent: [<span class="literal">null</span>, [Validators.required]],</span><br><span class="line">            status: [<span class="literal">null</span>], </span><br><span class="line">            country: [<span class="keyword">this</span>.requestFinanceTypesOption, [<span class="function">(<span class="params">control</span>)=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> control.value.some(<span class="function"><span class="params">item</span> =&gt;</span> item.checked)? <span class="literal">null</span> : &#123;<span class="built_in">require</span>: <span class="literal">true</span>&#125;</span><br><span class="line">            &#125;]]</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="FormArray-1"><a href="#FormArray-1" class="headerlink" title="FormArray"></a>FormArray</h3><p>arrayDemo.componemt.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nz-spin</span> [<span class="attr">nzSpinning</span>]=<span class="string">'loading'</span> <span class="attr">nzTip</span>=<span class="string">'加载中 。。。'</span>&gt;</span>    </span><br><span class="line">    <span class="comment">&lt;!--这一组formGroup 的名称为name --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">nz-form</span> [<span class="attr">formGroup</span>]=<span class="string">'form'</span>&gt;</span>      </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">formArrayName</span>=<span class="string">'array'</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">nz-row</span> <span class="attr">nzType</span>=<span class="string">'flex'</span> <span class="attr">style</span>=<span class="string">"margin-top: 6px;"</span> *<span class="attr">ngFor</span>=<span class="string">"let item of formArray?.comtrols;  let indexItem=index"</span> [<span class="attr">formGroupName</span>]= <span class="string">"indexItem"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'monitor-info'</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">nz-form-item</span> <span class="attr">class</span>=<span class="string">'monitor-info-form-item'</span>&gt;</span>  </span><br><span class="line">                        <span class="tag">&lt;<span class="name">nz-form-label</span> [<span class="attr">nzSpan</span>]=<span class="string">'4'</span> <span class="attr">nzRequired</span>&gt;</span>监控人<span class="tag">&lt;/<span class="name">nz-form-label</span>&gt;</span> </span><br><span class="line">                        <span class="tag">&lt;<span class="name">nz-form-control</span> [<span class="attr">nzSpan</span>]=<span class="string">'16'</span>&gt;</span></span><br><span class="line">                            <span class="comment">&lt;!-- 通过 formControlName 来绑定监听input值发生变化--&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-select</span></span></span><br><span class="line"><span class="tag">                                <span class="attr">formControlName</span>=<span class="string">'monitorUserId'</span></span></span><br><span class="line"><span class="tag">                                <span class="attr">class</span>=<span class="string">'gutter-row font12'</span></span></span><br><span class="line"><span class="tag">                                <span class="attr">nzPlaceHolder</span>=<span class="string">'监控人'</span></span></span><br><span class="line"><span class="tag">                                [<span class="attr">nzLoading</span>]=<span class="string">'loading'</span></span></span><br><span class="line"><span class="tag">                                <span class="attr">nzShowSearch</span></span></span><br><span class="line"><span class="tag">                            &gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">nz-option</span> *<span class="attr">ngFor</span>=<span class="string">"let item of monitorUserOptions"</span> [<span class="attr">nzValue</span>]=<span class="string">'item?.id'</span> [<span class="attr">nzLabel</span>]=<span class="string">'item?.text'</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">nz-option</span>&gt;</span>    </span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-select</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-form-explain</span> *<span class="attr">ngIf</span>=<span class="string">"formArray.controls[indexItem].get('monitorUserId')?.dirty &amp;&amp; formArray.controls[indexItem].get('monitorUserId')?.hasError('required')"</span>&gt;</span></span><br><span class="line">                                模版名称必填</span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-form-explain</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">nz-form-control</span>&gt;</span>        </span><br><span class="line">                    <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span> </span><br><span class="line">                        </span><br><span class="line">                    <span class="tag">&lt;<span class="name">nz-form-item</span> <span class="attr">class</span>=<span class="string">'monitor-info-form-item'</span>&gt;</span>  </span><br><span class="line">                       <span class="tag">&lt;<span class="name">nz-form-label</span> [<span class="attr">nzSpan</span>]=<span class="string">'4'</span> <span class="attr">nzRequired</span>&gt;</span>监控人邮箱<span class="tag">&lt;/<span class="name">nz-form-label</span>&gt;</span> </span><br><span class="line">                       <span class="tag">&lt;<span class="name">nz-form-control</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">input</span> <span class="attr">formControlName</span>=<span class="string">'monitorUserEmail'</span> <span class="attr">nz-input</span> <span class="attr">placeholder</span>=<span class="string">'监控人邮箱'</span> /&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-form-explain</span> *<span class="attr">ngIf</span>=<span class="string">"formArray.controls[indexItem].get('monitorUserEmail').dirty &amp;&amp; formArray.controls[indexItem].get('monitorUserEmail')?.hasError('required')"</span> &gt;</span></span><br><span class="line">                                请输入监控人邮箱</span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-form-explain</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-form-explain</span> *<span class="attr">ngIf</span>=<span class="string">"formArray.controls[indexItem].get('monitorUserEmail').dirty&amp;&amp; formArray.controls[indexItem].get('monitorUserEmail')?.hasError('email')"</span> &gt;</span></span><br><span class="line">                                请输入正确的邮箱</span><br><span class="line">                            <span class="tag">&lt;<span class="name">nz-form-explain</span>&gt;</span>         </span><br><span class="line">                       <span class="tag">&lt;/<span class="name">nz-form-control</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">nz-form-item</span>&gt;</span>         </span><br><span class="line">                        </span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">nz-col</span> <span class="attr">nzSpan</span>=<span class="string">'1'</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">i</span> *<span class="attr">ngIf</span>=<span class="string">"0 === indexItem"</span> <span class="attr">nz-icon</span> <span class="attr">nzType</span>=<span class="string">'plus-circle'</span> <span class="attr">nzTheme</span>=<span class="string">'outline'</span> (<span class="attr">click</span>)=<span class="string">'createRow()'</span> &gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">i</span> *<span class="attr">ngIf</span>=<span class="string">"0 !== indexItem"</span> <span class="attr">nz-icon</span> <span class="attr">nzType</span>=<span class="string">'minus-circle'</span> <span class="attr">nzTheme</span>=<span class="string">'outline'</span> (<span class="attr">click</span>)=<span class="string">'removalRow(indexItem)'</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>    </span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>                        </span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>                </span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">nz-spin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>arrayDemo.componemt.ts</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; FormArray, FormBuilder, FormGroup, Validators &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Input</span>() checkedItems: <span class="built_in">any</span>[];  <span class="comment">// 从父组建传过来的需要回填的数据</span></span><br><span class="line"></span><br><span class="line">    form: FormGroup; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"> <span class="keyword">private</span> fb: FormBuilder</span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line">    ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.createForm()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    createForm() &#123;</span><br><span class="line">        <span class="keyword">let</span> offerMonitorIds = []</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>.checkedItems.map(<span class="function"><span class="params">item</span> =&gt;</span>&#123;</span><br><span class="line">            offerMonitorIds.push(item.id)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.form = <span class="keyword">this</span>.fb.group(&#123;</span><br><span class="line">            array: <span class="keyword">this</span>.fb.array([]),</span><br><span class="line">            offetMonitorIds:[<span class="literal">null</span>],</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>.form.get(<span class="string">'offerMonitorIds'</span>).setValue(offerMonitorIds)  <span class="comment">// 回填数据</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.initRow()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">get</span> formArray() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.form.get(<span class="string">'array'</span>) <span class="keyword">as</span> FormArray; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    createRow() &#123;</span><br><span class="line">        <span class="keyword">const</span> control = <span class="keyword">this</span>.fb.group(&#123;</span><br><span class="line">            monitorUserId: [<span class="literal">null</span> ,  [Validators.required]],</span><br><span class="line">            monitorUserName: [<span class="literal">null</span>], </span><br><span class="line">            monitorUserEmail: [ <span class="literal">null</span>, [Validators.required, Validators.email]],</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 监听监控人的变化</span></span><br><span class="line">        control.get(<span class="string">'monitorUserId'</span>).ValueChanges.pipe(</span><br><span class="line">            takeUntil(<span class="keyword">this</span>._destroy),  <span class="comment">//  直到提供的obserVable 发出值，就清除当前状态</span></span><br><span class="line">        ).subscribe(<span class="function">(<span class="params">monitorUserId</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> users = <span class="keyword">this</span>.formArray.value</span><br><span class="line">            <span class="keyword">const</span> exitUser = users.find( <span class="function"><span class="params">val</span> =&gt;</span> +val.monitorUserId === +monitorUserId);</span><br><span class="line">            <span class="keyword">if</span> ( exitUser ) &#123;</span><br><span class="line">                <span class="keyword">this</span>.nzMessageService.error(<span class="string">`监控人不能重复`</span>)</span><br><span class="line">                control.get(<span class="string">'monitorUserId'</span>).setValue(<span class="literal">null</span>, &#123;emitEvent:<span class="literal">false</span>&#125;) </span><br><span class="line">                <span class="keyword">return</span> </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;) </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用增加方法</span></span><br><span class="line">        <span class="keyword">this</span>.formArray.push(control)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用删除方法</span></span><br><span class="line"></span><br><span class="line">    removalRow(index:<span class="built_in">number</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> arr = <span class="keyword">this</span>.formArray;</span><br><span class="line">        arr.removeAt(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+		
+			<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对React知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout中是同...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在React开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state u...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+								React中Refs的使用方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React中Refs的使用方法
+什么是RefsRefs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。Ref转发是一项将ref自...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React中Refs的使用方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">
+								vue-cli反向代理解决跨域以及axios的配置			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 最近忙于各种各样大大小小的项目，都没时间写博客了。现在习惯于大型项目用react, 小型项目用 vue，本期就写一篇在漫漫学习之路中 小型项目中之前使用vue-cli 所遇到的问题吧！
+vue跨域实现与原理（proxyTabl...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue-cli反向代理解决跨域以及axios的配置"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记">
+								vue知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对vue知识的整理，对自己有很大帮助才分享出来！覆盖了vue3.0的一些知识点。
+1. 说说你对MVVM的理解
+Model-View-ViewModel的缩写，Model代表数据模型，Vie...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/05/27/vue知识点笔记/" title="vue知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/20/React新特性Hook/" title="React新特性Hook">
+								React新特性Hook			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 20日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：上一篇文章讲到了基于 React 的 Ant Design Pro, 在使用这个后台解决方案的过程中,尝试了使用 React 的一个强大的新增特性 Hook, Hook 是 React 16.8 的新增特性。Hook 是一些可以...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/20/React新特性Hook/" title="React新特性Hook">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React新特性Hook"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">
+								AntDesignPro中Dva的数据处理与搬运分析			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 11日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言：这段时间忙着做两个大型的中后台项目,分别用的 2 种不同的技术解决方案来进行。一个是 vue-element-admin , 另一个则是 Ant Design Pro, 前者操作起来比较简单,element 的 UI 设计给人感...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/11/AntDesignPro中Dva的数据处理与搬运分析/" title="AntDesignPro中Dva的数据处理与搬运分析">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="AntDesignPro中Dva的数据处理与搬运分析"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2021, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
