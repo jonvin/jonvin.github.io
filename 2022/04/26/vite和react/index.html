@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      git 的使用笔记 | city of sky
+      vite和react | city of sky
     
   </title>
   <meta name="author" content="Jonwen">
@@ -157,7 +157,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《git 的使用笔记》
+			当前文章&nbsp;:&nbsp;《vite和react》
 		
 	</p>
 
@@ -274,8 +274,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/06/05/git-的使用笔记的副本/" itemprop="url">
-		git 的使用笔记
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		vite和react
 	</a>
 
 	</div>
@@ -288,9 +288,9 @@
 
 	发布于
 
-	<a href="/2019/06/05/git-的使用笔记的副本/" itemprop="url">
-		<time datetime="2019-06-05T09:19:42.000Z" itemprop="datePublished">
-	  		2019-06-05
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		<time datetime="2022-04-26T02:15:13.000Z" itemprop="datePublished">
+	  		2022-04-26
 	  </time>
 	</a>
 	&nbsp;
@@ -306,9 +306,9 @@
 
 	更新于
 
-	<a href="/2019/06/05/git-的使用笔记的副本/" itemprop="url">
-		<time datetime="2019-06-05T09:19:42.000Z" itemprop="dateUpdated">
-	  		2021-08-12
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		<time datetime="2022-04-26T02:15:13.000Z" itemprop="dateUpdated">
+	  		2022-04-26
 	  </time>
 	</a> 
 
@@ -327,44 +327,9 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>前言：现在发现周围的朋友都有写博客的习惯。在朋友和同事的感染下，为了能更好的记录学习中的点点滴滴，今天自己也搭了一个。第一篇笔记就写常用的git 命令吧！</p>
-<h3 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h3><p>1.官网上下载git <a href="https://git-scm.com/" target="_blank" rel="noopener">点我</a></p>
-<p>2.本机安装对应版本的git。</p>
-<p>3.在码云或者github 之类的代码管理工具书上创建项目<br>注意，新建项目时去掉readme的选项</p>
-<p>4.跳转到教程页面</p>
-<p>5.打开安装完成的git，windows系统建议键入<br>git config –global core.autocrlf false<br>来设置一下crlf，如果不设置容易出现：LF will be replaced by CRLF错误；</p>
-<h3 id="初始化和创建项目"><a href="#初始化和创建项目" class="headerlink" title="初始化和创建项目"></a>初始化和创建项目</h3><p>6.然后依次输入以下命令进行初始化：<br>git init<br>git add .<br>touch README.md</p>
-<p>7.输入以下命令进行添加所有文件：<br>git add -A</p>
-<p>8.输入以下命令进行提交注释：<br>git commit -a -m “初始提交”</p>
-<p>9.输入以下命令进行初次建库，需要与远程仓库关联，输入如下命令关联：<br>git remote add origin  <a href="https://git.oschi[自己代码版本控制的地址]" target="_blank" rel="noopener">https://git.oschi[自己代码版本控制的地址]</a><br>如果出现 origin exitss，我们可以输入 git remote rm origin，再进行关联语句的执行</p>
-<p>git remote -v 查看代码是属于哪个仓库地址</p>
-<p>10.输入以下命令进行将代码仓库上传到代码库：<br>git push origin master</p>
-<p>恭喜你 到这里就上传成功啦！</p>
-<h3 id="开发过程"><a href="#开发过程" class="headerlink" title="开发过程"></a>开发过程</h3><p>11.先后运行git add和git commit命令将更改提交到本地仓库；</p>
-<p>12.关联本地仓库和远程仓库：git remote add origin  <a href="https://git.oschi[自己代码版本控制的公钥地址]" target="_blank" rel="noopener">https://git.oschi[自己代码版本控制的公钥地址]</a></p>
-<p>13.运行 git push -u origin master将更改提交到远程仓库。</p>
-<p>14.仓库建好，并与码云关联后，如果有新增文件只需重复如下命令：<br>git add -A<br>git commit -a -m “初始提交”<br>git push origin master</p>
-<p>15.在使用 git push origin master 提交时，如果出现failed to push some refs to git ：<br>输入 git pull –rebase origin master；<br>再输入 git push origin master 提交。</p>
-<p>16.如果遇到了 代码冲突等问题可以执行以下3行命令<br>git stash<br>git pull<br>git stash pop ：只会恢复 存储最新的stash</p>
-<p>退回到指定版本</p>
-<p>git reset –hard HEAD^</p>
-<p>查看git ssh key公钥</p>
-<p>cd ~/.ssh</p>
-<p>ls </p>
-<p>如果没有则需要生成公钥</p>
-<p>ssh-keygen</p>
-<p>再次查看是否生成</p>
-<p>cat id_rsa.pub</p>
-<p>git stash list  ：查看stash了哪些存储<br>git stash show ：显示做了哪些改动，默认show第一个存储,如果要显示其他存贮，后面加stash@{$num}，比如第二个 git stash show stash@{1}<br>git stash apply :应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即stash@{0}，如果要使用其他个，git stash apply stash@{$num} ， 比如第二个：git stash apply stash@{1} </p>
-<p>git config –global http.postBuffer 157286400 上传文件内容过大，配置上传限制</p>
-<p>查看用户名和邮箱</p>
-<p>git config user.name </p>
-<p>git config user.email</p>
-<p>修改用户名和邮箱</p>
-<p>git config –global user.name “XXX”</p>
-<p>git config –global user.email “xxxx”</p>
-<h3 id="新建分支删除分支等操作"><a href="#新建分支删除分支等操作" class="headerlink" title="新建分支删除分支等操作"></a>新建分支删除分支等操作</h3><p>17.git checkout -b ‘分支名’<br>18.git push origin dev 提价到新建的分支中<br>19.git  merge dev 把dev分支的代码合并到当前分之上<br>20.git branch -a 查看已有的本地及远程分支<br>21.git push origin –delete dev 删除远程分支<br>22.git branch -d dev  删除本地分支</p>
-<h3 id="在多人配合开发时-越过别人的eslint-报错-提交代码"><a href="#在多人配合开发时-越过别人的eslint-报错-提交代码" class="headerlink" title="在多人配合开发时 越过别人的eslint 报错 提交代码"></a>在多人配合开发时 越过别人的eslint 报错 提交代码</h3><p>23.git commit -m ‘’ –no-verify</p>
+		<h2 id="使用-vite-创建项目脚手架"><a href="#使用-vite-创建项目脚手架" class="headerlink" title="使用 vite 创建项目脚手架"></a>使用 vite 创建项目脚手架</h2><p>执行 yarn create vite react_with_vite –template react-ts 命令， 执行过程如下：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ yarn create vite react_with_vite --template react-ts</span><br><span class="line">yarn create v1.<span class="number">22</span>.<span class="number">17</span></span><br><span class="line">[<span class="number">1</span>/<span class="number">4</span>] 🔍  Resolving packages...</span><br><span class="line">[<span class="number">2</span>/<span class="number">4</span>] 🚚  Fetching packages...</span><br><span class="line">[<span class="number">3</span>/<span class="number">4</span>] 🔗  Linking dependencies...</span><br><span class="line">[<span class="number">4</span>/<span class="number">4</span>] 🔨  Building fresh packages...</span><br><span class="line"></span><br><span class="line">success Installed "create-vite@<span class="number">2</span>.<span class="number">8</span>.<span class="number">0</span>" with binaries:</span><br><span class="line">      - create-vite</span><br><span class="line">      - cva</span><br><span class="line"></span><br><span class="line">Scaffolding project <span class="keyword">in</span> /Users/apple/workspace/test/vite/react_with_vite...</span><br><span class="line"></span><br><span class="line">Done. Now run:</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cd</span> react_with_vite</span><br><span class="line">  yarn</span><br><span class="line">  yarn dev</span><br><span class="line"></span><br><span class="line">✨  Done <span class="keyword">in</span> <span class="number">7</span>.<span class="number">62</span>s.</span><br></pre></td></tr></table></figure>
+
 	
 	</div>
 	
@@ -383,12 +348,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/12/webpack插件postcss/" title="webpack的编译工具之一postcss" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/06/05/git-的使用笔记/" title="git 的使用笔记" rel="next">
+			<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -464,11 +425,11 @@ webpack的作用1、依赖管理：方便引用第三方模块、让模块更容
 								三月 10日, 2021				
 							</p>
 							<p class="relate-post-content">
-								声明：本篇文章纯属笔记性文章，非整体原创，是对React知识的整理，对自己有很大帮助才分享出来！
+								声明：本篇文章纯属笔记性文章，非整体原创，是对 React 知识的整理，对自己有很大帮助才分享出来！
 1、setState 是异步还是同步？1.合成事件中是异步
 2.钩子函数中的是异步
 3.原生事件中是同步
-4.setTimeout中是同...
+4.setTimeout ...
 							</p>
 						</div>
 
@@ -897,7 +858,7 @@ Model-View-ViewModel的缩写，Model代表数据模型，Vie...
 	<div class="copyright">
 		<p>
 			 
-				&copy;2017 - 2021, content by Jonwen. All Rights Reserved.
+				&copy;2017 - 2022, content by Jonwen. All Rights Reserved.
 			
 			
 			
