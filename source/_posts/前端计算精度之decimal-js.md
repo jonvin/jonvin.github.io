@@ -1,18 +1,7 @@
-<!--
- * @file:
- * @author: Dengcewen
- * @Data: Do not edit
- * @LastEditors: Dengcewen
- * @LastEditTime: 2025-05-22 16:36:42
--->
-
 ---
-
-layout: javascript
-title: 前端计算精度之 decimal.js
-date: 2025-05-22 15:14:29
+title: 前端计算精度之decimal.js
+date: 2025-05-22 19:15:44
 tags:
-
 ---
 
 在上一个美国股票期权项目中涉及到前端计算小数失去精度的问题，也找了一些相关的解决方案，最终确定的方案还是 decimal 库，下面记录一下安装以及使用，方便下次忘记时查阅。
@@ -63,11 +52,10 @@ console.log(resultMod.toString()); // 输出：0.1
 // 指数运算
 const resultPow = a.pow(2);
 console.log(resultPow.toString()); // 输出：0.01
-
+s
 // 保留小数位数
 const resultFixed = a.toFixed(2);
 console.log(resultFixed); // 输出：0.10
-
 
 // 连续运算
 const result = new Decimal(0.1)
