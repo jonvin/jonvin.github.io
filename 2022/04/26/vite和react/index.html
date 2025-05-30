@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      vite和react | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《vite和react》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		vite和react
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		<time datetime="2022-04-26T02:15:13.000Z" itemprop="datePublished">
+	  		2022-04-26
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		<time datetime="2022-04-26T02:15:13.000Z" itemprop="dateUpdated">
+	  		2025-05-25
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h2 id="使用-vite-创建项目脚手架"><a href="#使用-vite-创建项目脚手架" class="headerlink" title="使用 vite 创建项目脚手架"></a>使用 vite 创建项目脚手架</h2><p>执行 yarn create vite react_with_vite –template react-ts 命令， 执行过程如下：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ yarn create vite react_with_vite --template react-ts</span><br><span class="line">yarn create v1.<span class="number">22</span>.<span class="number">17</span></span><br><span class="line">[<span class="number">1</span>/<span class="number">4</span>] 🔍  Resolving packages...</span><br><span class="line">[<span class="number">2</span>/<span class="number">4</span>] 🚚  Fetching packages...</span><br><span class="line">[<span class="number">3</span>/<span class="number">4</span>] 🔗  Linking dependencies...</span><br><span class="line">[<span class="number">4</span>/<span class="number">4</span>] 🔨  Building fresh packages...</span><br><span class="line"></span><br><span class="line">success Installed "create-vite@<span class="number">2</span>.<span class="number">8</span>.<span class="number">0</span>" with binaries:</span><br><span class="line">      - create-vite</span><br><span class="line">      - cva</span><br><span class="line"></span><br><span class="line">Scaffolding project <span class="keyword">in</span> /Users/apple/workspace/test/vite/react_with_vite...</span><br><span class="line"></span><br><span class="line">Done. Now run:</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cd</span> react_with_vite</span><br><span class="line">  yarn</span><br><span class="line">  yarn dev</span><br><span class="line"></span><br><span class="line">✨  Done <span class="keyword">in</span> <span class="number">7</span>.<span class="number">62</span>s.</span><br></pre></td></tr></table></figure>
+
+<h2 id="规划开发目录"><a href="#规划开发目录" class="headerlink" title="规划开发目录"></a>规划开发目录</h2><p>● 新建/src/assets 目录用于存放静态资源<br>● 新建/src/pages 目录用于存放页面级组件<br>● 新建/src/components 目录用于存放组件元素</p>
+<h2 id="添加-react-路由依赖管理"><a href="#添加-react-路由依赖管理" class="headerlink" title="添加 react 路由依赖管理"></a>添加 react 路由依赖管理</h2><p>yarn add react-router-dom@6<br>了解更多可以查看<a href="https://reactrouter.com/docs/en/v6/getting-started/overview" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="react-router-dom-v6-的使用"><a href="#react-router-dom-v6-的使用" class="headerlink" title="react-router-dom v6 的使用"></a>react-router-dom v6 的使用</h2><p>1.编辑/main.tsx 内容如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom/client'</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  BrowserRouter,</span><br><span class="line">  Routes,</span><br><span class="line">  Route</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./index.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'./pages/home/home'</span>;</span><br><span class="line"><span class="keyword">import</span> Login <span class="keyword">from</span> <span class="string">'./pages/login/login'</span>;</span><br><span class="line"></span><br><span class="line">ReactDOM.createRoot(<span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)).render(</span><br><span class="line">  &lt;React.StrictMode&gt;</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">      &lt;Routes&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> element=&#123;&lt;App /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=<span class="string">"login"</span> element=&#123;&lt;Login /&gt;&#125;&gt;&lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Route path="home" element=&#123;&lt;Home /</span>&gt;&#125;&gt;&lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Route&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/home"</span> element=&#123;&lt;Home /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/login"</span> element=&#123;&lt;Login /&gt;&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/Routes&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>BrowserRouter&gt;</span><br><span class="line">  &lt;<span class="regexp">/React.StrictMode&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vite-移动端适配方案"><a href="#vite-移动端适配方案" class="headerlink" title="vite 移动端适配方案"></a>vite 移动端适配方案</h2><p>1.安装 amfe-flexible 可以进行 HTML 根节点的初始化、屏幕自适应</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add amfe-flexible</span><br></pre></td></tr></table></figure>
+
+<p>2.在 main.js 中引入 amfe-flexible</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &quot;amfe-flexible&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>3.安装 postcss-pxtorem 实现将 px 转成 rem。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add postcss-pxtorem</span><br></pre></td></tr></table></figure>
+
+<p>4.vite.config.ts 中配置 postcss-pxtorem</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">'vite'</span></span><br><span class="line"><span class="keyword">import</span> react <span class="keyword">from</span> <span class="string">'@vitejs/plugin-react'</span></span><br><span class="line"><span class="keyword">import</span> postCssPxToRem <span class="keyword">from</span> <span class="string">'postcss-pxtorem'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [react()],</span><br><span class="line">  css: &#123;</span><br><span class="line">    postcss: &#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        postCssPxToRem(&#123;</span><br><span class="line">          rootValue: <span class="number">75</span>,  <span class="comment">// 1rem 的大小</span></span><br><span class="line">          rootValuePC: <span class="number">192</span>, <span class="comment">// PC 端文件字体大小</span></span><br><span class="line">          propList: [<span class="string">'*'</span>],  <span class="comment">// 需要转换的属性，这里全部进行转换</span></span><br><span class="line">          mediaQuery: <span class="literal">false</span>, <span class="comment">// 是否在媒体查询中转换</span></span><br><span class="line">          <span class="comment">// exclude: "/src/pages/login"</span></span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  server: &#123;</span><br><span class="line">    strictPort: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="vite-配置代理解决跨域问题"><a href="#vite-配置代理解决跨域问题" class="headerlink" title="vite 配置代理解决跨域问题"></a>vite 配置代理解决跨域问题</h2><p>1.server.proxy 更多配置请查看<a href="https://vitejs.cn/config/#server-proxy" target="_blank" rel="noopener">官方文档</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">'vite'</span></span><br><span class="line"><span class="keyword">import</span> react <span class="keyword">from</span> <span class="string">'@vitejs/plugin-react'</span></span><br><span class="line"><span class="keyword">import</span> postCssPxToRem <span class="keyword">from</span> <span class="string">'postcss-pxtorem'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [react()],</span><br><span class="line">  css: &#123;</span><br><span class="line">    postcss: &#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        postCssPxToRem(&#123;</span><br><span class="line">          rootValue: <span class="number">75</span>,  <span class="comment">// 1rem 的大小</span></span><br><span class="line">          rootValuePC: <span class="number">192</span>, <span class="comment">// PC 端文件字体大小</span></span><br><span class="line">          propList: [<span class="string">'*'</span>],  <span class="comment">// 需要转换的属性，这里全部进行转换</span></span><br><span class="line">          mediaQuery: <span class="literal">false</span>, <span class="comment">// 是否在媒体查询中转换</span></span><br><span class="line">          <span class="comment">// exclude: "/src/pages/login"</span></span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  server: &#123;</span><br><span class="line">    strictPort: <span class="literal">true</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="comment">// 选项写法</span></span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://jsonplaceholder.typicode.com'</span>, <span class="comment">// 所要代理的目标地址</span></span><br><span class="line">            changeOrigin: <span class="literal">true</span>, <span class="comment">// 默认为 false 将请求源头改为 target 配置的地址</span></span><br><span class="line">            rewrite: <span class="function">(<span class="params">path</span>) =&gt;</span> path.replace(<span class="regexp">/^\/api/</span>, <span class="string">''</span>) <span class="comment">// 重写传过来的path路径 比如`/api/index/1?id=1&amp;name=jonwen` 注意：path路径最前面有斜杆（/）因此正则匹配的时候不要忘了是斜杆（/）开头的：选项的key 也是斜（/）杆开头的</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="vite-配置-为跟目录"><a href="#vite-配置-为跟目录" class="headerlink" title="vite 配置@为跟目录"></a>vite 配置@为跟目录</h2><p>1.在项目中添加 path</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add <span class="built_in">path</span></span><br></pre></td></tr></table></figure>
+
+<p>2.在 tsconfig.json 中加上 “baseUrl”: “.”, “paths”: {“@/<em>“: [“src/</em>“]}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: &quot;ESNext&quot;,</span><br><span class="line">    &quot;useDefineForClassFields&quot;: true,</span><br><span class="line">    &quot;lib&quot;: [&quot;DOM&quot;, &quot;DOM.Iterable&quot;, &quot;ESNext&quot;],</span><br><span class="line">    &quot;allowJs&quot;: false,</span><br><span class="line">    &quot;skipLibCheck&quot;: true,</span><br><span class="line">    &quot;esModuleInterop&quot;: false,</span><br><span class="line">    &quot;allowSyntheticDefaultImports&quot;: true,</span><br><span class="line">    &quot;strict&quot;: true,</span><br><span class="line">    &quot;forceConsistentCasingInFileNames&quot;: true,</span><br><span class="line">    &quot;module&quot;: &quot;ESNext&quot;,</span><br><span class="line">    &quot;moduleResolution&quot;: &quot;Node&quot;,</span><br><span class="line">    &quot;resolveJsonModule&quot;: true,</span><br><span class="line">    &quot;isolatedModules&quot;: true,</span><br><span class="line">    &quot;noEmit&quot;: true,</span><br><span class="line">    &quot;jsx&quot;: &quot;react-jsx&quot;,</span><br><span class="line">    &quot;baseUrl&quot;: &quot;.&quot;,</span><br><span class="line">    &quot;paths&quot;: &#123;</span><br><span class="line">      &quot;@/*&quot;: [&quot;src/*&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;include&quot;: [&quot;src&quot;],</span><br><span class="line">  &quot;references&quot;: [&#123; &quot;path&quot;: &quot;./tsconfig.node.json&quot; &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.修改 vite.config.ts 配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">'vite'</span></span><br><span class="line"><span class="keyword">import</span> react <span class="keyword">from</span> <span class="string">'@vitejs/plugin-react'</span></span><br><span class="line"><span class="keyword">import</span> postCssPxToRem <span class="keyword">from</span> <span class="string">'postcss-pxtorem'</span></span><br><span class="line"><span class="keyword">import</span> &#123; resolve &#125; <span class="keyword">from</span> <span class="string">'path'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [react()],</span><br><span class="line">  base: <span class="string">"./"</span>,  <span class="comment">// 打包路径</span></span><br><span class="line">  <span class="comment">// 配置@根目录方法一</span></span><br><span class="line">  <span class="comment">// resolve: &#123;</span></span><br><span class="line">  <span class="comment">//   alias: &#123;</span></span><br><span class="line">  <span class="comment">//     '@': resolve(__dirname, './src')</span></span><br><span class="line">  <span class="comment">//   &#125;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// 配置@根目录方法二</span></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: [ <span class="comment">//配置别名</span></span><br><span class="line">      &#123; <span class="attr">find</span>:<span class="string">'@'</span>, <span class="attr">replacement</span>: resolve(__dirname, <span class="string">'./src'</span>) &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  css: &#123;</span><br><span class="line">    postcss: &#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        postCssPxToRem(&#123;</span><br><span class="line">          rootValue: <span class="number">75</span>,  <span class="comment">// 1rem 的大小</span></span><br><span class="line">          rootValuePC: <span class="number">192</span>, <span class="comment">// PC 端文件字体大小</span></span><br><span class="line">          propList: [<span class="string">'*'</span>],  <span class="comment">// 需要转换的属性，这里全部进行转换</span></span><br><span class="line">          mediaQuery: <span class="literal">false</span>, <span class="comment">// 是否在媒体查询中转换</span></span><br><span class="line">          <span class="comment">// exclude: "/src/pages/login"</span></span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  server: &#123;</span><br><span class="line">    strictPort: <span class="literal">true</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="comment">// 选项写法</span></span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://jsonplaceholder.typicode.com'</span>, <span class="comment">// 所要代理的目标地址</span></span><br><span class="line">            changeOrigin: <span class="literal">true</span>, <span class="comment">// 默认为 false 将请求源头改为 target 配置的地址</span></span><br><span class="line">            rewrite: <span class="function">(<span class="params">path</span>) =&gt;</span> path.replace(<span class="regexp">/^\/api/</span>, <span class="string">''</span>) <span class="comment">// 重写传过来的path路径 比如`/api/index/1?id=1&amp;name=jonwen` 注意：path路径最前面有斜杆（/）因此正则匹配的时候不要忘了是斜杆（/）开头的：选项的key 也是斜（/）杆开头的</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="vite-配置-less"><a href="#vite-配置-less" class="headerlink" title="vite 配置 less"></a>vite 配置 less</h2><p>1.添加 less</p>
+<p>添加 less 依赖即可，yarn add less</p>
+<p>2.修改 vite.config.ts</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">'vite'</span></span><br><span class="line"><span class="keyword">import</span> react <span class="keyword">from</span> <span class="string">'@vitejs/plugin-react'</span></span><br><span class="line"><span class="keyword">import</span> postCssPxToRem <span class="keyword">from</span> <span class="string">'postcss-pxtorem'</span></span><br><span class="line"><span class="keyword">import</span> &#123; resolve &#125; <span class="keyword">from</span> <span class="string">'path'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [react()],</span><br><span class="line">  base: <span class="string">"./"</span>,  <span class="comment">// 打包路径</span></span><br><span class="line">  <span class="comment">// 配置@根目录方法一</span></span><br><span class="line">  <span class="comment">// resolve: &#123;</span></span><br><span class="line">  <span class="comment">//   alias: &#123;</span></span><br><span class="line">  <span class="comment">//     '@': resolve(__dirname, './src')</span></span><br><span class="line">  <span class="comment">//   &#125;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// 配置@根目录方法二</span></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: [ <span class="comment">//配置别名</span></span><br><span class="line">      &#123; <span class="attr">find</span>:<span class="string">'@'</span>, <span class="attr">replacement</span>: resolve(__dirname, <span class="string">'./src'</span>) &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  css: &#123;</span><br><span class="line">    preprocessorOptions: &#123;</span><br><span class="line">      less: &#123;</span><br><span class="line">        javascriptEnabled: <span class="literal">true</span>, <span class="comment">// 设置为true才能引入高版本的less</span></span><br><span class="line">        modifyVars: &#123;</span><br><span class="line">          <span class="comment">// 此处也可以设置变宽色、字体大小等</span></span><br><span class="line">          <span class="string">'primary-color'</span>: <span class="string">'#e30015'</span>  <span class="comment">// 主题色设置联通红</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    postcss: &#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        postCssPxToRem(&#123;</span><br><span class="line">          rootValue: <span class="number">75</span>,  <span class="comment">// 1rem 的大小</span></span><br><span class="line">          rootValuePC: <span class="number">192</span>, <span class="comment">// PC 端文件字体大小</span></span><br><span class="line">          propList: [<span class="string">'*'</span>],  <span class="comment">// 需要转换的属性，这里全部进行转换</span></span><br><span class="line">          mediaQuery: <span class="literal">false</span>, <span class="comment">// 是否在媒体查询中转换</span></span><br><span class="line">          <span class="comment">// exclude: "/src/pages/login"</span></span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  server: &#123;</span><br><span class="line">    strictPort: <span class="literal">true</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="comment">// 选项写法</span></span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://jsonplaceholder.typicode.com'</span>, <span class="comment">// 所要代理的目标地址</span></span><br><span class="line">            changeOrigin: <span class="literal">true</span>, <span class="comment">// 默认为 false 将请求源头改为 target 配置的地址</span></span><br><span class="line">            rewrite: <span class="function">(<span class="params">path</span>) =&gt;</span> path.replace(<span class="regexp">/^\/api/</span>, <span class="string">''</span>) <span class="comment">// 重写传过来的path路径 比如`/api/index/1?id=1&amp;name=jonwen` 注意：path路径最前面有斜杆（/）因此正则匹配的时候不要忘了是斜杆（/）开头的：选项的key 也是斜（/）杆开头的</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>3.在 main.js 中引入对应的 less 组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"antd/dist/antd.less"</span>;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2025/05/25/test/" title="test">
+								test			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 25日, 2025				
+							</p>
+							<p class="relate-post-content">
+								1.用于测试 markdown 的文件夹
+
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2025/05/25/test/" title="test">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="test"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">
+								前端计算精度之decimal.js			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 22日, 2025				
+							</p>
+							<p class="relate-post-content">
+								在上一个美国股票期权项目中涉及到前端计算小数失去精度的问题，也找了一些相关的解决方案，最终确定的方案还是 decimal 库，下面记录一下安装以及使用，方便下次忘记时查阅。
+安装:
+12npm install decimal.js
+
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="前端计算精度之decimal.js"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">
+								Angular的动态表单			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 18日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言：到新的公司写 angular 也有 2 个月了，众所周知 Angular 的学习曲线是非常陡峭的，而且在网上找学习的博客也是比 vue 和 react 要少很多，在写 Angular 的过程中，生命周期和父子组件传值，这些基本的...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Angular的动态表单"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对 React 知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在 React 开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+								React中Refs的使用方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React 中 Refs 的使用方法
+什么是 RefsRefs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。Ref 转发是一项...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React中Refs的使用方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">
+								vue-cli反向代理解决跨域以及axios的配置			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2020				
+							</p>
+							<p class="relate-post-content">
+								前言： 最近忙于各种各样大大小小的项目，都没时间写博客了。现在习惯于大型项目用react, 小型项目用 vue，本期就写一篇在漫漫学习之路中 小型项目中之前使用vue-cli 所遇到的问题吧！
+vue跨域实现与原理（proxyTabl...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/08/27/vue-cli反向代理解决跨域以及axios的配置/" title="vue-cli反向代理解决跨域以及axios的配置">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vue-cli反向代理解决跨域以及axios的配置"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2025, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>

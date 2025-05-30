@@ -1,0 +1,972 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      [flutter的爬坑之路] | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《[flutter的爬坑之路]》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/07/18/flutter的爬坑之路/" itemprop="url">
+		[flutter的爬坑之路]
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/07/18/flutter的爬坑之路/" itemprop="url">
+		<time datetime="2019-07-18T02:52:48.000Z" itemprop="datePublished">
+	  		2019-07-18
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/07/18/flutter的爬坑之路/" itemprop="url">
+		<time datetime="2019-07-18T02:52:48.000Z" itemprop="dateUpdated">
+	  		2025-05-25
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>前言：最近我们团队在用flutter开发app，也挺感谢公司给我们这一次实战爬flutter坑的机会,因为之前，爬过一次 React-Native 的坑，所以这次flutter环境搭的还是比较顺利的，更值得称赞的是 flutter doctor,在搭建环境的时候帮了不少忙！</p>
+<h3 id="系统配置要求"><a href="#系统配置要求" class="headerlink" title="系统配置要求"></a>系统配置要求</h3><p>● 操作系统：Windows 7 SP1 或更高的版本（64 位操作系统）。</p>
+<p>● 磁盘空间：除安装 IDE 和一些工具之外还应有至少 400 MB 的空间。</p>
+<p>● 工具：要让 Flutter 在你的开发环境中正常使用，依赖于以下的工具：</p>
+<pre><code>Windows PowerShell 5.0 或者更高的版本（Windows 10 中已经预装了）
+
+Git for Windows 2.x，并且勾选从 Windows 命令提示符使用 Git 选项。
+
+如果 Windows 版的 Git 已经安装过了，那么请确保能从命令提示符或者 PowerShell 中直接执行 git 命令。</code></pre><h3 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h3><p>● Flutter SDK</p>
+<p>● Android SDK</p>
+<p>● Android Studio或其他支持Flutter的IDE</p>
+<h3 id="下载Flutter-SDK"><a href="#下载Flutter-SDK" class="headerlink" title="下载Flutter SDK"></a>下载Flutter SDK</h3><p>2.1下载地址：<a href="https://flutter.io/get-started/install/，选择操作系统对应的版本（本文使用windows版）。" target="_blank" rel="noopener">https://flutter.io/get-started/install/，选择操作系统对应的版本（本文使用windows版）。</a></p>
+<p>2.2下载SDK压缩包，并解压至自定义路径。</p>
+<p>###进行配置环境变量，目前在国内这一步必不可少</p>
+<p>如果您在中国安装或使用Flutter，使用托管Flutter依赖关系的可靠本地镜像站点可能会有帮助。要指示Flutter工具使用备用存储位置，您需要设置两个环境变量，PUB_HOSTED_URL并且FLUTTER_STORAGE_BASE_URL在运行该flutter命令之前。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line">FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-Studio-安装"><a href="#Android-Studio-安装" class="headerlink" title="Android Studio 安装"></a>Android Studio 安装</h3><p>Android Studio: 为Flutter提供完整的IDE体验</p>
+<p>安装Android Studio<br>Android Studio, 3.0或更高版本.<br>或者，您也可以使用IntelliJ：</p>
+<p>IntelliJ IDEA Community, version 2017.1或更高版本.<br>IntelliJ IDEA Ultimate, version 2017.1 或更高版本.<br>安装Flutter和Dart插件<br>需要安装两个插件:</p>
+<p>Flutter插件： 支持Flutter开发工作流 (运行、调试、热重载等).<br>Dart插件： 提供代码分析 (输入代码时进行验证、代码补全等).</p>
+<p>要安装这些:</p>
+<p>1.启动Android Studio.<br>2.打开插件首选项 (Preferences&gt;Plugins on macOS, File&gt;Settings&gt;Plugins on Windows &amp; Linux).<br>3.选择 Browse repositories…, 选择 Flutter 插件并点击 install.<br>4.重启Android Studio后插件生效.</p>
+<h3 id="Visual-Studio-Code-VS-Code-安装"><a href="#Visual-Studio-Code-VS-Code-安装" class="headerlink" title="Visual Studio Code (VS Code) 安装"></a>Visual Studio Code (VS Code) 安装</h3><p>VS Code: 轻量级编辑器，支持Flutter运行和调试.</p>
+<p>安装 VS Code<br>VS Code, 安装1.20.1或更高版本.<br>安装Flutter插件<br>启动 VS Code<br>调用 View&gt;Command Palette…<br>输入 ‘install’, 然后选择 Extensions: Install Extension action<br>在搜索框输入 flutter , 在搜索结果列表中选择 ‘Flutter’, 然后点击 Install<br>选择 ‘OK’ 重新启动 VS Code</p>
+<p>通过Flutter Doctor验证您的设置</p>
+<p>1.调用 View&gt;Command Palette…<br>2.输入 ‘doctor’, 然后选择 ‘Flutter: Run Flutter Doctor’ action<br>3.查看“OUTPUT”窗口中的输出是否有问题</p>
+<h3 id="创建新的应用"><a href="#创建新的应用" class="headerlink" title="创建新的应用"></a>创建新的应用</h3><p>1.启动 VS Code<br>2.调用 View&gt;Command Palette…<br>3.输入 ‘flutter’, 然后选择 ‘Flutter: New Project’ action<br>4.输入 Project 名称 (如myapp), 然后按回车键<br>5.指定放置项目的位置，然后按蓝色的确定按钮<br>6.等待项目创建继续，并显示main.dart文件</p>
+<p>上述命令创建一个Flutter项目，项目名为myapp，其中包含一个使用Material 组件的简单的演示应用程序。</p>
+<p>在项目目录中，您的应用程序的代码位于 lib/main.dart.</p>
+<p>运行应用程序<br>1.确保在VS Code的右下角选择了目标设备<br>2.按 F5 键或调用Debug&gt;Start Debugging<br>3.等待应用程序启动<br>4.如果一切正常，在应用程序建成功后，您应该在您的设备或模拟器上看到应用程序:</p>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/08/09/flutter实战爬坑笔记/" title="flutter实战爬坑笔记" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/06/12/webpack插件postcss/" title="webpack的编译工具之一postcss" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2025/05/25/test/" title="test">
+								test			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 25日, 2025				
+							</p>
+							<p class="relate-post-content">
+								1.用于测试 markdown 的文件夹
+
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2025/05/25/test/" title="test">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="test"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">
+								前端计算精度之decimal.js			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 22日, 2025				
+							</p>
+							<p class="relate-post-content">
+								在上一个美国股票期权项目中涉及到前端计算小数失去精度的问题，也找了一些相关的解决方案，最终确定的方案还是 decimal 库，下面记录一下安装以及使用，方便下次忘记时查阅。
+安装:
+12npm install decimal.js
+
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="前端计算精度之decimal.js"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2022/04/26/vite和react/" title="vite和react">
+								vite和react			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 26日, 2022				
+							</p>
+							<p class="relate-post-content">
+								使用 vite 创建项目脚手架执行 yarn create vite react_with_vite –template react-ts 命令， 执行过程如下：
+1234567891011121314151617181920$ ya...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2022/04/26/vite和react/" title="vite和react">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vite和react"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">
+								Angular的动态表单			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 18日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言：到新的公司写 angular 也有 2 个月了，众所周知 Angular 的学习曲线是非常陡峭的，而且在网上找学习的博客也是比 vue 和 react 要少很多，在写 Angular 的过程中，生命周期和父子组件传值，这些基本的...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Angular的动态表单"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对 React 知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在 React 开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+								React中Refs的使用方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React 中 Refs 的使用方法
+什么是 RefsRefs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。Ref 转发是一项...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React中Refs的使用方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2025, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>

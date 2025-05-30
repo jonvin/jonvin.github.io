@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			主页
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			
+
+
+
+	<!--cart style-->
+	<div class="layout-cart">
+	<div id="layout-cart">
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2025/05/25/test/" title=" test ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					五月 25日, 2025
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2025/05/25/test/" title="test">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2025/05/25/test/" itemprop="url">
+		test
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						1.用于测试 markdown 的文件夹
+
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2025/05/22/前端计算精度之decimal-js/" title=" 前端计算精度之decimal.js ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					五月 22日, 2025
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2025/05/22/前端计算精度之decimal-js/" itemprop="url">
+		前端计算精度之decimal.js
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						在上一个美国股票期权项目中涉及到前端计算小数失去精度的问题，也找了一些相关的解决方案，最终确定的方案还是 decimal 库，下面记录一下安装以及使用，方...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2022/04/26/vite和react/" title=" vite和react ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					四月 26日, 2022
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2022/04/26/vite和react/" title="vite和react">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2022/04/26/vite和react/" itemprop="url">
+		vite和react
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						使用 vite 创建项目脚手架执行 yarn create vite react_with_vite –template react-ts 命令， 执行过...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2021/08/18/Angular的动态表单/" title=" Angular的动态表单 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					八月 18日, 2021
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2021/08/18/Angular的动态表单/" itemprop="url">
+		Angular的动态表单
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						前言：到新的公司写 angular 也有 2 个月了，众所周知 Angular 的学习曲线是非常陡峭的，而且在网上找学习的博客也是比 vue 和 reac...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2021/04/25/webpack前端工程化专题/" title=" webpack前端工程化专题 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					四月 25日, 2021
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2021/04/25/webpack前端工程化专题/" itemprop="url">
+		webpack前端工程化专题
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2021/03/10/React知识点笔记/" title=" React知识点笔记 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					三月 10日, 2021
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2021/03/10/React知识点笔记/" itemprop="url">
+		React知识点笔记
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						声明：本篇文章纯属笔记性文章，非整体原创，是对 React 知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2021/03/03/React开发中遇到的问题/" title=" React开发中遇到的问题 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					三月 3日, 2021
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2021/03/03/React开发中遇到的问题/" itemprop="url">
+		React开发中遇到的问题
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在 React 开发中，我们可能经常会遇到这个一个警告：
+报...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2021/02/22/js实用方法收集/" title=" js实用方法收集 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					二月 22日, 2021
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2021/02/22/js实用方法收集/" itemprop="url">
+		js实用方法收集
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFu...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2021/01/14/react的diff算法/" title=" react的diff算法 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					一月 14日, 2021
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2021/01/14/react的diff算法/" title="react的diff算法">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2021/01/14/react的diff算法/" itemprop="url">
+		react的diff算法
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2020/11/26/React中Refs的使用方法/" title=" React中Refs的使用方法 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg"/>
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					十一月 26日, 2020
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2020/11/26/React中Refs的使用方法/" itemprop="url">
+		React中Refs的使用方法
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React 中 Refs 的使用方法
+什么是 RefsRefs 提供了一种方式，允许我们访问 D...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	<div id="pagination">
+		
+			<a href="/page/2/" data-title="加载更多" data-status="没有了">加载更多</a>
+		
+	</div>
+
+	
+
+</div>
+	
+
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2025, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_site_pv">
+	    	本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+
+		<span id="busuanzi_container_site_uv">
+	  		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+		</span>
+		
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>

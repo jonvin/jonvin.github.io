@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      webpack的编译工具之一postcss | city of sky
+    
+  </title>
+  <meta name="author" content="Jonwen">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《webpack的编译工具之一postcss》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery/" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/06/12/webpack插件postcss/" itemprop="url">
+		webpack的编译工具之一postcss
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/06/12/webpack插件postcss/" itemprop="url">
+		<time datetime="2019-06-12T02:20:05.000Z" itemprop="datePublished">
+	  		2019-06-12
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/06/12/webpack插件postcss/" itemprop="url">
+		<time datetime="2019-06-12T02:20:05.000Z" itemprop="dateUpdated">
+	  		2025-05-25
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>前言：前一阵子对公司的h5页面进行了改版重构，在使用webpack的过程中了解了很多非常好用的工具，postcss 就是 其中之一.通过翻阅大量的书籍，浏览了很多大神的博客，我觉得我也有必要写点什么了。因为站在巨人的肩膀上，所以才能看得更远！</p>
+<h3 id="什么是postcss"><a href="#什么是postcss" class="headerlink" title="什么是postcss"></a>什么是postcss</h3><p>postcss 一种对css编译的工具，类似babel对js的处理，postcss 只是一个工具，本身不会对css 内容进行操作，它通过插件实现功能，autoprefixer 就是其一。常见的功能如：</p>
+<p>1.使用下一代css语法 (css4 语法)</p>
+<p>2.自动补全浏览器前缀</p>
+<p>3.自动把px代为转换成 rem</p>
+<p>4.css 代码压缩等</p>
+<h3 id="如何在webpack中使用"><a href="#如何在webpack中使用" class="headerlink" title="如何在webpack中使用"></a>如何在webpack中使用</h3><p>1.安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install postcss-loader --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2.在webpack中配置</p>
+<p>一般与其他loader配合使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="built_in">test</span>: /\.css$/,</span><br><span class="line">        // 此处为使用postcss分离css的写法,这里还使用了webpack的ExtractTextPlugin插件来进行分离</span><br><span class="line">        use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">          fallback: <span class="string">"style-loader"</span>,</span><br><span class="line">          use: [<span class="string">"css-loader"</span>, <span class="string">"postcss-loader"</span>],</span><br><span class="line">          // css中的基础路径</span><br><span class="line">          publicPath: <span class="string">"../"</span>          </span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new ExtractTextPlugin(&#123;</span><br><span class="line">        filename: <span class="string">'css/[name].min.css'</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://www.npmjs.com/package/extract-text-webpack-plugin" target="_blank" rel="noopener">ExtractTextPlugin</a></p>
+<p>3.postcss配置</p>
+<p>项目根目录新建 postcss.config.js 文件，所有使用到的插件都需在这里配置，空配置项时配置xx:{}</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    <span class="string">'autoprefixer'</span>: &#123;</span><br><span class="line">        browsers: <span class="string">'&gt; 5%'</span> //可以都不填，用默认配置</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的postcss插件"><a href="#常用的postcss插件" class="headerlink" title="常用的postcss插件"></a>常用的postcss插件</h3><p>1.autoprefixer<br>前缀补全，全自动的，无需多说</p>
+<p>安装：cnpm install autoprefixer –save-dev</p>
+<p>2.postcss-cssnext<br>使用下个版本的css语法，语法见下文 <a href="#cssnext">cssnext (css4)语法</a></p>
+<p>安装：cnpm install postcss-cssnext –save-dev<br>cssnext包含了 autoprefixer ，如果都安装会报错，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: postcss-cssnext found a duplicate plugin (<span class="string">'autoprefixer'</span>) <span class="keyword">in</span> your postcss plugins. This might be inefficient. You should remove <span class="string">'autoprefixer'</span> from your postcss plugin list since it<span class="string">'s already included by postcss-cssnext.</span></span><br></pre></td></tr></table></figure>
+
+<p>3.postcss-pxtorem</p>
+<p>安装：cnpm install postcss-pxtorem –save-dev</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"postcss-pxtorem"</span>:&#123;</span><br><span class="line">            rootValue: 30, //你在html节点设的font-size大小</span><br><span class="line">            unitPrecision: 5,  //转rem精确到小数点多少位</span><br><span class="line">            propList: [<span class="string">'font'</span>, <span class="string">'font-size'</span>, <span class="string">'line-height'</span>, <span class="string">'letter-spacing'</span>],//指定转换成rem的属性，支持 * ！ *代表所有的都转换成rem</span><br><span class="line">            selectorBlackList: [], // str/reg 指定不转换的选择器，str时包含字段即匹配</span><br><span class="line">            replace: <span class="literal">true</span>,</span><br><span class="line">            mediaQuery: <span class="literal">false</span>, //媒体查询内的px是否转换</span><br><span class="line">            minPixelValue: 5 //小于指定数值的px不转换</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>特殊技巧:不转换成rem</p>
+<p>px检测区分大小写，也就是说Px/PX/pX不会被转换，可以用这个方式避免转换成rem</p>
+<h3 id="cssnext">cssnext (css4)语法</h3>
+
+<p>cssnext 和 css4 并不是一个东西，cssnext使用下个版本css的草案语法</p>
+<p>相当于一个变量，变量的好处显而易见，重复使用</p>
+<p>1 . 定义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    --lehaColor: <span class="comment">#37cc75; </span></span><br><span class="line">    --lehaText:<span class="comment">#999;</span></span><br><span class="line">    --mainColor: <span class="comment">#66D066;</span></span><br><span class="line">    --orangeColor: <span class="comment">#f90;</span></span><br><span class="line">    --blueColor: <span class="comment">#49f;</span></span><br><span class="line">    --greyColor: <span class="comment">#f8f8f8;</span></span><br><span class="line">    --mainBackground: <span class="comment">#F2F6F8;</span></span><br><span class="line">    --subBackground: <span class="comment">#F8F8F8;</span></span><br><span class="line">    --infoBackground: <span class="comment">#F4F4F4;</span></span><br><span class="line">    --borderColor: <span class="comment">#E2E2E2;</span></span><br><span class="line">    --fontColor: <span class="comment">#333;</span></span><br><span class="line">    --fontInfoColor:<span class="comment">#999;</span></span><br><span class="line">    --fontSubColor: <span class="comment">#666;</span></span><br><span class="line">    --fontBold: 700;</span><br><span class="line">    --borderBottom: &#123;</span><br><span class="line">        border:0 ;</span><br><span class="line">        border-bottom:1px solid ;</span><br><span class="line">        border-image: svg(1px-border param(--color <span class="comment">#e2e2e2)) 1 stretch;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    --borderTop: &#123;</span><br><span class="line">        border:0 ;</span><br><span class="line">        border-top: 1px solid ; </span><br><span class="line">        border-image: svg(1px-border param(--color <span class="comment">#e2e2e2)) 1 stretch;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    --borderLeft: &#123;</span><br><span class="line">        border:0 ;</span><br><span class="line">        border-left: 1px solid ; </span><br><span class="line">        border-image: svg(1px-border param(--color <span class="comment">#e2e2e2)) 1 stretch;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    --borderRight: &#123;</span><br><span class="line">        border:0 ;</span><br><span class="line">        border-right: 1px solid ; </span><br><span class="line">        border-image: svg(1px-border param(--color <span class="comment">#e2e2e2)) 1 stretch;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    --borderBottomRight: &#123;</span><br><span class="line">        border:0 ;</span><br><span class="line">        border-bottom:1px solid ;</span><br><span class="line">        border-right: 1px solid ; </span><br><span class="line">        border-image: svg(1px-border param(--color <span class="comment">#e2e2e2)) 1 stretch;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    --border: &#123;</span><br><span class="line">        border: 1px solid ; </span><br><span class="line">        border-image: svg(1px-border param(--color <span class="comment">#e2e2e2)) 1 stretch;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    --backgroundBottom: &#123;</span><br><span class="line">        background-image: -moz-linear-gradient(var(--mainColor) 100%, transparent 100%);</span><br><span class="line">        background-image: -o-linear-gradient(var(--mainColor) 100%, transparent 100%);</span><br><span class="line">        background-image: linear-gradient(var(--mainColor) 100%, transparent 100%);</span><br><span class="line">        background-repeat: no-repeat;</span><br><span class="line">        background-position: bottom;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 . 使用 </p>
+<p>使用 var(xx) 调用自定义属性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.<span class="built_in">test</span>&#123;</span><br><span class="line">    background: var(--mianColor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*编译后*/</span><br><span class="line">.<span class="built_in">test</span>&#123;</span><br><span class="line">    background: <span class="comment">#ffc001;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>大小计算</li>
+</ol>
+<p>一般用于px rem等的计算</p>
+<p>语法：cale(四则运算)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*css3*/</span><br><span class="line">.<span class="built_in">test</span> &#123;</span><br><span class="line">    width: calc(100% - 50px);</span><br><span class="line">&#125;</span><br><span class="line">/*css4 允许变量*/</span><br><span class="line">:root &#123;</span><br><span class="line">  --fontSize: 1rem;</span><br><span class="line">&#125;</span><br><span class="line">h1 &#123;</span><br><span class="line">    font-size: calc(var(--fontSize) * 2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*编译后*/</span><br><span class="line">.<span class="built_in">test</span>&#123;</span><br><span class="line">    font-size: 32px;</span><br><span class="line">    font-size: 2rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.自定义定义媒体查询</p>
+<p>1 . 定义</p>
+<p>语法 @custom-media xx (条件) and (条件)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@custom-media --small-viewport (max-width: 30rem);</span><br></pre></td></tr></table></figure>
+
+<p>另外css4 可以使用&gt;= 和 &lt;= 代替min-width 、max-width</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@media (width &gt;= 500px) and (width &lt;= 1200px) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@media (--small-viewport) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*编译后*/</span><br><span class="line">@media (min-width: 500px) and (max-width: 1200px) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@media (max-width: 30rem) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/07/18/flutter的爬坑之路/" title="[flutter的爬坑之路]" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/06/05/git-的使用笔记/" title="git 的使用笔记" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2025/05/25/test/" title="test">
+								test			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 25日, 2025				
+							</p>
+							<p class="relate-post-content">
+								1.用于测试 markdown 的文件夹
+
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2025/05/25/test/" title="test">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="test"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">
+								前端计算精度之decimal.js			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 22日, 2025				
+							</p>
+							<p class="relate-post-content">
+								在上一个美国股票期权项目中涉及到前端计算小数失去精度的问题，也找了一些相关的解决方案，最终确定的方案还是 decimal 库，下面记录一下安装以及使用，方便下次忘记时查阅。
+安装:
+12npm install decimal.js
+
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2025/05/22/前端计算精度之decimal-js/" title="前端计算精度之decimal.js">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="前端计算精度之decimal.js"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2022/04/26/vite和react/" title="vite和react">
+								vite和react			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 26日, 2022				
+							</p>
+							<p class="relate-post-content">
+								使用 vite 创建项目脚手架执行 yarn create vite react_with_vite –template react-ts 命令， 执行过程如下：
+1234567891011121314151617181920$ ya...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2022/04/26/vite和react/" title="vite和react">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="vite和react"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">
+								Angular的动态表单			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 18日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言：到新的公司写 angular 也有 2 个月了，众所周知 Angular 的学习曲线是非常陡峭的，而且在网上找学习的博客也是比 vue 和 react 要少很多，在写 Angular 的过程中，生命周期和父子组件传值，这些基本的...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/08/18/Angular的动态表单/" title="Angular的动态表单">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Angular的动态表单"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">
+								webpack前端工程化专题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 25日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对webpack知识的整理，对自己有很大帮助才分享出来
+webpack的作用1、依赖管理：方便引用第三方模块、让模块更容易复用，避免全局注入导致的冲突、避免重复加载或者加载不需要的模块。会一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/04/25/webpack前端工程化专题/" title="webpack前端工程化专题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="webpack前端工程化专题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/10/React知识点笔记/" title="React知识点笔记">
+								React知识点笔记			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 10日, 2021				
+							</p>
+							<p class="relate-post-content">
+								声明：本篇文章纯属笔记性文章，非整体原创，是对 React 知识的整理，对自己有很大帮助才分享出来！
+1、setState 是异步还是同步？1.合成事件中是异步
+2.钩子函数中的是异步
+3.原生事件中是同步
+4.setTimeout ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/10/React知识点笔记/" title="React知识点笔记">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React知识点笔记"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">
+								React开发中遇到的问题			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								三月 3日, 2021				
+							</p>
+							<p class="relate-post-content">
+								下面是为大家分享 react 开发中遇到的问题
+react.js 函数组件解决内存泄漏警告
+
+在 React 开发中，我们可能经常会遇到这个一个警告：
+报错内容：Warning: Can’t perform a React state...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/03/03/React开发中遇到的问题/" title="React开发中遇到的问题">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React开发中遇到的问题"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/02/22/js实用方法收集/" title="js实用方法收集">
+								js实用方法收集			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								二月 22日, 2021				
+							</p>
+							<p class="relate-post-content">
+								时间格式化12345678910const formatTime = date =&gt; &#123;  const year = date.getFullYear()  const month = date.getMonth() ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/02/22/js实用方法收集/" title="js实用方法收集">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="js实用方法收集"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2021/01/14/react的diff算法/" title="react的diff算法">
+								react的diff算法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								一月 14日, 2021				
+							</p>
+							<p class="relate-post-content">
+								前言： React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心Virtual DOM 背后的运...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2021/01/14/react的diff算法/" title="react的diff算法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="react的diff算法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">
+								React中Refs的使用方法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								欢迎访问主页，有更多文章内容转载请注明原出处原文链接地址:React 中 Refs 的使用方法
+什么是 RefsRefs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。Ref 转发是一项...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/11/26/React中Refs的使用方法/" title="React中Refs的使用方法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="React中Refs的使用方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2025, content by Jonwen. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>

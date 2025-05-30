@@ -1,0 +1,1651 @@
+1. React中函数组件和类组件的区别
+
+共同点： 
+    组件名称必须以大写字母开头
+
+    组件的返回值只能有一个根元素    
+
+    无论是使用函数或是类来声明一个组件，它决不能修改它自己的 props。
+
+    所有 React 组件都必须是纯函数，并禁止修改其自身 props 。
+
+    React是单项数据流，父组件改变了属性，那么子组件视图会更新。
+
+    属性 props 是外界传递过来的，状态 state 是组件本身的，状态可以在组件中任意修改
+
+    组件的属性和状态改变都会更新视图。    
+
+
+区别：
+
+　　函数组件的性能比类组件的性能要高，
+
+    因为类组件使用的时候要实例化，而函数组件直接执行函数取返回结果即可。
+
+　　为了提高性能，尽量使用函数组件。
+
+　　函数组件没有this,没有生命周期，没有状态state,
+
+　　类组件有this,有生命周期，有状态state。    
+
+
+
+
+2. React中的Redux
+
+   Redux 中的 三个概念 store、action、reducer
+
+   Redux在使用React开发应用时，起到什么作用————状态集中管理    
+
+                   (监听器改变状态)                 
+   Action(事件) -------------------> Reducer(监听器：改变状态)  ------------------->  Store(状态树)
+                                            ↑
+                                            |                                            |
+                                            |                                            |    
+                                            |                                            |    
+                                            |                                            |
+                                            |                                            |
+                                            |                                            |   
+                                            |                                            ↓                                                                                         
+                                         Action <--------------------------------- view(重新选择)    
+                                                                       (Dispach)     
+                                    
+
+action：是事件，它本质上是JavaScript的普通对象，它描述的是“发生了什么”。action由type：string和其他构成。
+
+reducer是一个监听器，只有它可以改变状态。是一个纯函数，它不能修改state,所以必须是生成一个新的state。在default情况下，必须但会旧的state。
+
+store是一个类似数据库的存储（或者可以叫做状态树），需要设计自己的数据结构来在状态树中存储自己的数据。
+
+
+
+
+3. for in 和 for of
+
+for-in 循环和for-of循环两种增强型循环。其中，for-in是ES5标准，遍历的是key（可遍历对象、数组或字符串的key）；for-of是ES6标准，遍历的是value（可遍历对象、数组或字符串的value）。
+
+所以for-in更适合遍历对象，通常是建议不要使用for-in遍历数组
+
+for-of可以简单、正确地遍历数组
+
+3.与forEach()不同的是，它可以正确响应break、continue和return语句。
+
+
+4. 2个窗口之间的通讯方式
+  https://blog.csdn.net/chenzihong123/article/details/103805368
+ （1）localstorage
+    一个窗口更新localStorage，另一个窗口监听window对象的”storage”事件，来实现通信。(localStorage需要同源窗口才能共享，即协议，域名，端口一致)
+ （2) WebSocket
+    所有的WebSocket都监听同一个服务器地址，利用send发送消息，利用onmessage获取消息的变化，不仅能窗口，还能跨浏览器，兼容性最佳，只是需要消耗点服务器资源。
+  (3) window.postMessage() 
+    window.postMessage()方法可以安全地实现Window对象之间的跨域通信。例如，在一个页面和它生成的弹出窗口之间，或者是页面和嵌入其中的iframe之间。   
+  (4) 使用window.name  
+    浏览器窗口有window.name属性，这个属性的特点是：只要在同一窗口中，无论是否同源，不同网页的window.name属性都是共享的。
+    优点：window.name数据容量大（相比片段识别符）
+    缺点：（1）必须同一窗口；（2）必须监听窗口window.name属性的变化，影响网页性能；    
+
+5.使用<link>与 @import 的区别
+  (1).从属关系区别
+    @import是 CSS 提供的语法规则，只有导入样式表的作用；link是HTML提供的标签，不仅可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。        
+  (2).加载顺序区别 ；@import引入的 CSS 将在页面加载完毕后被加载。  
+  (3).兼容性区别
+    @import是 CSS2.1 才有的语法，故只可在 IE5 + 才能识别；link标签作为 HTML 元素，不存在兼容性问题。
+  (4).DOM可控性区别
+    可以通过 JS 操作 DOM ，插入link标签来改变样式；由于 DOM 方法是基于文档的，无法使用@import的方式插入样式。
+  (5).权重区别(该项有争议，下文将详解)
+    link引入的样式权重大于@import引入的样式。    
+    
+6.浏览器的渲染机制 
+  (1). 解析HTML，生成DOM树（DOM） 
+  (2). 解析CSS，生成CSSOM树（CSSOM） 
+  (3). 将DOM和CSSOM合并，生成渲染树（Render-Tree） 
+  (4). 计算渲染树的布局（Layout） 
+  (5). 将布局渲染到屏幕上（Paint)
+
+
+7.图片的懒加载如何实现
+  https://blog.csdn.net/weixin_42609477/article/details/108230259
+  懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数。
+  首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在data-src属性中，
+  当页面滚动的时候需要去监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为data-original 的值，这样就可以实现延迟加载。
+
+
+8.px em rem 的区别
+  
+  Px表示“绝对尺寸”（并非真正的绝对）， 像素px 是相对于显示器屏幕分辨率而言的。
+  
+  （1）.IE无法调整那些使用px 作为单位的字体大小；
+  （2）.外国的大部分网站能够调整的原因在于其使用了 em 或 rem 作为字体单位；
+  （3）.Firefox 能够调整px 和 em , rem ,但是 96%以上的中国网民 使用IE浏览器（或者内核）。
+
+  em 是相对长度单位。相对于当前对象内文本的字体尺寸。 如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸
+  （1）. em的值不是固定的
+   (2). em会继承父级元素的字体大小
+
+
+  rem也表示相对尺寸，其参考对象为根元素<html>的font-size，因此只需要确定这一个font-size。
+
+
+  vw/vh 
+  
+  css3 引入了一个新的单位vw/vh ,与视图窗口有关
+
+  vw 表示相对于视图窗口的宽度，视图宽度为100vw
+
+  vh 表示相对于视图窗口的高度,视图高度为100vh 
+
+  vw 单位换算：确定视图的窗口大小比如iphone6的375*667 分辨率
+
+  1px = (1/375) * 100vw 
+
+9. catchstorage 
+
+10.计算用户的有效停留时间
+
+ beforeunload事件可计算出用户停留在页面的时间具体代码如下：
+  ``` javascript 
+  
+      var start;
+
+      var end;
+
+      var total_time = 0;
+      start = new Date();//用户进入时间
+      $(window).bind('beforeunload', function (e) {
+          end = new Date(); //用户退出时间
+          total_time = end.getTime() - start.getTime();
+          total_time = Math.ceil(total_time / 1000); //取的是秒并且化整用户停留时间
+          $.ajax({
+            type: 'POST',
+          async: false, //同步提交
+          url: “”,
+          data://给后台的参数
+        });
+    });
+  ```  
+
+11.节流和防抖   
+
+  PS：防抖和节流的作用都是防止函数多次调用。区别在于，假设一个用户一直触发这个函数，且每次触发函数的间隔小于wait，防抖的情况下只会调用一次，而节流的 情况会每隔一定时间（参数wait）调用函数。
+
+
+  防抖：在滚动事件中需要做个复杂计算或者实现一个按钮的防二次点击操作。
+
+  手写一防抖：
+     ```javascript
+
+        function debounce(fn , wait){
+
+            var timer = null; 
+
+            return function(){
+
+               var context = this
+
+               var args = arguments 
+
+               if( timer ) {
+
+                  clearTimeout(timer); 
+
+                  timer = null;
+
+               }
+               timer = setTimeout (function(){
+                  fn.apply( context, args )
+               }, wait)
+            }
+        }
+
+     ```
+    function debounce (fn, wait) {
+
+        var timer = null;
+
+        return function() {
+
+          var context = this
+          var argus = arguments
+
+          if (timer) {
+            
+            clearTimeout(timer)
+
+            timer = null
+          }          
+
+          timer = setTimeout(function(){
+              fn.apply(context, argus)
+          },wait)
+        }
+
+    }
+  
+  节流：防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。
+
+  手写一个节流：
+
+    ```javascript
+
+       function throttle(fn , gapTime){        
+
+          let lastTime = null; 
+
+          return function(){
+
+            let nowTime = + new Date()
+
+            if( nowTime - lastTime  > gapTime || !lastTime ){    // 如果 现在的时间 减去 上一次触发的时间 大于 规定节流的时间间隔，或者是第一次 触发则调用一次函数。
+
+                fn();
+
+                lastTime = nowTime 
+            }
+          } 
+
+        }
+
+      // 被节流的目标函数
+
+      let fn = () =>{
+        console.log('触发了该函数')
+      }
+
+      // 用setInterval 模拟实际工作中触发节流
+
+      setInterval( throttle(fn, 1000), 10) 
+
+    ```
+
+
+  ```javascript
+
+    /**
+    * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait
+    *
+    * @param  {function}   func      回调函数
+    * @param  {number}     wait      表示时间窗口的间隔
+    * @param  {object}     options   如果想忽略开始函数的的调用，传入{leading: false}。
+    *                                如果想忽略结尾函数的调用，传入{trailing: false}
+    *                                两者不能共存，否则函数不能执行
+    * @return {function}             返回客户调用函数
+
+    */
+
+    function throttle(fn, gapTime){
+
+        let lastTime = null; 
+
+        return function(){
+
+            let nowTime = +new Date()
+
+            if( nowTime - lastTime > gapTime || !lastTime ){ // 如果现在的时间 减去上一次触发的时间大于 规定节流的时间间隔，或者是第一次触发则调用一次函数
+                fn();
+
+                lastTime = nowTime
+            } 
+        }
+    }
+
+
+
+// 被节流的目标函数
+
+    let fn = () =>{
+      console.log('触发了该函数')
+    }
+
+// 用setInterval 模拟实际工作中触发节流
+
+
+  setInterval( throttle(fn, 1000),10 )
+  ```
+
+12.vue 子组件与子组件之前的传值
+
+   （1）.子组件向子组件传递数据
+
+    Vue 没有直接子对子传参的方法，建议将需要传递数据的子组件，都合并为一个组件。如果一定需要子对子传参，可以先从传到父组件，再传到子组件。
+
+    为了便于开发，Vue 推出了一个状态管理工具 Vuex，可以很方便实现组件之间的参数传递
+
+   （2).非父组件间的数据传递，兄弟组件传值
+
+      eventBus ,就是创建一个事件中心，相当于中转站，可以用它来传递事件和接收事件
+
+13. vue父组建向子组件传值
+
+    (1). 如果需要从父组件获取logo 的值，就需要使用 props: ["logo"]
+
+14.子组件向父组件传递数据
+    （1）. 子组建主要通过事件传递给父组件
+
+    ``` vue
+
+    //子组建部分
+
+      <template>
+        <input v-model="username" @change="setUser"/>    
+      <template/>
+
+      <script>  
+          export default{
+            name: 'login', 
+            data(){
+              return{
+                username: ''
+              }
+            },
+            methods:{
+              setUser:function (){
+                this.$emit('transferUser', this.username)
+              }
+            }
+          }
+      <script/>
+
+   // 父组建部分
+
+
+    <template>
+      <div id="app">
+        <InputDiv @transferUser="getUser"/>  
+      <div>   
+    <template/>  
+
+    <script>
+      export default{
+        name: 'app', 
+        data(){
+          return{
+            user: ''
+          }
+        },
+        methods:{
+          getUser( msg ){
+            this.user = msg
+          }
+        }
+      }
+    <script/>
+    ```
+
+14.margin 合并现象的解决方案
+  1.给box2加上一层父级元素并加上overflow:hidden;
+
+  2.给两个都加一层父级再加bfc
+
+  3.给父盒子设置内边距
+
+  4.父盒子:position:fixed
+
+15. css中min-width 和max-width， width与他们之间的区别联系
+
+  css中，min-width是用来限制元素的最小宽度，max-width用来限制元素的最大宽度，也就是说当元素的width大于max-width,或者小于min-width。就被它们的值所代替，尤其适用于网站的自适应。
+
+
+16. react 虚拟Dom 的diff
+
+https://zhuanlan.zhihu.com/p/20346379
+
+1.传统diff算法
+计算两颗树形结构差异的最优解一直是一个复杂且值得研究的问题，传统的diff算法，需要遍历整棵树的节点然后进行比较，是一个深度递归的过程，运算复杂度常常是O(n^3)，这样的低效率在react中肯定是不能容忍的，那么react对于diff算法进行了哪些优化呢？
+
+2.react diff的优化策略
+
+(1).tree diff
+    DOM节点跨层级的操作不做优化，因为很少这么做，这是针对的tree层级的策略；
+(2).component diff    
+    对于同一个类的组件，会生成相似的树形结构，对于不同类的组件，生成不同的树形结构，这是针对conponent层级的策略；
+(3).element diff
+    对于同一级的子节点，拥有同层唯一的key值，来做删除、插入、移动的操作，这是针对element层级的策略；
+
+
+React 通过制定大胆的 diff 策略，将 O(n3) 复杂度的问题转换成 O(n) 复杂度的问题；
+
+React 通过分层求异的策略，对 tree diff 进行算法优化；
+
+React 通过相同类生成相似树形结构，不同类生成不同树形结构的策略，对 component diff 进行算法优化；
+
+React 通过设置唯一 key的策略，对 element diff 进行算法优化；
+
+建议，在开发组件时，保持稳定的 DOM 结构会有助于性能的提升；
+
+建议，在开发过程中，尽量减少类似将最后一个节点移动到列表首部的操作，当节点数量过大或更新操作过于频繁时，在一定程度上会影响 React 的渲染性能。
+
+
+17.TCP 的3次握手4次挥手
+
+第一次握手
+
+客户主动（active open）去connect服务器，并且发送SYN 假设序列号为J,
+服务器是被动打开(passive open)
+
+第二次握手
+
+服务器在收到SYN后，它会发送一个SYN以及一个ACK（应答）给客户，
+ACK的序列号是 J+1表示是给SYN J的应答，新发送的SYN K 序列号是K
+
+第三次握手
+
+客户在收到新SYN K, ACK J+1 后，也回应ACK K+1 以表示收到了，
+然后两边就可以开始数据发送数据了
+
+
+【问题1】为什么连接的时候是三次握手，关闭的时候却是四次握手？
+来
+答：因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用同步的。
+但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，"你发的FIN报文我收到了"。
+只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。
+
+【问题2】为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？
+
+答：虽然按道理，四个报文都发送完毕，我们可以直接进入CLOSE状态了，但是我们必须假象网络是不可靠的，有可以最后一个ACK丢失。
+所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。在Client发送出最后的ACK回复，但该ACK可能丢失。
+Server如果没有收到ACK，将不断重复发送FIN片段。所以Client不能立即关闭，它必须确认Server接收到了该ACK。
+Client会在发送出ACK之后进入到TIME_WAIT状态。Client会设置一个计时器，等待2MSL的时间。
+如果在该时间内再次收到FIN，那么Client会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。
+MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。
+如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。
+
+【问题3】为什么不能用两次握手进行连接？
+
+答：3次握手完成两个重要的功能，既要双方做好发送数据的准备工作(双方都知道彼此已准备好)，也要允许双方就初始序列号进行协商，这个序列号在握手过程中被发送和确认。
+
+为什么需要三次握手呢？为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。
+
+现在把三次握手改成仅需要两次握手，死锁是可能发生的。作为例子，考虑计算机S和C之间的通信，假定C给S发送一个连接请求分组，
+S收到了这个分组，并发 送了确认应答分组。按照两次握手的协定，S认为连接已经成功地建立了，可以开始发送数据分组。
+可是，C在S的应答分组在传输中被丢失的情况下，将不知道S 是否已准备好，不知道S建立什么样的序列号，C甚至怀疑S是否收到自己的连接请求分组。
+在这种情况下，C认为连接还未建立成功，将忽略S发来的任何数据分 组，只等待连接确认应答分组。
+而S在发出的分组超时后，重复发送同样的分组。这样就形成了死锁。
+
+【问题4】如果已经建立了连接，但是客户端突然出现故障了怎么办？
+
+TCP还设有一个保活计时器，显然，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。
+服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，
+服务器就会发送一个探测报文段，以后每隔75秒钟发送一次。
+若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。
+
+18.vue router，的实现原理
+
+前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式
+
+hash 模式
+history 模式
+
+www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，不会向服务器请求数据，可以通过 hashchange 事件来监听到 URL 的变化，从而进行跳转页面。
+
+
+
+
+19. 跨域
+
+跨域前端解决方案及原理
+
+1.JSONP 
+
+  JSONP 的原理很简单，就是利用<script> 标签没有跨域限制的漏洞。 通过<script>标签指向一个需要访问的地址并提供一个回调函数来接收数据。
+  
+  JSONP 使用简单且兼容性不错，但是只限于 get 请求。
+
+
+
+2.CORS
+
+  CORS 需要浏览器和后端同时支持。IE 8 和 9 需要通过 XDomainRequest 来实现。
+
+  浏览器会自动进行 CORS 通信，实现 CORS 通信的关键是后端。只要后端实现了 CORS，就实现了跨域。
+
+  服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。
+
+  
+
+3.document.domain
+
+  该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式。
+
+  只需要给页面添加 document.domain = 'test.com' 表示二级域名都相同就可以实现跨域
+
+  
+4.postMessage
+
+  这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息
+
+
+20. redux 是什么？
+
+    Redux 是一个 javaScript 应用设计的可预测的状态容器。  
+    
+    它解决了以下问题： 
+
+      1.跨层级的组件之间的数据传递变得很容易
+
+      2.所有对状态的改变都需要 Dispach , 使得整个数据的改变可追踪，方便排查问题。
+
+    但是它也有缺点
+
+      概念偏多，理解起来不容易
+
+      样板代码太多
+
+
+
+21.调用setState 之后发生了什么？
+
+  1. 在setState的时候，React会为当前节点创建一个 updateQueue 的更新队列。
+
+  2. 然后会触发 reconciliation(和谐) 过程,在这个过程中，会使用名为 Fiber 的调度算法，开始生成新的 Fiber 树，
+  Fiber 算法的最大特点是可以做到异步可中断的执行。
+
+  3.然后React Scheduler(调度器) 会根据优先级高低，先执行优先级高的节点，具体是执行 doWork 方法。
+
+  4.在 dowork 方法中, React会执行一遍 updataQueue 中的方法获得新节点，然后对比新旧节点，为老节点打上 更新、插入、替换等标签。
+
+  5. 当前节点 doWork 完成后，会执行 performUnitOfWork 方法获得新节点，然后再重复上面的过程。
+
+  6. 当所有节点都 dowork 完成后，会触发 commitRoot 方法， react进入 commit阶段。
+
+  7.在commit 阶段中， React会根据前面为各个节点打的Tag， 一次性更新整个dom 元素
+
+
+22. xss 攻击
+
+  如何攻击
+
+  XSS 通过修改 HTML 节点或者执行 JS 代码来攻击网站。
+
+
+
+  如何防御
+
+  最普遍的做法是转义输入输出的内容，对于引号，尖括号，斜杠进行转义
+
+
+23. CSRF攻击  
+
+  简单点说，CSRF 就是利用用户的登录态发起恶意请求。
+
+  跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，
+  
+  通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
+  
+  [1] 跟跨網站指令碼（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
+
+
+  如何攻击
+
+  假设网站中有一个通过 Get 请求提交用户评论的接口，那么攻击者就可以在钓鱼网站中加入一个图片，图片的地址就是评论接口
+
+
+  如何防御
+
+  防范 CSRF 可以遵循以下几种规则：
+
+  Get 请求不对数据进行修改
+  不让第三方网站访问到用户 Cookie
+  阻止第三方网站请求接口
+  请求时附带验证信息，比如验证码或者 token
+
+ 24. http 状态
+
+    200：请求已经成功，请求所希望的相应或数据体将随此相应返回
+
+    201 (已创建)请求成功并且服务器创建了新的资源 
+
+    302：请求的资源面临从不同的URI响应请求，由于3这样的重定向时临时的，
+    客户端应当继续向原有的地址发送以后的请求只有在Cache-control或Exception中进行了指定的情况下，这个响应才是可缓存的。
+
+    304：(304状态码不应该认为是一种错误，而是对客户端有缓存情况下服务端的一种响应)如果客户端发送了一个带有条件的GET请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，
+    则服务器应当返回这个状态码，304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。
+
+    400：(错误请求)  服务器不理解请求的语法。
+
+    401：(未授权)  请求要求身份验证。对于登录后请求的网页，服务器可能返回此响应。
+
+    403：服务器已经理解请求，但是拒绝了执行它
+
+    404： （未找到） 服务器找不到请求的网页。
+
+    406: '请求的格式不可得。',   
+
+    408: '状态码 408 表示请求超时'。
+
+    410: '请求的资源被永久删除，且不会再得到的。',   
+
+    500：（服务器内部错误） 服务器遇到错误，无法完成请求。
+
+    502: '网关错误。',
+
+    503: '服务不可用，服务器暂时过载或维护。',
+
+    504: '网关超时。',
+
+  25.Effect Hook
+    之前可能已经在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。
+    我们统一把这些操作称为“副作用”，或者简称为“作用”。useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。
+    它跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API。
+    （我们会在使用 Effect Hook 里展示对比 useEffect 和这些方法的例子。）
+
+  26.call 和 apply 的区别 ？ 那个性能更好？
+
+    call 可以接收一个参数列表，apply 只接受一个参数数组。
+
+    1.call 和 apply 都是 function 类原型上的方法； 每一个函数作为function 的实例都能调用这两方法；
+    
+     这两个方法执行的目的都是用来改变函数中的this指向的，让函数执行并且能改变this指向。
+
+    2.区别：
+
+      1、call 传参的时候要求我们给函数传参是一个个地传，而apply 的要传的参数是以一个数组保存起来；
+
+      2、一样改变 this 的还有 bind , bind并没有立即执行函数，只是预先把处理改变函数中的 this 
+
+      3、call 的性能要比 apply 好一些（尤其是传递给函数的参数超过三个的时候 ） 
+       
+        let arr =[10, 20, 30], 
+
+        obj={}
+
+        function fn(x, y, z){
+
+        }
+
+        fn.apply(obj, arr)
+
+        fn.call(obj, ...arr )  // 基于ES6 的展开 运算符号也可以
+
+      4、使用方法
+
+        call(thisObj, arg1, arg2, arg3, arg4);
+
+        apply(thisObj, [args]);
+
+        thisObj：call和apply第一个参数是一样的，该参数将替代Function类里面的this对象。
+        
+        arg1,arg2....：是一个个的参数，
+        args：一个数组或类数组，是一个参数列表。
+
+      5、bind 该方法会返回一个函数。并且我们可以通过 bind 实现柯里化
+
+  27、前端开发的设计模式有哪些
+
+  1、模块模式；2、构造函数模式；3、工厂模式；4、混合模；5、单例模式；6、订阅发布模式等等。
+
+  前端常见的设计模式有以下几种：单例模式、工厂模式、构造函数模式、原型模式、混合模式、动态原型模式这几种，接下来我们一起了解一下这些模式具体的情况。
+ 
+
+1.单例模式
+
+    又称为单体模式。保证一个类只有一个实例，并提供一个访问它的全局访问点。
+
+    第二次使用同一个类创建新对象的时候，应该得到第一次创建的对象完全相同的对象。
+
+
+    通过静态属性创建单例
+
+    ```javascript 
+
+    class Person{
+        static instance = null; //静态属性，不会被实例继承，由类直接调用
+        constructor(name){
+            if(Person.instance){
+                return Person.instance;
+            }
+            Person.instance = this;
+            this.name = name;
+        }
+    }
+    ```
+
+    通过函数创建单例
+
+
+    ```javascript
+
+    let instance;
+    function createInstance(...arg){
+        if(!instance){
+            instance = new Game(...arg);
+        }
+        return instance;
+    }
+
+    ```
+
+    ==优点：==实现代码复用性，封装良好，抽象逻辑
+
+    ==缺点：==单例模式扩展性不强
+
+2.工厂模式
+
+```javascript 
+
+    function createPerson(name, age) {
+        var obj = {};
+        obj.name = name;
+        obj.age = age;
+        obj.writeJs = function () {
+            console.log(this.name + 'write js');
+        }
+        return obj;
+    }
+
+    var p1 = createPerson('mengzhe' , 26);
+    p1.writeJs();
+
+    var p2 = createPerson('iceman' , 25);
+    p2.writeJs();
+
+```
+==优点：==实现代码复用性，封装良好，抽象逻辑
+
+==缺点：==不能识别对象的类型，全部是Object
+
+
+3.构造函数模式
+
+```javascript 
+
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+       alert(this.name);
+    };
+}
+const scater = new Person("scater", 29, "web前端");
+console.log(scater instanceof Person)// true
+
+```
+
+首字母大写
+使用new创建对象
+
+==优点：==能够识别对象
+
+==缺点：==每次创建实例的时候都要重新创建一次方法
+
+
+4.混合模式（原型模式 + 构造函数模式
+
+  创建自定义类型的最常见方式。
+
+  构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。
+
+  ```javascript 
+
+  function Person(name, age, job){
+      this.name = name;
+      this.age = age;
+      this.job = job;
+      this.friends = ["Shelby", "Court"];
+  }
+  Person.prototype = {
+      constructor : Person,
+      sayName : function(){
+          alert(this.name);
+      }
+  }
+  var person1 = new Person("Nicholas", 29, "Software Engineer");
+  var person2 = new Person("Greg", 27, "Doctor");
+  person1.friends.push("Van");
+  alert(person1.friends); //"Shelby,Count,Van"
+  alert(person2.friends); //"Shelby,Count"
+  alert(person1.friends === person2.friends); //false
+  alert(person1.sayName === person2.sayName); //true
+
+  ```
+  ==优点：==每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。
+19. 跨域的后端解决方案
+
+
+20.从输入url到浏览器显示页面发生了什么
+
+
+  1、输入网址
+
+  当你开始输入网址比如www.cnblogs.com时浏览器就可以在书签或者历史记录里面去搜索相关的网址推荐给你
+
+
+  2、浏览器查找域名的IP地址
+
+
+
+  3、建立TCP链接
+
+
+
+  4、浏览器向WEB服务器发起Http请求
+
+
+
+  5、服务器端处理
+
+
+
+  6、关闭TCP链接
+  
+   为了避免服务器与客户端双方的资源占用和损耗，当双方没有请求或响应传递时，任意一方都可以发起关闭请求。
+   与创建TCP连接的3次握手类似，关闭TCP连接，需要4次握手。
+
+
+   console.log('1');
+    setTimeout(function () {
+      console.log('2');
+      new Promise(function (resolve) {
+        console.log('3');
+        resolve();
+      }).then(function () {
+        console.log('4')
+      })
+    },0)
+    new Promise(function (resolve) {
+      console.log('5');
+      resolve();
+    }).then(function () {
+      console.log('6')
+    })
+
+    setTimeout(function () {
+      console.log('7');
+      new Promise(function (resolve) {
+        console.log('8');
+        resolve();
+      }).then(function () {
+        console.log('9')
+      })
+      console.log('10')
+    },0)
+    console.log('11')
+
+21.判断类型的几种方式
+
+typeof、 instanceof、constructor、prototype、$.type()或者jquery.type()
+
+1.常见的判断方法： typeof 返回的类型都是字符串的形式,需注意。
+
+2.判断已知对象类型的方法；instanceof
+
+console.log(A instanceof Array) ------------ true 
+console.log(B instanceof Date)
+console.log(C instanceof Function) --------- true 
+console.log(D instanceof function) --------- false  // 所以开头一定要大些 
+
+该方法适合一些条件选择
+
+3.根据对象的constructor判断： constructor 
+
+console.log(c.constructor === Array) --------> true 
+
+console.log(d.constructor === Data)  --------> true
+
+console.log(e.constructor === Function) -----> true
+
+
+
+constructor 在继承时会出错
+
+function A(){}
+function B(){}
+
+A.prototype = new B();  // A 继承 B
+
+var aobj = new A(); 
+
+console.log(aobj.constructor === B ) ------true 
+console.log(aobj.constructor === A ) ------false 
+
+
+而instanceof 方法不会出现该问题，对象直接继承和间接继承的都会报true 
+
+console.log(aobj instanceof B)  -----true
+console.log(aobj instanceof B)  -----true 
+
+
+4.通用但是很繁琐的方法： prototype
+var a ='12321323'
+var b = 123
+console.log(object.prototype.toString.call(a) === '[object String]') ---- true;
+console.log(object.prototype.toString.call(b) === '[object Number]') ---- true; 
+
+5.无敌万能的方法： jquery.type()
+
+如果对象是undefined 或者 null，则返回相应的”undefined“ 或者 “null”。
+
+jquery.type( undefined ) === 'undefined'
+
+jquery.type() === 'undefined'
+
+jquery.type(null) === 'null'
+
+22.css盒子模型以及BFC详解
+
+盒模型由外而内包括：边距（margin）、边框（border）、填充（padding）、内容（content）。
+
+它在页面中所占的实际宽度是margin + border + paddint + content 的宽度相加。
+
+4：什么是bfc
+  BFC（Block Formatting Context）格式化上下文，是Web页面中盒模型布局的CSS渲染模式，指一个独立的渲染区域或者说是一个隔离的独立容器。
+  （自己理解就是触发bfc的元素会脱离文档流，也就是说别的元素看不到它了））
+
+   脱离文档流：元素脱离文档流之后
+
+
+23.使用 Webpack 优化项目
+
+webpack 是一个模块打包机，将根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源
+
+主要承担如下功能：
+
+打包：将多个文件 打包成 一个文件，减少服务器压力和下载带宽
+
+转换：将预编译语言 转换成 浏览器识别的语言
+
+优化：性能优化
+
+核心概念
+
+入口 entry、
+
+作用：告诉 webpack 从哪个文件开始构建，这个文件将作为 webpack 依赖关系图的起点
+
+出口 output、
+
+作用：告诉 webpack 在哪里输出 构建后的包、包的名称 等
+
+loader、
+
+作用：loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）
+
+loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块
+
+plugin、
+
+作用：可以处理各种任务，从打包优化和压缩，一直到重新定义环境中的变量
+
+
+对于 Webpack4，打包项目使用 production 模式，这样会自动开启代码压缩
+使用 ES6 模块来开启 tree shaking，这个技术可以移除没有使用的代码
+优化图片，对于小图可以使用 base64 的方式写入文件中
+按照路由拆分代码，实现按需加载
+给打包出来的文件名添加哈希，实现浏览器缓存文件
+
+23.项目中的权限控制
+
+authority
+
+24.修改密码的时候怎么加密
+
+1. 购买并配置浏览器ssl证书，传输时使用https
+
+2. 提交到后台时，使用各种适用的加密方式，比如典型的hash
+
+
+25.HTTP 与 HTTPS 
+
+HTTP特点：
+
+1.无状态：协议对客户端没有状态存储，对事物处理没有“记忆”能力，比如访问一个网站需要反复进行登录操作
+
+2.无连接：HTTP/1.1之前，由于无状态特点，每次请求需要通过TCP三次握手四次挥手，和服务器重新建立连接。
+
+比如某个客户机在短时间多次请求同一个资源，服务器并不能区别是否已经响应过用户的请求，所以每次需要重新响应请求，需要耗费不必要的时间和流量。
+
+3.基于请求和响应：基本的特性，由客户端发起请求，服务端响应
+
+4.简单快速、灵活
+
+5.通信使用明文、请求和响应不会对通信方进行确认、无法保护数据的完整性
+
+
+什么是http ？
+
+超文本传输协议，是一个基于请求与响应，无状态的，应用层的协议，常常基于TCP/IP协议传输数据，互联网上最为广泛的一种网络协议，
+
+HTTP2.0 与HTTP1.0（前端进阶之道）的主要区别多路复用
+
+多路复用：通过单一的HTTP/2连接请求发起多重的请求-响应消息，多个请求stream共享一个TCP连接，实现多留并行而不是依赖建立多个TCP连接。
+ 
+
+
+
+
+
+HTTPS特点:
+
+1.内容加密：采用混合加密技术，中间者无法直接查看明文内容
+
+2.验证身份：通过证书认证客户端访问的是自己的服务器
+
+3.保护数据完整性：防止传输的内容被中间人冒充或者篡改
+
+
+
+基于HTTP协议，通过SSL或TLS提供加密处理数据、验证对方身份以及数据完整性保护
+
+SSL证书需要购买申请，功能越强大的证书费用越高
+
+HTTPS连接缓存不如HTTP高效，流量成本高。
+
+
+
+26.怎样保证客户端和服务端数据的一致性（数据同步）
+
+可以把客户端的数据当作一个整体，然后用MD5 对他进行加密，服务器端也一样，这样，
+
+当他们的MD5值不一样时就能判断出他们的数据不同步了。然后再通过其他的方法把不同的部分上传或下载下来。
+
+27.Grpc 的优缺点。
+
+1.语言中立，支持多种语言；
+
+2.基于 IDL 文件定义服务，通过 proto3 工具生成指定语言的数据结构、服务端接口以及客户端 Stub；
+
+3.通信协议基于标准的 HTTP/2 设计，支持双向流、消息头压缩、单 TCP 的多路复用、服务端推送等特性，
+这些特性使得 gRPC 在移动端设备上更加省电和节省网络流量；
+
+4.序列化支持 PB（Protocol Buffer）和 JSON，PB 是一种语言无关的高性能序列化框架，基于 HTTP/2 + PB, 保障了 RPC 调用的高性能。
+
+
+
+27.原型链的总结
+
+1.Object 是所有对象的爸爸，所有对象都可以通过 __proto__ 找到它
+
+2.Function 是所有函数的爸爸，所有函数都可以通过 __proto__ 找到它
+
+3.Function.prototype 和 Object.prototype 是两个特殊的对象，他们由引擎来创建
+
+4.除了以上两个特殊对象，其他对象都是通过构造器 new 出来的
+
+5.函数的 prototype 是一个对象，也就是原型
+
+6.对象的 __proto__ 指向原型， __proto__ 将对象和原型连接起来组成了原型链
+
+
+instanceof 可以正确的判断对象的类型，因为内部机制是通过判断对象的原型链中是不是能找到类型的 prototype。
+
+手写一个  instanceof 
+
+function myInstanceof (left, right){
+  // 获得类型的原型
+  let prototype = right.prototype 
+
+  //获取对象的原型
+  left = left.__proto__
+
+  //判断对象的类型是否等于类型的原型
+
+  while(true){
+
+      if(left === null) return false;
+
+      if(prototype === left) return true; 
+
+
+      //如果这一层没有找到则向上一层原型去找
+      left = left.__proto__
+
+  } 
+
+}
+
+
+28.什么是webpack热更新
+
+模块热替换（ HMR - Hot Module Replacement ）允许在运行时 替换， 添加， 删除各种模块，而无需进行完全刷新重新加载整个页面。
+
+一个带有 热替换的功能的webpack.config.js 文件的配置如下，做了这么几件事
+
+1.引入了 webpack 库
+
+2.使用了new webpack.HotModuleReplacementPlugin()
+
+3.设置dev Server选项中的 hot 字段为true
+
+
+
+
+29.Webpack性能优化
+
+可以重两个方面考虑： 一个方面是优化体验， 一个是优化输出质量。
+
+
+优化开发体验：
+
+1.缩小文件搜索范围
+
+resolve 字段告诉webpack怎么去搜索文件，所以首先要重视resolve 字段的配置：
+
+由于loader 对文件转换操作很耗时，应该尽量减少loader处理的文件，可以使用 include 命中需要处理的文件，缩小命中范围。
+
+2.DllPlugin可以将特定的类库提前打包然后引入
+
+  DllPlugin 是webpack 的内置插件，这种方式可以极大的减少打包类库的次数，
+
+  只有当类库更行版本才有需要重新打包,并且也实现了将公共代码抽离成单独文件的优化方案。
+
+
+30.用js 打印出斐波纳契数列的前 n 项
+1.最简单的递归
+``` js 
+function fn(n){
+  if (n<=1){
+     return 1
+  }
+  return fn(n-1) + fn(n-2);
+} 
+
+```
+
+
+Function.prototype.myBind = function (context) {
+  if ( typeof this !== Function) {
+      throw new TypeError('error')
+  }
+  var _this = this
+  var args = [...arguments].slice(1)
+
+  // 返回一个函数
+  return function F(){
+    if (this instanceof F) {
+        return new _this(...args, ...arguments)
+    }
+    return _this.apply(context, args.concat(...arguments))
+  }
+
+
+
+
+Function.protoType.myCall = function (context) {
+  var context = context || window
+  
+  context.fn = this
+
+  var arg = [...arguments].slice(1)
+  
+  var result = context.fn(...arg)
+
+  delete context.fn
+
+  return result  
+}
+
+2.
+``` js
+function fblj(n){  // 斐波纳契数列
+
+  if(n==0){
+    return 0;
+  }else if(n==1){
+    return 1;
+  }else if(n>=2){
+
+    return arguments.callee.call(this, n-1) + arguments.callee.call(this, n-2);
+  }
+
+}
+
+function getfblj(n){   //获取数据n 为前n项
+
+  var arr= [];
+
+  while(n--){
+    arr[n] = fblj(n)
+  }
+
+  return arr;
+}
+
+var a = getfblj(20);
+
+console.log(a);
+
+```
+
+3.动态规划
+
+var fib = function(n){
+  if (n<2) {
+    return n 
+  }
+  let p = 0, q = 0, r =1;
+  for (let i = 2; i<=n ; i++) {
+    p = q;
+    q = r;
+    r = p + q;
+  }
+  return r 
+}
+
+31.如何实现链式编程
+
+（1）.链式调用的核心，就是函数在执行完成后，返回了this，即当前对象
+
+```js
+
+   //通过原型给 Person构造函数上添加一个设置年龄的方法    
+    Person.prototype.setAge=function(num){
+            this.age=num;
+            return this;
+    }
+```
+
+32. 用css 写一个三角形 
+
+采用的是相邻边框连接处的均分原理。
+
+将元素的宽度设为0 只设置border, 把任意三条边隐藏掉（颜色设置为transparent）, 剩下的就是一个三角形
+
+#demo{
+  width: 0;
+  height: 0; 
+  border-width: 20px;
+  border-style: solid; 
+  border-color: transparent transparent red transparent;
+}
+
+
+33. 对称加密和非对称加密
+
+1.对称加密
+
+对称加密指的就是加密和解密使用同一个秘钥， 所以说叫做对称加密。对称加密只有一个密钥。
+
+常见的对称加密算法：DES， AES ， 3DES 等等
+
+
+
+2.非对称加密
+
+非对称加密： 是指加密和解密使用不同的密钥，一把作为公开的公钥，另一把作为私钥。 
+公钥加密信息，只有私钥才能解密。 私钥的加密信息，只有公钥才能解密
+
+
+常见的非对称加密算法： RSA， ECC
+
+
+区别：
+
+对称加密算法相比非对称加密算法来说，加解密的效率要高得多。但是缺陷在于对秘钥的管理上，以及在非安全信道中通讯时，密钥交换的安全性能不能保证。
+
+所以在实际的网络环境中，会将两者混合使用
+
+
+34. vue 2.0是如何监听数组的
+
+  首先由object.create 创建一个对象，这个对象的原型基础array对象的原型再从写那几个数组的方法，
+
+  通过vue源码可以看出，vue重写了数组的push、splice、pop等方法
+
+35. svg和 canvas
+
+SVG 
+
+SVG 是一种使用XML 描述2D 图形的语言
+
+SVG 基于XML，这就意味着 SVG DOM中的 每个元素都是可用的。您可以为某个元素附加 javascript 事件处理器。
+
+在SVG 中， 每个被绘制的图形均被视为对象。 如果SVG 对象的属性发生变化，那么浏览器能够自动重现图形。
+
+Canvas
+
+Canvas 通过JavsScript 来绘制 2D图形。
+
+Canvas 是逐像素进行渲染的。
+
+在canvas 中，一旦图形被绘制完成， 它就不会继续得到浏览器的关注
+
+45.某选面试
+
+一面
+
+1.自我介绍
+
+2.你看过VUE源码吗？能说一下vue 的源码吗？ （开放式自我发挥题 ）
+
+3.vue 的生命周期包括详细的每个步骤能干什么？（开放式自我发挥题）
+
+4.ES 规范有一定的了解是吧
+  面试题
+
+  [] + {} = ?   // '【object,object】'
+
+  {} + [] = ?
+
+  [1] == [1]  // false
+
+  [] == [] // fasle 
+
+  [] == ![]  // true 
+
+5.说说你对原型链的理解
+
+说完然后出一道题  1 in 1..constructor
+
+6. 小程序中 <wxs> 标签 和 .wxs  语法的了解 
+
+7.闭包返回的值是存储到堆上还是栈上面。
+
+8.强缓存 和 协商缓存
+
+9.浏览器的控制台用过那些功能，如何用浏览器功能监听浏览器的内存泄漏
+
+10.你们前端是如何监控异常报错的？ sentry 库的原理知道吗？
+
+我们使用sentry 库
+
+sentry 的原理： 首先，sentry是一个C/S 架构，我们需要在自己的应用中集成Sentry 的SDK 才能在应用发生错误时候将错误信息发送给Sentry 服务端。
+
+根据语言和框架的不同，我们可以选择自动或自定义设置特殊的错误类型报给Sentry 服务端。
+
+11.如何避免接口的重复请求
+
+可以考虑再vuex 中使用一个正在获取数据的标记。当actions 触发的时候，首先检查是否已有数据，如果有则不获取；没有则检查标记，有标记则不获取；
+没有数据，没有标记则获取数据， 并打标记。
+
+然后在每个组件created 的时候都调用dispatch 即可。
+
+二面
+
+1.自我介绍
+
+2.react@16.4 + 的生命周期 废弃哪三个旧的生命周期函数？为什么？
+
+3.小程序中组件间传参通讯的方式
+
+4.如何编写一个自己的插件plugin
+
+  (1).首先plugin其实就是一个构造函数
+
+    function TestPluigin(){}
+
+
+ （2).在插件函数的prototype 上需要定义一个apply方法
+
+    TestPluigin.prototype.apply = function(){
+
+    } 
+
+    
+ （3).指定一个绑定到webpack 自身的事件勾子
+
+      TestPluigin.prototype.apply 
+
+
+
+46. map 方法到底会不会改变原是数组 
+
+  当数组中元素是值类型的时候，map 不会改变原数组；当是引用类型的时候，则可以改变原数组。
+
+
+``` js 
+
+const arr = [1,2,3,4,5]  //值类型
+
+const result = arr.map(item =>{
+  item = item * 3;
+
+  return item;  
+})
+
+console.log('arr', arr);    //[1,2,3,4,5]
+
+console.log('result', result);  //[3,6,9,12,15]
+
+```
+
+
+``` js 
+
+const arr = [
+  {name: "Tom", age: 16},
+  {name: "Aaron", age: 18}, 
+  {name: "Denny", age: 20}
+]
+
+const result = arr.map(item =>{
+  item.age = item.age +  2
+
+  return item 
+})
+
+console.log('arr', arr)   //将他们的年龄都加了2 
+console.log('result', result)
+
+```
+
+
+1. 控制台。系统信息和 服务器信息 table 切换
+2.个人信息 。 时间轴
+3.密码做成弹窗
+4.table 做成一行显示
+5. 
+
+
+一 .某兴面某马
+
+1. flex的三个属性：
+
+    flex-grow: 指的是相对于其他的子元素的扩展比率；默认值为0 ； 数字
+1
+    flex-basis: 指的是子元素的具体长度;可以为长度 （rem , px , em） 也可以为百分比；
+
+    flex-shink; 指的是相对于其他元素的收缩比率；默认值为0； 数字
+
+
+46.GET和POST两种基本请求方法的区别
+
+1.最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数
+
+2. GET产生一个TCP数据包；POST产生两个TCP数据包。(重点)
+
+3.GET请求只能进行url编码，而POST支持多种编码方式。
+
+4.GET请求在URL中传送的参数是有长度限制的，而POST没有。
+
+
+47.$router和$route的区别
+
+1.route是路由信息对象，里面主要包含路由的一些基本信息，包括name、meta、path、hash、query、params、fullPath、matched、redirectedFrom
+
+2.router是VueRouter的实例，包含了一些路由的跳转方法，钩子函数等
+
+
+48.HTTP请求的方法
+
+HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。
+
+HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法
+
+1、OPTIONS
+返回服务器针对特定资源所支持的HTTP请求方法，也可以利用向web服务器发送‘*’的请求来测试服务器的功能性
+
+2、HEAD
+向服务器索与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以再不必传输整个响应内容的情况下，就可以获取包含在响应小消息头中的元信息。
+
+3、GET
+向特定的资源发出请求。
+
+4、POST
+向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。
+
+6、DELETE
+请求服务器删除Request-URL所标识的资源
+
+
+49.深拷贝和浅拷贝
+
+浅拷贝：
+创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。
+如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址 ，
+所以如果其中一个对象改变了这个地址，就会影响到另一个对象。
+
+js ```
+
+let a = {
+    age: 1
+}
+let b = a
+a.age = 2
+console.log(b.age) // 2
+
+// 从上述例子中我们可以发现，如果给一个变量赋值一个对象，那么两者的值会是同一个引用，其中一方改变，另一方也会相应改变。
+通常在开发中我们不希望出现这样的问题，我们可以使用浅拷贝来解决这个问题
+```
+
+1. 首先可以通过 Object.assign 来解决
+2. 当然我们也可以通过展开运算符（…）来解决
+
+
+深拷贝：
+将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象,且修改新对象不会影响原对象
+
+
+50.描述一下document.load 和 document.ready 之间的一个区别
+1.执行时间不一致
+2.可以被执行的次数不同
+3.执行的效率不同：如果在dom的元素节点中添加onClick属性节点 ready 比load 的效率高
+
+document.load
+load 是当页面所有资源全部加载完成后（包括DOM文档树、 css文件、 js文件、 图片资源）。执行一个函数，load方法就是onload事件。
+只能在javaScript代码中出现一次
+
+document.ready
+是在页面完成HTML的加载并且建立了DOM树之后开始执行，但是这并不代表页面的所有数据已经全部加载完成。
+可以在javaScript代码中出现多次，并且里面的函数或者代码都可以执行   
+
+
+51.javascript中如何检测 类型
+1.用typeof判断基础数据类型
+2.用instanceof判断对象数据类型
+3.用contrutor属性
+4.toString()方法。
+5.用Array.isArray 判断数组
+
+52.什么是事件委托、什么是事件冒泡
+1.时间委托也叫事件代理，javascript高级程序设计上说：事件委托就是利用事件冒泡，只能指定一个事件处理程序，就可以管理某一类型的所有事件
+
+53.js 如何实现继承以及它的优缺点
+1.原型链继承
+2.盗用构造函数继承
+3.组合继承
+4.原型式继承
+5.寄生式继承
+6.寄身组合式继承
+7.es6的class继承
+
+54.描述一下什么叫作用域，什么叫作用域链
+作用域是在运行时代码中的某些特定部分中变量，函数和对象的可访问性
+作用域链 如果父级也没呢？再一层一层向上寻找，直到找到全局作用域还是没找到，就宣布放弃。这种一层一层的关系，就是 作用域链 。
+
+55. webpack 有用过哪些loader、webpack做过哪些优化？
+
+loader: babel-loader、 ts-loader、 style-loader、 css-loader、 less-loader 
+优化： 提取公共代码、代码分割、代码压缩、按需加载、预加载
+
+
+56.微前端的问题，设计思路，有遇到哪些问题，如何做样式隔离。
+
+遇到公用路由的设计
+采用路由分层的方式，将路由划分为4层，第一层用来区分是iframe 还是微应用，第二层用来区分具体的app页面名称由此在配置表中
+拿到具体的配置信息，第三层为子应用的路由，第四层为子应用的参数。由此实现基座与微应用的路由共享。
+
+如何做样式隔离：
+一是通过qiankun自身提供的样式沙箱{ sandbox : { experimentalStyleIsolaction: true } }
+二是vue组件样式使用 scoped,
+三是顶层样式增加私有类名
+
+57.为什么要使用composition-api
+首先因为业务性质需要兼容ie所以项目只能使用vue2
+通过使用@vue/composition-api 方式使用新特性。 转变以往的 vue 选项式开发，为更贴近函数式的代码开发。
+使原本关联逻辑分散在各个选项中，组件代码庞大的问题得到解决，提高代码易读性、可维护性。
+同时通过抽取hook 实现逻辑复用，提升效率。相比较minxin 具有隐式依赖等缺点，更具备可用性。
+
+57.描述一下我们的浏览器缓存、服务器缓存和cdn缓存的区别
+
+58.描述一下jsonp 的实现原理，jsonp是如何实现跨域请求，以及它的优缺点
+
+59.js 严格模式和松散模式的区别
+
+60.描述一下，js中严格模式和正常模式的区别 
+
+61.描述一下什么叫值类型，什么叫引用类型
+
+62.描述一下，移动端的click touch tap之间的一个区别
+
+63. 微任务和宏任务
+
+微任务：
+process.nextTick，promise，Object.observe，MutationObserver
+
+宏任务：
+script, setTimeout, setInterval, setImmediate, I/O 网络请求完成、文件读写完成事件, 
+UI rendering
+用户交互事件（比如鼠标点击、滚动页面、放大缩小等）
+
+2025 
+
+react 16 和 17的区别
+
+1. 新的 JSX 转换逻辑
+2. 事件系统重构
+3. Lane 模型的引入
+
+react 17 和 18的区别
+
+class 类组件中 生命周期的变化
+
+16版本正常使用
+
+17版本： componentWillMount、componentWillUpdate、componentWillReceiveProps 可以使用，但是在前面加修饰符例如：
+
+UNSAFE_componentWillMount
+
+18版本： componentWillMount、componentWillUpdate、componentWillReceiveProps 移除，
+新出两个新钩子： getDerivedStateFromProps、 getSnapshotBeforeUpdate
+
+
+react17版本 
+
+‌1。并发特性（Concurrent Features）‌：
+
+React 18引入了并发渲染机制，允许应用在后台准备UI更新，确保高优先级任务（如用户输入）优先响应。这通过以下API实现：
+
+startTransition：将非紧急状态更新标记为过渡性任务，避免阻塞用户界面
+useDeferredValue：延迟更新某些值，减少不必要的渲染
+并发模式提升了复杂应用的流畅性，例如在处理大量数据时保持UI响应
+‌
+2.自动批处理优化（Automatic Batching）‌：
+
+React 17仅批处理React事件内的状态更新；React 18扩展到原生事件、定时器等所有场景，减少渲染次数
+示例：多个setState在异步回调中会被合并为一次更新，提升性能
+‌新的Root API‌：
+
+React 18使用ReactDOM.createRoot(root).render()代替旧版ReactDOM.render()，支持并发模式
+旧方法仍可用但会被警告，需逐步迁移
+‌停止对IE的支持‌：
+
+React 18不再兼容Internet Explorer，需用户升级现代浏览器
+‌其他重要更新‌：
+
+严格模式改进（如重复执行副作用以检测问题）
+Suspense增强，支持数据获取的异步渲染
+组件返回值规则调整（禁止返回undefined）
+‌核心答案总结‌：React 18的核心升级围绕并发渲染能力展开，配合自动批处理和新API，大幅优化了复杂应用的性能和用户体验，同时简化了开发模式
+
+
+1.useLayoutEffect 和 useEffect 的核心区别
+
+
+（1）之行时机不同 useEffect‌：在组件渲染完成后异步执行（即浏览器完成绘制后执行），
+不会阻塞页面渲染。适用于数据获取、订阅事件等操作，这些操作通常不会直接影响页面布局或视觉呈现。‌‌
+useLayoutEffect‌：在 DOM 更新后、浏览器绘制前同步执行。
+适用于需要立即修改 DOM 样式或结构的情况（如测量元素尺寸、调整位置等），确保在页面更新前完成操作，避免闪烁或重绘问题。‌‌
+
+（2）‌性能影响
+useEffect 不会阻塞页面渲染，适合处理耗时操作（如网络请求），对用户体验影响较小；但若操作耗时过长，可能导致用户感知到延迟。‌‌
+useLayoutEffect 会阻塞页面渲染，若操作复杂可能导致卡顿或性能问题
